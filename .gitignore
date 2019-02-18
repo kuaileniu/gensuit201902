@@ -1,6 +1,7 @@
 .svn
 logs
 .target
+target
 .idea
 *.exe
 *.debug
