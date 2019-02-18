@@ -1,0 +1,168 @@
+server:
+   port: 80
+#  port: 8080
+#  servlet.context-path: /oa
+#  undertow:
+#    io-threads: 4
+#    worker-threads: 300
+
+spring:
+  jackson:
+    date-format:  yyyy-MM-dd HH:mm:ss
+
+  devtools:
+    restart:
+      additional-paths: src/main/java,src/main/resources
+      exclude: static/**,public/**
+
+  datasource:
+    name: devbench
+    url: jdbc:mysql://127.0.0.1:3306/devbench?useUnicode=true&characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 500
+    initialSize: 10
+    maxWait: 600000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+
+zhsit:
+  rdb:
+    database: mysql
+    schemaPattern: root
+  cache:
+#serializer type(kryo or jdk with jdk being default)
+    redisSerializer: kryo
+#缓存有效时间，单位秒，默认长久有效,8640为24小时
+    timeToLive: 86400
+  gen:
+  # 是否是初始化项目（第一次生成项目)
+#    initProject: true
+    initProject: false
+  # 项目的服务器端名称
+    server: devbench-backend
+  # 数据库名称
+    dbName: devbench
+  # 是否存储到七牛
+    saveQiniu: true
+  # 是否存储到FastDFS中
+    saveFastDFS: true
+  # 是否生成数据库中所有的表
+    createAll: false
+  # 是否生成测试类
+    createTest: true
+  # 是否显示注释
+    showComment: true
+  # ServerApplication路径
+    serverApplicationPackage: cn/zhsit/devbench
+  # 包的根路径
+    basePackage: cn/zhsit/devbench/gen
+  # 注解的路径
+    annotationPackage: cn/zhsit/devbench/gen/annotations
+  #  modle的路径
+    modelPackage: cn/zhsit/devbench/gen/models
+  #  po的路径
+    poPackage: cn/zhsit/devbench/gen/models/pos
+  #  query对象的路径
+    queryPackage: cn/zhsit/devbench/gen/mappers/querys
+  #  remove对象的路径
+    removePackage: cn/zhsit/devbench/gen/mappers/removes
+  #  modify对象的路径
+    modifyPackage: cn/zhsit/devbench/gen/mappers/modify
+  #  provider的路径
+    providerPackage: cn/zhsit/devbench/gen/mappers/providers
+  #  provider的路径
+    mapperPackage: cn/zhsit/devbench/gen/mappers
+  #  manager的路径
+    managerPackage: cn/zhsit/devbench/gen/manager
+  #  managerImpl的路径
+    managerImplPackage: cn/zhsit/devbench/gen/manager/impl
+  #  manager的路径
+    servicePackage: cn/zhsit/devbench/gen/services
+    commonServicePackage: cn/zhsit/devbench/gen/services/common
+  #  managerImpl的路径
+    serviceImplPackage: cn/zhsit/devbench/gen/services/impl
+    commonServiceImplPackage: cn/zhsit/devbench/gen/services/impl/common
+  #  Controller的路径
+    controllerPackage: cn/zhsit/devbench/gen/controllers
+  # 通用Controller路径
+    commonControllerPackage: cn/zhsit/devbench/gen/controllers/common
+
+  # 先做单机版的，默认与工程同级的文件路径，文件夹下按月分开，
+  # 做单独的文件微服务。存储到FastDFS中
+    filePersistentPath: files
+  #  枚举类的路径
+    enumPackage: cn/zhsit/devbench/gen/enums
+  #  Util类的路径
+    utilPackage: cn/zhsit/devbench/gen/utils
+  #  验证码类的路径
+    vcodePackage: cn/zhsit/devbench/gen/utils/vcode
+  #  io类的路径
+    ioPackage: cn/zhsit/devbench/gen/utils/io
+  #  处理类的路径
+    handlerPackage: cn/zhsit/devbench/gen/handlers
+  #  过滤类的路径
+    filterPackage: cn/zhsit/devbench/gen/filters
+  #  缓存类的路径
+    cachePackage: cn/zhsit/devbench/gen/caches
+  #  配置类的路径
+    configPackage: cn/zhsit/devbench/gen/configs
+  #  helper类的路径
+    helperPackage: cn/zhsit/devbench/gen/helpers
+  # DFS包路径
+    dfsPackage: cn/zhsit/devbench/gen/dfs
+
+  # 要生成的表和实体的名称对应,加不加引号都可以
+    tableEntity:
+      t_org: Org
+      t_user: User
+      t_login_log: LoginLog
+      t_project: Project
+      t_project_table: ProjectTable
+      t_project_field: ProjectField
+      t_field_type: FieldType
+      t_project_file: ProjectFile
+      t_role: Role
+      t_user_role: UserRole
+      t_role_permission: RolePermission
+      t_org_permissoin: OrgPermissoin
+      t_permission: Permission
+      t_z_file: ZFile
+
+  # 表对象对应类后缀，词尾
+    poPostfix:
+  #  查询对象后缀
+    queryPostfix: Query
+  #  删除对象后缀
+    removePostfix: Remove
+  #  修改对象后缀
+    modifyPostfix: Modify
+  #  Provider对象
+    providerPostfix: Provider
+  # 持久类后缀; 词尾
+    mapperPostfix: Mapper
+  # Manager接口类后缀; 词尾
+    managerPostfix: Manager
+  # Manager实现类后缀; 词尾
+    managerImplPostfix: ManagerImpl
+  # 业务接口类后缀; 词尾
+    servicePostfix: Service
+  # 业务类后缀; 词尾
+    serviceImplPostfix: ServiceImpl
+  # Controller后缀; 词尾
+    controllerPostfix: Controller
+
+
+#启动图形界面
+spring.banner.location:  zhsit.cn.txt

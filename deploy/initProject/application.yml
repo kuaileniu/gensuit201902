@@ -1,0 +1,156 @@
+server:
+   port: 80
+
+
+spring:
+  cache:
+    redis:
+#缓存有效时间，单位毫秒，默认长久有效,8640000为24小时
+      time-to-live: 8640000
+  redis:
+# Redis数据库索引（默认为0）
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+# 连接超时时间（毫秒）
+    timeout: 10000
+    lettuce.pool:
+# 连接池最大连接数（使用负值表示没有限制）
+      max-active: 1
+# 连接池最大阻塞等待时间（使用负值表示没有限制）
+      max-wait: 10000
+#  连接池中的最大空闲连接
+      max-idle: 1
+# 连接池中的最小空闲连接
+      min-idle: 0
+
+  jackson:
+    date-format:  yyyy-MM-dd HH:mm:ss
+
+  devtools:
+    restart:
+      additional-paths: src/main/java,src/main/resources
+      exclude: static/**,public/**
+
+  datasource:
+    name: yili
+    url: jdbc:mysql://127.0.0.1:3306/devbench?useUnicode=true&characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 500
+    initialSize: 10
+    maxWait: 600000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+gen:
+  filterLog: true
+
+zhsit:
+  rdb:
+    database: mysql
+    schemaPattern: root
+  cache:
+#serializer type(kryo or jdk with jdk being default)
+    redisSerializer: jdk
+#缓存有效时间，单位毫秒，默认长久有效,8640000为24小时
+    timeToLive: 8640000
+  gen:
+   # 是否是初始化项目（第一次生成项目)
+    initProject: true
+    server: genserver
+  # 是否生成数据库中所有的表
+    createAll: false
+  # ServerApplication路径
+    serverApplicationPackage: cn/devbench
+  # 包的根路径
+    basePackage: cn/devbench/gen
+  # 注解的路径
+    annotationPackage: cn/devbench/gen/annotations
+  #  modle的路径
+    modelPackage: cn/devbench/gen/models
+  #  po的路径
+    poPackage: cn/devbench/gen/models/pos
+  #  query对象的路径
+    queryPackage: cn/devbench/gen/mappers/querys
+  #  remove对象的路径
+    removePackage: cn/devbench/gen/mappers/removes
+  #  modify对象的路径
+    modifyPackage: cn/devbench/gen/mappers/modify
+  #  provider的路径
+    providerPackage: cn/devbench/gen/mappers/providers
+  #  provider的路径
+    mapperPackage: cn/devbench/gen/mappers
+  #  manager的路径
+    managerPackage: cn/devbench/gen/manager
+  #  managerImpl的路径
+    managerImplPackage: cn/devbench/gen/manager/impl
+  #  manager的路径
+    servicePackage: cn/devbench/gen/service
+  #  managerImpl的路径
+    serviceImplPackage: cn/devbench/gen/service/impl
+  #  Controller的路径
+    controllerPackage: cn/devbench/gen/controllers
+  #  枚举类的路径
+    enumPackage: cn/devbench/gen/enums
+  #  Util类的路径
+    utilPackage: cn/devbench/gen/utils
+  #  验证码类的路径
+    vcodePackage: cn/devbench/gen/utils/vcode
+  #  io类的路径
+    ioPackage: cn/devbench/gen/utils/io
+  #  处理类的路径
+    handlerPackage: cn/devbench/gen/handlers
+  #  过滤类的路径
+    filterPackage: cn/devbench/gen/filters
+  #  缓存类的路径
+    cachePackage: cn/devbench/gen/caches
+  #  配置类的路径
+    configPackage: cn/devbench/gen/configs
+  #  helper类的路径
+    helperPackage: cn/devbench/gen/helpers
+  # 要生成的table列表,java映射时需要有set和get方法
+  #  tableList: [t_order,t_union_key]
+    tables:
+  # 要生成的表和实体的名称对应,加不加引号都可以
+    tableEntity:
+      t_org: Org
+      t_user: User
+      t_login_log: LoginLog
+  # 表对象对应类后缀，词尾
+    poPostfix:
+  #  查询对象后缀
+    queryPostfix: Query
+  #  删除对象后缀
+    removePostfix: Remove
+  #  修改对象后缀
+    modifyPostfix: Modify
+  #  Provider对象
+    providerPostfix: Provider
+  # 持久类后缀; 词尾
+    mapperPostfix: Mapper
+  # Manager接口类后缀; 词尾
+    managerPostfix: Manager
+  # Manager实现类后缀; 词尾
+    managerImplPostfix: ManagerImpl
+  # 业务接口类后缀; 词尾
+    servicePostfix: Service
+  # 业务类后缀; 词尾
+    serviceImplPostfix: ServiceImpl
+  # Controller后缀; 词尾
+    controllerPostfix: Controller
+
+
+#启动图形界面
+spring.banner.location:  zhsit.cn.txt

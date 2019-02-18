@@ -1,0 +1,220 @@
+server:
+   port: 18099
+#  port: 8080
+#  servlet.context-path: /report
+
+spring:
+  jackson:
+    date-format:  yyyy-MM-dd HH:mm:ss
+
+  devtools:
+    restart:
+      additional-paths: src/main/java,src/main/resources
+      exclude: static/**,public/**
+
+  datasource:
+    name: jxpj20180723
+    url: jdbc:mysql://127.0.0.1:3306/jxpj20180723?useUnicode=true&characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 500
+    initialSize: 10
+    maxWait: 600000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+
+zhsit:
+  rdb:
+    database: mysql
+    schemaPattern: root
+  cache:
+#serializer type(kryo or jdk with jdk being default)
+    redisSerializer: kryo
+#缓存有效时间，单位毫秒，默认长久有效,8640000为24小时
+    timeToLive: 8640000
+  gen:
+  # 是否是初始化项目（第一次生成项目)
+#    initProject: true
+    initProject: false
+  # 项目的服务器端java代码编号，同一租户的不要相同,影响生成的文件夹和pom.xml内的artifactId，及
+    server: report-platform
+  # 本系统的名称
+    systemName: 报告系统
+  # 本系统路径
+    systemCode: report-platform
+  #系统模板类型
+    templateType: ng-alain
+  # 数据库名称，影响生成的application.yml中的datasource
+    dbName: jxpj20180723
+  # 是否存储到七牛CDN中
+    saveQiniu: false
+  # 是否存储到FastDFS中
+    saveFastDFS: true
+  # 是否存储到本机中
+    saveLocal: true
+  # 是否使用poi
+    usePOI: true
+  # 是否使用JFreeChart
+    useJFree: true
+  # 是否使用layui
+    useLayui: true
+  # 是否使用alain
+    useAlain: true
+  # 是否生成工作流
+    workflow: true
+  # 是否生成数据库中所有的表
+    createAll: false
+  # 是否生成测试类
+    createTest: true
+  # 是否显示注释
+    showComment: true
+  # ServerApplication路径
+    serverApplicationPackage: cn/zhsit/jxpj
+  # 包的根路径
+    basePackage: cn/zhsit/jxpj/gen
+  # 注解的路径
+    annotationPackage: cn/zhsit/jxpj/gen/annotations
+  #  modle的路径
+    modelPackage: cn/zhsit/jxpj/gen/models
+  # layui对应的模型model
+    modelLayuiPackage: cn/zhsit/jxpj/gen/models/layui
+  # alain对应的模型model
+    modelAlainPackage: cn/zhsit/jxpj/gen/models/alain
+  #  po的路径
+    poPackage: cn/zhsit/jxpj/gen/models/pos
+  #  query对象的路径
+    queryPackage: cn/zhsit/jxpj/gen/mappers/querys
+  #  remove对象的路径
+    removePackage: cn/zhsit/jxpj/gen/mappers/removes
+  #  modify对象的路径
+    modifyPackage: cn/zhsit/jxpj/gen/mappers/modify
+  #  provider的路径
+    providerPackage: cn/zhsit/jxpj/gen/mappers/providers
+  #  provider的路径
+    mapperPackage: cn/zhsit/jxpj/gen/mappers
+  #  manager的路径
+    managerPackage: cn/zhsit/jxpj/gen/manager
+  #  managerImpl的路径
+    managerImplPackage: cn/zhsit/jxpj/gen/manager/impl
+  #  manager的路径
+    servicePackage: cn/zhsit/jxpj/gen/services
+    commonServicePackage: cn/zhsit/jxpj/gen/services/common
+  #  managerImpl的路径
+    serviceImplPackage: cn/zhsit/jxpj/gen/services/impl
+    commonServiceImplPackage: cn/zhsit/jxpj/gen/services/impl/common
+  #  Controller的路径
+    controllerPackage: cn/zhsit/jxpj/gen/controllers
+  # 通用Controller路径
+    commonControllerPackage: cn/zhsit/jxpj/gen/controllers/common
+
+  # 先做单机版的，默认与工程同级的文件路径，文件夹下按月分开，
+  # 做单独的文件微服务。存储到FastDFS中
+    filePersistentPath: files
+  #  枚举类的路径
+    enumPackage: cn/zhsit/jxpj/gen/enums
+  #  Util类的路径
+    utilPackage: cn/zhsit/jxpj/gen/utils
+  #  验证码类的路径
+    vcodePackage: cn/zhsit/jxpj/gen/utils/vcode
+  # 系统工具类
+    systemPackage: cn/zhsit/jxpj/gen/utils/system
+  #  io类的路径
+    ioPackage: cn/zhsit/jxpj/gen/utils/io
+  #  处理类的路径
+    handlerPackage: cn/zhsit/jxpj/gen/handlers
+  #  过滤类的路径
+    filterPackage: cn/zhsit/jxpj/gen/filters
+  #  缓存类的路径
+    cachePackage: cn/zhsit/jxpj/gen/caches
+  #  配置类的路径
+    configPackage: cn/zhsit/jxpj/gen/configs
+  #  helper类的路径
+    helperPackage: cn/zhsit/jxpj/gen/helpers
+  # DFS包路径
+    dfsPackage: cn/zhsit/jxpj/gen/dfs
+  # 常量包路径
+    constantsPackage: cn/zhsit/jxpj/gen/constants
+  # 拦截器路径
+    interceptorPackage: cn/zhsit/jxpj/gen/interceptors
+
+  # 要生成的表和实体的名称对应,加不加引号都可以
+    tableEntity:
+      t_user: User
+      t_role: Role
+      t_user_role: UserRole
+      t_org: Org
+      t_oper_log: OperLog
+      t_login: Login
+      t_project: Project
+      t_dict_module: DictModule
+      t_dict: Dict
+      t_support_org: SupportOrg
+      t_support_org_search: SupportOrgSearch
+      t_support_org_search_project: SupportOrgSearchProject
+      t_sample_project: SampleProject
+      t_expert: Expert
+      t_expert_sample_project: ExpertSampleProject
+
+
+      t_role_permission: RolePermission
+      t_org_permission: OrgPermission
+      t_permission: Permission
+      t_z_file: ZFile
+      t_lessee: Lessee
+      t_soft_system: SoftSystem
+      t_z_menu: ZMenu
+      t_lessee_soft_system: LesseeSoftSystem
+      t_lessee_soft_system_src: LesseeSoftSystemSrc
+      t_lessee_permission: LesseePermission
+      t_lessee_menu: LesseeMenu
+      t_role_menu: RoleMenu
+      t_function_module: FunctionModule
+      t_lessee_function_module: LesseeFunctionModule
+      t_menu_function_module: MenuFunctionModule
+      t_permission_function_module: PermissionFunctionModule
+      t_template_root: TemplateRoot
+      t_private_template: PrivateTemplate
+      t_report_template: ReportTemplate
+      t_doc_cover: DocCover
+
+      t_dict_group: DictGroup
+      t_key_val: KeyVal
+
+
+  # 表对象对应类后缀，词尾
+    poPostfix:
+  #  查询对象后缀
+    queryPostfix: Query
+  #  删除对象后缀
+    removePostfix: Remove
+  #  修改对象后缀
+    modifyPostfix: Modify
+  #  Provider对象
+    providerPostfix: Provider
+  # 持久类后缀; 词尾
+    mapperPostfix: Mapper
+  # Manager接口类后缀; 词尾
+    managerPostfix: Manager
+  # Manager实现类后缀; 词尾
+    managerImplPostfix: ManagerImpl
+  # 业务接口类后缀; 词尾
+    servicePostfix: Service
+  # 业务类后缀; 词尾
+    serviceImplPostfix: ServiceImpl
+  # Controller后缀; 词尾
+    controllerPostfix: Controller
+
+
+#启动图形界面
+spring.banner.location:  zhsit.cn.txt

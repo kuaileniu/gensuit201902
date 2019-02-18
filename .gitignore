@@ -1,0 +1,16 @@
+.svn
+logs
+.target
+.idea
+*.exe
+*.debug
+debug
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.out
+*.test
+*.iml
+*.pdb
