@@ -292,7 +292,8 @@ zhsit:
       t_ri_zhi_pi_zhu: RiZhiPiZhu
       t_role_group: RoleGroup
       t_bei_guan_role: BeiGuanRole
-      t_ri_zhi_can_shu: RiZhiCanShu
+#      t_ri_zhi_item_name: RiZhiItemName
+      t_ri_zhi_item_type: RiZhiItemType
 
 
   # 表对象对应类后缀，词尾
