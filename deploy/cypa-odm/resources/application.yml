@@ -294,6 +294,7 @@ zhsit:
       t_bei_guan_role: BeiGuanRole
 #      t_ri_zhi_item_name: RiZhiItemName
       t_ri_zhi_item_type: RiZhiItemType
+      t_ri_zhi_yun_ying: RiZhiYunYing
 
 
   # 表对象对应类后缀，词尾
