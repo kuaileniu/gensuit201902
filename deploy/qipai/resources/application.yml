@@ -170,9 +170,12 @@ zhsit:
       t_staff_permission: StaffPermission
       t_staff_menu: StaffMenu
       t_cache: Cache
-      t_customer: Customer
-      t_room: Room
-      t_customer_room: CustomeRoom
+      t_wan_jia: WanJia
+      t_fang_jian: FangJian
+      t_wan_jia_fang_jian: WanJiaFangJian
+      t_wan_jia_card: WanJiaCard
+
+
 
   # 表对象对应类后缀，词尾
     poPostfix:
