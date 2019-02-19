@@ -14,9 +14,9 @@ spring:
 
   datasource:
     name: qipai20190213
-    url: jdbc:mysql://127.0.0.1:3306/qipai?useUnicode=true&characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
+    url: jdbc:mysql://test-qipai-mysql:3306/qipai?useUnicode=true&characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
     username: root
-    password:
+    password: zhsit123456
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     filters: stat
@@ -171,6 +171,8 @@ zhsit:
       t_staff_menu: StaffMenu
       t_cache: Cache
       t_customer: Customer
+      t_room: Room
+      t_customer_room: CustomeRoom
 
   # 表对象对应类后缀，词尾
     poPostfix:
