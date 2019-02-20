@@ -20,11 +20,13 @@ import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 import com.google.gson.Gson;
 
+<#if (gen.showComment==true)>
 /**
  * Redis工具类
  *
  <#--* @version 1.1 (GitHub文档: https://github.com/whvcse/RedisUtil )-->
  */
+</#if>
 @Component
 public class RedisUtil {
     @Autowired
