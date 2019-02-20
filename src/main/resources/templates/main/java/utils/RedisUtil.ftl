@@ -36,9 +36,9 @@ public class RedisUtil {
     private Pool<Jedis> client;
 
 	public static final String ROOT_PATH = ".";
-	
+
 	private static final Gson gson = new Gson();
-    
+
 	public void setRedisTemplate(StringRedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
@@ -47,46 +47,55 @@ public class RedisUtil {
         return this.redisTemplate;
     }
 
-    /** -------------------key相关操作--------------------- */
 
+    /** -------------------key相关操作--------------------- */
+<#if (gen.showComment==true)>
     /**
      * 删除key
      *
      * @param key
      */
+</#if>
     public void delete(String key) {
         redisTemplate.delete(key);
     }
 
+    <#if (gen.showComment==true)>
     /**
      * 批量删除key
      *
      * @param keys
      */
+    </#if>
     public void delete(Collection<String> keys) {
         redisTemplate.delete(keys);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 序列化key
      *
      * @param key
      * @return
      */
+</#if>
     public byte[] dump(String key) {
         return redisTemplate.dump(key);
     }
 
+  <#if (gen.showComment==true)>
     /**
      * 是否存在key
      *
      * @param key
      * @return
      */
+  </#if>
     public Boolean hasKey(String key) {
         return redisTemplate.hasKey(key);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 设置过期时间
      *
@@ -95,10 +104,12 @@ public class RedisUtil {
      * @param unit
      * @return
      */
+</#if>
     public Boolean expire(String key, long timeout, TimeUnit unit) {
         return redisTemplate.expire(key, timeout, unit);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 设置过期时间
      *
@@ -106,20 +117,24 @@ public class RedisUtil {
      * @param date
      * @return
      */
+</#if>
     public Boolean expireAt(String key, Date date) {
         return redisTemplate.expireAt(key, date);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 查找匹配的key
      *
      * @param pattern
      * @return
      */
+</#if>
     public Set<String> keys(String pattern) {
         return redisTemplate.keys(pattern);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 将当前数据库的 key 移动到给定的数据库 db 当中
      *
@@ -127,20 +142,24 @@ public class RedisUtil {
      * @param dbIndex
      * @return
      */
+</#if>
     public Boolean move(String key, int dbIndex) {
         return redisTemplate.move(key, dbIndex);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 移除 key 的过期时间，key 将持久保持
      *
      * @param key
      * @return
      */
+</#if>
     public Boolean persist(String key) {
         return redisTemplate.persist(key);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 返回 key 的剩余的过期时间
      *
@@ -148,39 +167,47 @@ public class RedisUtil {
      * @param unit
      * @return
      */
+</#if>
     public Long getExpire(String key, TimeUnit unit) {
         return redisTemplate.getExpire(key, unit);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 返回 key 的剩余的过期时间
      *
      * @param key
      * @return
      */
+</#if>
     public Long getExpire(String key) {
         return redisTemplate.getExpire(key);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 从当前数据库中随机返回一个 key
      *
      * @return
      */
+</#if>
     public String randomKey() {
         return redisTemplate.randomKey();
     }
 
+<#if (gen.showComment==true)>
     /**
      * 修改 key 的名称
      *
      * @param oldKey
      * @param newKey
      */
+</#if>
     public void rename(String oldKey, String newKey) {
         redisTemplate.rename(oldKey, newKey);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 仅当 newkey 不存在时，将 oldKey 改名为 newkey
      *
@@ -188,16 +215,19 @@ public class RedisUtil {
      * @param newKey
      * @return
      */
+</#if>
     public Boolean renameIfAbsent(String oldKey, String newKey) {
         return redisTemplate.renameIfAbsent(oldKey, newKey);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 返回 key 所储存的值的类型
      *
      * @param key
      * @return
      */
+</#if>
     public DataType type(String key) {
         return redisTemplate.type(key);
     }
@@ -1310,11 +1340,11 @@ public class RedisUtil {
     public Long zIntersectAndStore(String key, Collection<String> otherKeys, String destKey) {
         return redisTemplate.opsForZSet().intersectAndStore(key, otherKeys, destKey);
     }
-	
+
     public Long jsonDel(String key) {
         return jsonDel(key, ROOT_PATH);
     }
-	
+
 	public Long jsonDel(String key, String path) {
         byte[][] args = new byte[2][];
         args[0] = SafeEncoder.encode(key);
@@ -1325,11 +1355,11 @@ public class RedisUtil {
             return conn.getClient().getIntegerReply();
         }
     }
-	
+
 	public String jsonGet(String key) {
         return jsonGet(key, ROOT_PATH);
     }
-	
+
     public String jsonGet(String key, String... paths) {
         byte[][] args = new byte[2 + paths.length][];
         int i = 0;
@@ -1346,20 +1376,20 @@ public class RedisUtil {
         }
         assertReplyNotError(rep);
         return rep;
-    }                       
+    }
 
 	public void jsonSet(String key, Object object, ExistenceModifier flag) {
         jsonSet(key, object, flag, ROOT_PATH);
     }
-	
+
     public void jsonSet(String key, Object object) {
         jsonSet(key, object, ExistenceModifier.DEFAULT, ROOT_PATH);
     }
-	
+
     public void jsonSet(String key, Object object, String path) {
         jsonSet(key, object, ExistenceModifier.DEFAULT, path);
     }
-	
+
     public void jsonSet(String key, Object object, ExistenceModifier flag, String path) {
         List<byte[]> args = new ArrayList<>(4);
         args.add(SafeEncoder.encode(key));
@@ -1375,8 +1405,8 @@ public class RedisUtil {
             status = conn.getClient().getStatusCodeReply();
         }
         assertReplyOK(status);
-    }	
-	
+    }
+
     public Class<?> jsonType(String key) {
         return jsonType(key);
     }
@@ -1413,7 +1443,7 @@ public class RedisUtil {
                 throw new java.lang.RuntimeException(rep);
         }
     }
-	
+
 	private void init() {
 		if (client == null) {
 			String host = redisConfig.getHost();
@@ -1424,23 +1454,23 @@ public class RedisUtil {
 			this.client = new JedisPool(config, host, port, timeout, password);
 		}
     }
-	
+
     private Jedis getConnection() {
         init();
         return this.client.getResource();
     }
-           
+
     private static void assertReplyNotError(final String str) {
         if (str.startsWith("-ERR"))
             throw new RuntimeException(str.substring(5));
     }
-	
+
 	private static void assertReplyOK(final String str) {
         if (!str.equals("OK")){
 		   throw new RuntimeException(str);
-		}   
+		}
     }
-	
+
     private static String getSingleOptionalPath(String... path) {
         // check for 0, 1 or more paths
         if (1 > path.length) {   // default to root
@@ -1452,7 +1482,7 @@ public class RedisUtil {
 
         throw new RuntimeException("Only a single optional path is allowed");
     }
-	
+
     private enum Command implements ProtocolCommand {
         DEL("JSON.DEL"),
         GET("JSON.GET"),
@@ -1481,5 +1511,5 @@ public class RedisUtil {
         public byte[] getRaw() {
             return raw;
         }
-    }                                                                                                                                               
+    }
 }
