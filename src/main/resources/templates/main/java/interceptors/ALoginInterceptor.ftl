@@ -43,7 +43,11 @@ public class ALoginInterceptor extends HandlerInterceptorAdapter {
                 return true;
             }
         }
-        String jiaMiZtoken = (String) request.getParameter(GenConstant.zToken);
+        String jiaMiZtoken = request.getHeader(GenConstant.zToken);
+        log.info("ALoginInterceptor.jiaMiZtoken:" + jiaMiZtoken);
+        if (jiaMiZtoken == null) {
+            jiaMiZtoken = (String) request.getParameter(GenConstant.zToken);
+        }
         RequestModel requestModel = (RequestModel) ContextHandler.Instance.getControllerRequestBody();
         if (null == requestModel) {
             requestModel = new RequestModel();

@@ -84,7 +84,7 @@ zhsit:
   # 是否生成测试类
     createTest: true
   # 是否显示注释
-#    showComment: true
+    showComment: true
   # ServerApplication路径
     serverApplicationPackage: cn/zhsit/cypaodm
   # 包的根路径
@@ -294,7 +294,8 @@ zhsit:
       t_bei_guan_role: BeiGuanRole
 #      t_ri_zhi_item_name: RiZhiItemName
       t_ri_zhi_item_type: RiZhiItemType
-      t_ri_zhi_yun_ying: RiZhiYunYing
+#      t_ri_zhi_yun_ying: RiZhiYunYing
+      t_ri_zhi_yun_ying_xin_qian: RiZhiYunYingXinQian
 
 
   # 表对象对应类后缀，词尾

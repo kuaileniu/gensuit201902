@@ -40,7 +40,7 @@ public class ContextFilter implements Filter {
             ServletRequest requestWrapper = new BodyReaderHttpServletRequestWrapper(req);
             String body = WebUtil.getBodyString(requestWrapper);
             RequestModel requestModelBody = null;
-            if (null != body) {
+            if (null != body && body.length() > 0) {
                 requestModelBody = StringUtil.fromJson(body, RequestModel.class);
             }
             ContextHandler.Instance.setControllerRequestBody(requestModelBody);
