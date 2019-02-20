@@ -24,7 +24,17 @@ public class ContextFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
         ResponseWrapper responseWrapper = new ResponseWrapper(resp);
         String contentType = req.getHeader(GenConstant.contentType);
-        if (contentType != null && contentType.contains(GenConstant.formDataHeader)) {
+
+        if (contentType != null && contentType.contains(GenConstant.jsonApplicationHeader)) {
+            ServletRequest requestWrapper = new BodyReaderHttpServletRequestWrapper(req);
+            String body = WebUtil.getBodyString(requestWrapper);
+            RequestModel requestModelBody = null;
+            if (null != body) {
+                requestModelBody = StringUtil.fromJson(body, RequestModel.class);
+            }
+            ContextHandler.Instance.setControllerRequestBody(requestModelBody);
+            chain.doFilter(requestWrapper, responseWrapper);
+        } else if (contentType != null && contentType.contains(GenConstant.formDataHeader)) {
             chain.doFilter(request, responseWrapper);
         } else if (contentType != null && contentType.contains(GenConstant.wwwFormUrlencodedHeader)) {
             chain.doFilter(request, responseWrapper);
@@ -36,15 +46,6 @@ public class ContextFilter implements Filter {
             chain.doFilter(request, responseWrapper);
         } else if (contentType != null && contentType.contains(GenConstant.textPlainHeader)) {
             chain.doFilter(request, responseWrapper);
-        } else {
-            ServletRequest requestWrapper = new BodyReaderHttpServletRequestWrapper(req);
-            String body = WebUtil.getBodyString(requestWrapper);
-            RequestModel requestModelBody = null;
-            if (null != body && body.length() > 0) {
-                requestModelBody = StringUtil.fromJson(body, RequestModel.class);
-            }
-            ContextHandler.Instance.setControllerRequestBody(requestModelBody);
-            chain.doFilter(requestWrapper, responseWrapper);
         }
         WebUtil.rewriteResponseBody(responseWrapper, response);
         //ContextHandler.Instance.clear();

@@ -16,6 +16,7 @@ public class GenConstant {
     //http header Content-Type 值为 x-www-form-urlencoded
     public static final String wwwFormUrlencodedHeader = "application/x-www-form-urlencoded";
     public static final String xmlApplicationHeader = "application/xml";
+    public static final String jsonApplicationHeader = "application/json";
     public static final String xmlTextHeader = "text/xml";
     public static final String textPlainHeader = "text/plain";
     public static final String textHtmlHeader = "text/html";
