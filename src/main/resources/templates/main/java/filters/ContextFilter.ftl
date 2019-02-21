@@ -46,6 +46,8 @@ public class ContextFilter implements Filter {
             chain.doFilter(request, responseWrapper);
         } else if (contentType != null && contentType.contains(GenConstant.textPlainHeader)) {
             chain.doFilter(request, responseWrapper);
+        } else {
+            chain.doFilter(request, responseWrapper);
         }
         WebUtil.rewriteResponseBody(responseWrapper, response);
         //ContextHandler.Instance.clear();
