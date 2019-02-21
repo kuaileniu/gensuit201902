@@ -142,49 +142,61 @@ public class TimeUtilZhs {
         return calendar.getTime();
     }
 
+<#if (gen.showComment==true)>
     /**
      * @return Year 当前年， 例如 2017
      */
+</#if>
     public static int currentYear(){
         LocalDate localDate = LocalDate.now();
         return localDate.getYear();
     }
 
+<#if (gen.showComment==true)>
     /**
      * @return Month 当前年内的月， 0~12之间
      */
+</#if>
     public static int currentMonth(){
         LocalDate localDate = LocalDate.now();
         return localDate.getMonthValue();
     }
 
+<#if (gen.showComment==true)>
     /**
      * @return Day 当前月内的天， 0~31之间
      */
+</#if>
     public static int currentDay(){
         LocalDate localDate = LocalDate.now();
         return localDate.getDayOfMonth();
     }
 
+<#if (gen.showComment==true)>
     /**
      * @return Hour 当前日内的小时， 0~23之间
      */
+</#if>
     public static int currentHour() {
         LocalTime localTime = LocalTime.now();
         return localTime.getHour();
     }
 
+<#if (gen.showComment==true)>
     /**
      * @return minute 当前小时内的分钟， 0~59之间
      */
+</#if>
     public static int currentMinute() {
         LocalTime localTime = LocalTime.now();
         return localTime.getMinute();
     }
 
+<#if (gen.showComment==true)>
     /**
      * @return second 当前分钟内的秒， 0~59之间
      */
+</#if>
     public static int currentSecond() {
         LocalTime localTime = LocalTime.now();
         return localTime.getSecond();
@@ -239,4 +251,32 @@ public class TimeUtilZhs {
         return date;
     }
 
+	
+    public static final String[] XingZuoArray = {"水瓶座", "双鱼座", "牡羊座",
+            "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "魔羯座"};
+    public static final int[] constellationEdgeDay = {20, 19, 21, 21, 21, 22,
+            23, 23, 23, 23, 22, 22};
+
+<#if (gen.showComment==true)>
+    /**
+     * 谢志权
+     *
+     * @param date
+     * @return 星座
+     */
+</#if>
+    public static String date2XingZuo(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        if (day < constellationEdgeDay[month]) {
+            month = month - 1;
+        }
+        if (month >= 0) {
+            return XingZuoArray[month];
+        }
+        // default to return 魔羯
+        return XingZuoArray[11];
+    }
 }
