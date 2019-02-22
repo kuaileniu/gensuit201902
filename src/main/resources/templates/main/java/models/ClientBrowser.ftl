@@ -3,35 +3,47 @@ package ${gen.modelPackage?replace("/",".")};
 import ${gen.utilPackage?replace("/",".")}.*;
 
 public class ClientBrowser {
-    
+
+<#if (gen.showComment==true)>
     /**
      * 机器介绍
      */
+</#if>
     private String machineIntroduction;
 
+<#if (gen.showComment==true)>
     /**
      * 操作系统
      */
+</#if>
     private String os;
 
+<#if (gen.showComment==true)>
     /**
      * 浏览器类型
      */
+</#if>
     private String browserType;
 
+<#if (gen.showComment==true)>
     /**
      * 浏览器名称
      */
+</#if>
     private String browserName;
 
+<#if (gen.showComment==true)>
     /**
      * 浏览器版本
      */
+</#if>
     private String browserVersion;
 
+<#if (gen.showComment==true)>
     /**
      * 渲染引擎
      */
+</#if>
     private String renderingEngine;
 
     public String getMachineIntroduction() {

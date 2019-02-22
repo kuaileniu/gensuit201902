@@ -8,53 +8,81 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseModel {
+
+<#if (gen.showComment==true)>
     // 数据状态一切正常
+</#if>
     public static final Integer SUCCESS = 0;
 
+<#if (gen.showComment==true)>
     //非法参数 登录失效，放在status里面的
+</#if>
     public static final Integer ERROR = 1;
 
+<#if (gen.showComment==true)>
     //放在code里面的
+</#if>
     public static final Integer PARAM_ERROR_CODE = 1;
 
     public static final String WrongParamMsg = "非法参数";
+
+<#if (gen.showComment==true)>
     //返回代码
+</#if>
     private Integer code;
 
+<#if (gen.showComment==true)>
     //状态
+</#if>
     private Integer status = SUCCESS;
 
+<#if (gen.showComment==true)>
     //返回的消息
+</#if>
     private Object msg;
+
+<#if (gen.showComment==true)>
     //token
+</#if>
     private String ztoken;
+
+<#if (gen.showComment==true)>
     //把Request中的此值原样返回
     //拦截器自动设置,无需手动设置
+</#if>
     private String sameReturn;
 
+<#if (gen.showComment==true)>
     /**
      * 请求序号,当同一次发送多个请求(发送数组)时，客户端对每个请求序号，服务器端将此序号及对应结果返回;若每次只有一个请求，则无需填写此值
      * 对应请求的seq
      * 拦截器自动设置,无需手动设置
      */
+</#if>
     private String seq;
 
+<#if (gen.showComment==true)>
     /**
      * 本次验证具有的权限码点列表
      * 当前用户拥有此权限列表中的具有的权限(对应RequestModel）
      * 此用户此次请求判断的权限点列表中此人没权限的点不包含在内
      * PermissionCodes
      */
+</#if>
     private List<String> pmCodes;
 
+<#if (gen.showComment==true)>
     /**
      * 数据总条数
      */
+</#if>
     private Long total;
 
+<#if (gen.showComment==true)>
     /**
      * 返回的数据
      */
+</#if>
     private Object data;
 
     private ResponseModel() {}

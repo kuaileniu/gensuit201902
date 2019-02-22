@@ -9,9 +9,15 @@ public class DataPage {
 //    private int pageSize;
 //    //当前是第几页
 //    private int currentPage;
+
+<#if (gen.showComment==true)>
     //总条数
+</#if>
     private long total;
+
+<#if (gen.showComment==true)>
     //数据
+</#if>
     private List data;
 
 //    public int getPageSize() {

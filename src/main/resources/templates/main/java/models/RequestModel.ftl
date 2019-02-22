@@ -19,7 +19,9 @@ public class RequestModel {
     //token
     private String ztoken;
 
+<#if (gen.showComment==true)>
     //此值原样返回
+</#if>
     private String sameReturn;
 
     <#--//查询字段列表 select columns-->
@@ -31,42 +33,60 @@ public class RequestModel {
     <#--// 当前页,从1开始-->
 <#--    private int currentPage = 1;-->
 
+<#if (gen.showComment==true)>
     // 查询页号，从1开始
+</#if>
     private int pageNo = 1;
 
+<#if (gen.showComment==true)>
     //每页的数量
+</#if>
     private int pageSize = 20;
 
+<#if (gen.showComment==true)>
     /**
      * 查询时，组织sql中查询条件且是where语句之外的查询条件数据，例登录接口中的密码加密之前的原值,验证码
      * 修改时，sql中where之外的数据
      */
+</#if>
     private Map data;
 
+<#if (gen.showComment==true)>
     /**
      * 查询时，组织sql中查询条件且是where语句之外的查询条件数据，例：id列表
      * 修改时，sql中where之外的数据
      */
+</#if>
     private List dataList;
 
+<#if (gen.showComment==true)>
     /**
      * 本次需验证的权限码点列表(本次url之外的权限点，例如同页面的其它按钮)
      * PermissionCodes
      */
+</#if>
     private List<String> pmCodes;
 
+<#if (gen.showComment==true)>
     //正序
+</#if>
     private List<String> asc;
 
+<#if (gen.showComment==true)>
     //反序
+</#if>
     private List<String> desc;
 
+<#if (gen.showComment==true)>
     //查询属性列表
+</#if>
     private List<String> props;
 
+<#if (gen.showComment==true)>
     /**
      * SQL中Where内的关联关系
      */
+</#if>
     private List<WhereItem> whereItems;
 
 
@@ -188,7 +208,9 @@ public class RequestModel {
         return this;
     }
 
+<#if (gen.showComment==true)>
     //获取每页的第一条数据序号
+</#if>
     public int getOffset() {
         int offset = (pageNo - 1) * pageSize;
         return offset >= 0 ? offset : 0;
@@ -274,11 +296,20 @@ public class RequestModel {
 
     public static class WhereItem {
         private boolean or = false;
+
+<#if (gen.showComment==true)>
         //数据库字段对应的java属性名称
+</#if>
         private String prop;
+
+<#if (gen.showComment==true)>
         //关系符号
+</#if>
         private WhereRelate whereRelate = WhereRelate.Equal;
-        //值,Equal时为一个,In 时为多个
+
+<#if (gen.showComment==true)>
+        //值,Equal时为一个,In 时为多个,前端需传数组
+</#if>
         private String[] vals;
 
         public boolean isOr() {

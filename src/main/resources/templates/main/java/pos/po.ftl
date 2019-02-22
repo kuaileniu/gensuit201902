@@ -18,9 +18,11 @@ import ${gen.ioPackage?replace("/",".")}.DateTimeJsonSerializer;
 import ${key};
 </#list>
 
+<#if (gen.showComment==true)>
 /**
  * ${classRemark}
  */
+</#if>
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ${className} implements Serializable {
 <#--构造方法-->
@@ -31,7 +33,9 @@ public class ${className} implements Serializable {
 <#if objectPropertyJavaTypeMap?exists>
     <#list objectPropertyJavaTypeMap?keys as key>
     <#--属性注释-->
+    <#if (gen.showComment==true)>
     // ${propertyRemarkMap[key]}
+    </#if>
     <#if (objectPropertyJavaTypeMap[key] == 'Date')>
     @JsonDeserialize(using = MultiDateDeserializer.class)
     @JsonSerialize(using = DateTimeJsonSerializer.class)

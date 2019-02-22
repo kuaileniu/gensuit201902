@@ -8,35 +8,47 @@ import java.io.Serializable;
 public class Session implements Serializable {
    //  private static final long serialVersionUID = 0L;
 
+<#if (gen.showComment==true)>
     /**
      * 当前会话ID
      */
+</#if>
     private String sessionId;
 
+<#if (gen.showComment==true)>
     /**
      * 用户端的ip
      */
+</#if>
     private String ip;
 
+<#if (gen.showComment==true)>
     /**
      * 当前用的id
      */
+</#if>
     private String userId;
-    
+
+<#if (gen.showComment==true)>
     /**
      * 当前用户的姓名
      */
+</#if>
     private String userName;
 
+<#if (gen.showComment==true)>
     /**
      * 登录有效的最后时间
      * （验证是登录状态是Logged，并且成功的最后时间）
      */
+</#if>
     private long checkLoggedLastTime = 0L;
 
+<#if (gen.showComment==true)>
     /**
      * 登录状态
      */
+</#if>
     private LoginStatus loginStatus;
 
     public String getIp() {

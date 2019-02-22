@@ -2,6 +2,7 @@ package ${gen.modelLayuiPackage?replace("/",".")};
 
 import java.util.*;
 
+<#if (gen.showComment==true)>
 /**
  需要注意的是以下几点：
  当任意级菜单有子菜单，点击该菜单都只是收缩和展开操作，而并不会跳转，只有没有子菜单的菜单才被允许跳转。
@@ -12,23 +13,41 @@ import java.util.*;
  如果一级菜单没有二级菜单，那么一级菜单就是最终路由，地址就是：/a/
  但如果你设置了 参数 jump，那么就会优先读取 jump 设定的路由地址，如："jump": "/user/set"
  */
+</#if>
 public class LayMenu {
 
+<#if (gen.showComment==true)>
     //级菜单名称（与视图的文件夹名称和路由路径对应）
     //msgboard
+</#if>
     private String name;
+
+<#if (gen.showComment==true)>
     //菜单标题
     //留言板
+</#if>
     private String title;
+
+<#if (gen.showComment==true)>
     //菜单标题
     //layui-icon-template
+</#if>
     private String icon;
+
+<#if (gen.showComment==true)>
     // 菜单路由地址，默认按照 name 解析。一旦设置，将优先按照 jump 设定的路由跳转
     //template/addresslist
+</#if>
     private String jump;
+
+<#if (gen.showComment==true)>
     //是否默认展子菜单
+</#if>
     private Boolean spread = true;
+
+<#if (gen.showComment==true)>
     //子菜单
+</#if>
     private List<LayMenu> list = null;
 
     public String getName() {

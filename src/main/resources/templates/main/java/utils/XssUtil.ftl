@@ -2,16 +2,20 @@ package ${gen.utilPackage?replace("/",".")};
 
 import java.util.regex.Pattern;
 
+<#if (gen.showComment==true)>
 /* *
  * Web防火墙工具类
  */
+</#if>
 public class XssUtil {
 
+<#if (gen.showComment==true)>
     /* *
      * @Description 过滤XSS脚本内容
      * @Param [value]
      * @Return java.lang.String
      */
+</#if>
     public static String stripXSS(String value) {
         String rlt = null;
 
@@ -72,26 +76,32 @@ public class XssUtil {
         return rlt;
     }
 
+<#if (gen.showComment==true)>
     /* *
      * @Description 过滤SQL注入内容
      * @Param [value]
      * @Return java.lang.String
      */
+</#if>
     public static String stripSqlInjection(String value) {
         return (null == value) ? null : value.replaceAll("('.+--)|(--)|(%7C)", ""); //value.replaceAll("('.+--)|(--)|(\\|)|(%7C)", "");
     }
 
+<#if (gen.showComment==true)>
     /* *
      * @Description 过滤SQL 和 XSS注入内容
      * @Param [value]
      * @Return java.lang.String
      */
+</#if>
     public static String stripSqlXss(String value) {
         return stripXSS(stripSqlInjection(value));
     }
 
+<#if (gen.showComment==true)>
     public static void main4(String[] args) {
         String text = "<a href=\"http://www.baidu.com/a\" onclick=\"alert(1);\">sss</a><script>alert(0);</script>sss";
         System.out.println(stripSqlXss(text));
     }
+</#if>
 }
