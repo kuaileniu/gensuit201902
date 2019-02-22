@@ -4,16 +4,20 @@ import java.time.*;
 import java.util.Calendar;
 import java.util.Date;
 
+<#if (gen.showComment==true)>
 /**
  * 时间方面的工具类
  * Java8新特性之日期-时间API https://mp.weixin.qq.com/s/KrZEDBbIERVQzEZ6fSCvHw
  */
+</#if>
 public class TimeUtilZhs {
 
+<#if (gen.showComment==true)>
     /**
      * 获取当日 00:00:00的时间
      * @return
      */
+</#if>
     public static Date today000000() {
         Calendar calendar = Calendar.getInstance();
         // 时
@@ -27,10 +31,12 @@ public class TimeUtilZhs {
         return calendar.getTime();
     }
 
+<#if (gen.showComment==true)>
     /**
      * 获取给定日期的00:00:00的时间
      * @return
      */
+</#if>
     public static Date day000000(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -45,10 +51,12 @@ public class TimeUtilZhs {
         return calendar.getTime();
     }
 
+<#if (gen.showComment==true)>
     /**
      * 获取给定日期的23:59:59的时间
      * @return
      */
+</#if>
     public static Date day235959(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -63,6 +71,7 @@ public class TimeUtilZhs {
         return calendar.getTime();
     }
 
+<#if (gen.showComment==true)>
     /**
      * 比较时间
      *
@@ -73,6 +82,7 @@ public class TimeUtilZhs {
      * 0 time2 等于time2；
      * -1 time1 晚于 time2
      */
+</#if>
     public static int compare(Date time1, Date time2) {
         long cha = time2.getTime() - time1.getTime();
         if (cha > 0) {
@@ -84,40 +94,48 @@ public class TimeUtilZhs {
         }
     }
 
+<#if (gen.showComment==true)>
     /**
      * @param seconds
      * @return seconds秒后的时间
      */
+</#if>
     public static Date thatSecondTime(int seconds) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.SECOND, seconds);
         return calendar.getTime();
     }
 
+<#if (gen.showComment==true)>
     /**
      * @param minute
      * @return minute 分钟后的时间
      */
+</#if>
     public static Date thatMinuteTime(int minute) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MINUTE, minute);
         return calendar.getTime();
     }
 
+<#if (gen.showComment==true)>
     /**
      * @param hour
      * @return hour 小时后的时间
      */
+</#if>
     public static Date thatHourTime(int hour) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.HOUR, hour);
         return calendar.getTime();
     }
-	
+
+<#if (gen.showComment==true)>
     /**
      * @param hour24 date 那天的第几点
      * @return  date 那天的第几点的时间
      */
+</#if>
     public static Date thatDateHourTime(Date date, int hour24) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -131,11 +149,13 @@ public class TimeUtilZhs {
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
     }
-	
+
+<#if (gen.showComment==true)>
     /**
      * @param date
      * @return date 天后的时间
      */
+</#if>
     public static Date thatDateTime(int date) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, date);

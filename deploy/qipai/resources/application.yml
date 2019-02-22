@@ -82,7 +82,7 @@ zhsit:
   # 是否生成测试类
     createTest: true
   # 是否显示注释
-    showComment: true
+    showComment: false
   # ServerApplication路径
     serverApplicationPackage: cn/game/qipai
   # 包的根路径

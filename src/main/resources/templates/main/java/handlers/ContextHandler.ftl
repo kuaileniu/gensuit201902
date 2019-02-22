@@ -2,43 +2,74 @@ package ${gen.handlerPackage?replace("/",".")};
 
 import ${gen.enumPackage?replace("/",".")}.UserType;
 
-
+<#if (gen.showComment==true)>
 /**
  * 上下文处理者
  */
+</#if>
 public enum ContextHandler {
     Instance;
 
     private ThreadLocal<ContextStore> context = new ThreadLocal<>();
 
     private class ContextStore {
+    <#if (gen.showComment==true)>
         //token里面可含有ip等信息的加密结果
+    </#if>
         private String token;
+
+    <#if (gen.showComment==true)>
         //域名
+    </#if>
         private String domain;
+
+    <#if (gen.showComment==true)>
         //当前租户
+    </#if>
         private Object lessee;
+
+    <#if (gen.showComment==true)>
         //ip
+    </#if>
         private String ip;
 
+    <#if (gen.showComment==true)>
         //当前项目访问路径,例 http://bjzhs.jd.cn/oa/ 中的 oa,不一定同于 servlet.context-path: /oa
+    </#if>
         private String path;
 
+    <#if (gen.showComment==true)>
         //当前系统编码,oa等
+    </#if>
         private String systemCode;
+
         private String sessionId;
+
+    <#if (gen.showComment==true)>
         //用户id
+    </#if>
         private Object userId;
 
         private String userName;
 
+    <#if (gen.showComment==true)>
         //Controller方法入参的requestBody，例：RequestModel
+    </#if>
         private Object controllerRequestBody;
+
+    <#if (gen.showComment==true)>
         //用户类型
+    </#if>
         private UserType userType;
+
+    <#if (gen.showComment==true)>
         //用户
+    </#if>
         private Object user;
+
+    <#if (gen.showComment==true)>
         //返回的消息体对象
+    </#if>
         private Object responseBody;
     }
 

@@ -73,10 +73,12 @@ public class FastDFSComponent {
         }
     }
 
+<#if (gen.showComment==true)>
     /**
      * @param multipartFile
      * @return fastDFS field_id
      */
+</#if>
     public static String upload(MultipartFile multipartFile) {
         try {
             String fileName = multipartFile.getOriginalFilename();
@@ -88,11 +90,13 @@ public class FastDFSComponent {
         }
     }
 
+<#if (gen.showComment==true)>
     /**
      * @param groupName
      * @param multipartFile
      * @return
      */
+</#if>
     public static String upload(String groupName, MultipartFile multipartFile) {
         try {
             String fileName = multipartFile.getOriginalFilename();

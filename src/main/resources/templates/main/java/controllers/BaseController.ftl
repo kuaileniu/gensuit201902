@@ -21,9 +21,14 @@ import ${gen.dfsPackage?replace("/",".")}.FastDFSComponent;
 @ConfigurationProperties(prefix = "gen")
 public class BaseController {
 
+<#if (gen.showComment==true)>
     //系统编码
+</#if>
     public String systemCode;
+
+<#if (gen.showComment==true)>
     //运行环境
+</#if>
     public String runEnv;
 
     @Autowired public HttpServletRequest request;

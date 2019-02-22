@@ -14,9 +14,11 @@ import ${gen.removePackage?replace("/",".")}.${entityName}${gen.removePostfix};
 
 public class ${className} {
 
+<#if (gen.showComment==true)>
     /**
      * 插入一条记录
      */
+</#if>
     public String insertOne(final ${entityName}${gen.poPostfix} o) {
         return new SQL() {{
             INSERT_INTO("${info.po.tableName}");
@@ -26,9 +28,11 @@ public class ${className} {
         }}.toString();
     }
 
+<#if (gen.showComment==true)>
     /**
      * 插入一条记录，忽略空值字段
      */
+</#if>
     public String insertOneWithOutNull(final ${entityName}${gen.poPostfix} o) {
         return new SQL() {{
             INSERT_INTO("${info.po.tableName}");
@@ -40,9 +44,11 @@ public class ${className} {
         }}.toString();
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件删除
      */
+</#if>
     public String delete(final ${entityName}${gen.removePostfix} where, @Param("p") Map<String,Object> params) {
         return new SQL() {{
             DELETE_FROM("${info.po.tableName}");
@@ -56,9 +62,11 @@ public class ${className} {
     }
 <#if ( info.po.keyList?size> 0 ) >
 
+    <#if (gen.showComment==true)>
     /**
      * 根据主键删除
      */
+    </#if>
     public String deleteByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>@Param("${propertyName}") final ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>) {
         return new SQL() {{
                 DELETE_FROM("${info.po.tableName}");
@@ -71,10 +79,12 @@ public class ${className} {
     }
 </#if>
 
+<#if (gen.showComment==true)>
     /**
      * 更新,null值的字段不更新
      * 若有主键值，主键值不更新
      */
+</#if>
     public String updateWithOutNull(@Param("o") final ${entityName}${gen.poPostfix} o, @Param("m") final ${entityName}${gen.modifyPostfix} where, @Param("p") Map<String, Object> params) {
         return new SQL() {{
             UPDATE("${info.po.tableName}");
@@ -85,10 +95,12 @@ public class ${className} {
         }}.toString();
     }
 
+<#if (gen.showComment==true)>
     /**
      * 更新,null值的字段一起更新
      * 若有主键值，主键值不更新
      */
+</#if>
     public String update(@Param("o") final ${entityName}${gen.poPostfix} o, @Param("m") final ${entityName}${gen.modifyPostfix} where, @Param("p") Map<String, Object> params) {
         return new SQL() {{
             UPDATE("${info.po.tableName}");
@@ -99,9 +111,11 @@ public class ${className} {
         }}.toString();
     }
 
+<#if (gen.showComment==true)>
     /**
      * 只更新指定的字段
      */
+</#if>
     public String updateColumn(@Param("m") final ${entityName}${gen.modifyPostfix} modifier, @Param("p") Map<String, Object> params) {
         return new SQL() {{
             UPDATE("${info.po.tableName}");
@@ -124,10 +138,12 @@ public class ${className} {
     }
 <#if ( info.po.keyList?size> 0 ) >
 
+    <#if (gen.showComment==true)>
     /**
      * 根据主键更新,null值的字段不更新
      * 若有主键值，主键值不更新
      */
+    </#if>
     public String updateWithOutNullByKey(@Param("o") final ${entityName}${gen.poPostfix} o) {
         return new SQL() {{
             UPDATE("${info.po.tableName}");
@@ -139,11 +155,12 @@ public class ${className} {
     }
 </#if>
 <#if ( info.po.keyList?size> 0 ) >
-
+    <#if (gen.showComment==true)>
     /**
      * 根据主键更新,null值的字段一起更新
      * 若有主键值，主键值不更新
      */
+    </#if>
     public String updateByKey(@Param("o") final ${entityName}${gen.poPostfix} o) {
         return new SQL() {{
             UPDATE("${info.po.tableName}");
@@ -155,9 +172,11 @@ public class ${className} {
     }
 </#if>
 
+<#if (gen.showComment==true)>
     /**
      * 查询一条记录
      */
+</#if>
     public String selectOne(final ${entityName}${gen.queryPostfix}  query, @Param("p") Map<String, Object> params) {
         SQL sql = new SQL() {{
             if (null == query.getSelectColumns() ) {
@@ -192,9 +211,11 @@ public class ${className} {
     }
     <#if ( info.po.keyList?size> 0 ) >
 
+    <#if (gen.showComment==true)>
     /**
      * 根据主键查询
      */
+    </#if>
     public String selectByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>@Param("${propertyName}") final ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>){
         return new SQL(){{
             SELECT("<#list info.po.javaPropDbColumn?values as dbColumn>${dbColumn}<#if dbColumn_has_next>,</#if></#list>");
@@ -209,9 +230,11 @@ public class ${className} {
     </#if>
     <#if ( info.po.keyList?size> 0 ) >
 
+    <#if (gen.showComment==true)>
     /**
      * 根据主键查询,指定字段
      */
+    </#if>
     public String selectColumnByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>@Param("${propertyName}") final ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>, final ${entityName}${gen.queryPostfix} columns){
         return new SQL(){{
             if (null == columns.getSelectColumns() ) {
@@ -233,12 +256,13 @@ public class ${className} {
     }
     </#if>
 
-
+<#if (gen.showComment==true)>
     /**
      *  查询列表
      * @param query
      * @return
      */
+</#if>
     public String selectList(final ${entityName}${gen.queryPostfix} query, @Param("p") Map<String, Object> params) {
         String sql = new SQL() {{
             if (null == query.getSelectColumns()) {
@@ -285,17 +309,20 @@ public class ${className} {
 </#if>
     }
 
+<#if (gen.showComment==true)>
     /**
      * 使用原sql
      */
+</#if>
     public String bySQL(String sql) {
         return sql;
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * 查询数量
      */
+</#if>
     public String count(final ${entityName}${gen.queryPostfix} query, @Param("p") Map<String, Object> params) {
         return new SQL() {{
             SELECT("count(1)");

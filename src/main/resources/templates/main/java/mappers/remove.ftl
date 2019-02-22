@@ -6,37 +6,49 @@ import java.util.ArrayList;
 import org.apache.commons.lang3.ArrayUtils;
 
 import ${gen.enumPackage?replace("/",".")}.${WhereRelate};
+
+<#if (gen.showComment==true)>
 /**
  * ${info.po.tableName} 的删除参数类
  * (${classRemark})
  */
+</#if>
 public class ${entityName}${gen.removePostfix} {
 
+<#if (gen.showComment==true)>
     /**
      * 表名
      */
+</#if>
     public static final String TABLE_NAME = "${info.po.tableName}";
 
+<#if (gen.showComment==true)>
     /**
      * 字段枚举
      */
+</#if>
     public enum COLUMN {
     <#list info.po.javaPropDbColumn?keys as key>
        ${key}("${info.po.javaPropDbColumn[key]}"),
     </#list>
     ;
+
+<#if (gen.showComment==true)>
      /**
-     * 数据库字段名称
-     */
+      * 数据库字段名称
+      */
+</#if>
      private String column;
 
       private COLUMN (String column){
          this.column = column;
       }
 
+<#if (gen.showComment==true)>
        /**
-       * 获取数据库字段名称
-       */
+        * 获取数据库字段名称
+        */
+</#if>
        public String column() {
           return column;
        }
@@ -78,7 +90,9 @@ public class ${entityName}${gen.removePostfix} {
         }
     }
 
+<#if (gen.showComment==true)>
     //删除条件
+</#if>
     private List<WhereItem> where;
 
     public List<WhereItem> getWhere(){

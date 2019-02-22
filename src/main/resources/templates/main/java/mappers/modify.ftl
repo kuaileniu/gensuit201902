@@ -9,37 +9,48 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import ${gen.enumPackage?replace("/",".")}.${WhereRelate};
 
+<#if (gen.showComment==true)>
 /**
  * ${info.po.tableName} 的修改类
  * (${classRemark})
  */
+</#if>
 public class ${entityName}${gen.modifyPostfix} {
 
+<#if (gen.showComment==true)>
     /**
      * 表名
      */
+</#if>
     public static final String TABLE_NAME = "${info.po.tableName}";
 
+<#if (gen.showComment==true)>
     /**
      * 字段枚举
      */
+</#if>
     public enum COLUMN {
     <#list info.po.javaPropDbColumn?keys as key>
        ${key}("${info.po.javaPropDbColumn[key]}"),
     </#list>
     ;
+
+<#if (gen.showComment==true)>
      /**
      * 数据库字段名称
      */
+</#if>
      private String column;
 
       private COLUMN (String column){
          this.column = column;
       }
 
+<#if (gen.showComment==true)>
        /**
        * 获取数据库字段名称
        */
+</#if>
        public String column() {
           return column;
        }
@@ -81,13 +92,19 @@ public class ${entityName}${gen.modifyPostfix} {
         }
     }
 
+<#if (gen.showComment==true)>
     // 打算更改的字段
+</#if>
     private Map<COLUMN, Object> updateColumns;
 
+<#if (gen.showComment==true)>
     // 更改的字段,使用val值原字符串（为了支持db函数等）不可对外开放
+</#if>
     private Map<COLUMN, String> updateNativeColumns;
 
+<#if (gen.showComment==true)>
     //修改条件
+</#if>
     private List<WhereItem> where;
 
     public List<WhereItem> getWhere(){
@@ -156,12 +173,14 @@ public class ${entityName}${gen.modifyPostfix} {
         return this;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 添加修改的指定字段
      * @param column，指定字段
      * @param val 修改的结果值
      * @return
      */
+</#if>
     public ${entityName}${gen.modifyPostfix} ADD_UPDATE_COLUMN(final ${entityName}${gen.modifyPostfix}.COLUMN column, Object val) {
         if (updateColumns == null) {
             updateColumns = new HashMap<>();
@@ -169,13 +188,15 @@ public class ${entityName}${gen.modifyPostfix} {
         updateColumns.put(column, val);
         return this;
     }
-	
+
+<#if (gen.showComment==true)>
 	/**
      * 添加修改的指定字段
      * @param column，指定字段
      * @param val 修改的结果值
      * @return
      */
+</#if>
     public ${entityName}${gen.modifyPostfix} ADD_UPDATE_NATIVE_COLUMN(final ${entityName}${gen.modifyPostfix}.COLUMN column, String val) {
         if (updateNativeColumns == null) {
             updateNativeColumns = new HashMap<>();

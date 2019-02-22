@@ -14,16 +14,20 @@ import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+<#if (gen.showComment==true)>
 /**
  * 限定一张表只有一个主键
  */
+</#if>
 @Component
 public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityName}${gen.managerPostfix}{
     @Autowired private BaseManager bm;
 
+<#if (gen.showComment==true)>
     /**
      * 增加
      */
+</#if>
     @Transactional
     @Override
     public boolean add(final ${entityName}${gen.poPostfix}... os) {
@@ -33,9 +37,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return true;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 增加,忽略空值属性
      */
+</#if>
     @Transactional
     @Override
     public boolean addWithOutNull(final ${entityName}${gen.poPostfix}... os) {
@@ -45,9 +51,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return true;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 增加
      */
+</#if>
     @Transactional
     @Override
     public boolean add(final Collection<${entityName}${gen.poPostfix}> os) {
@@ -57,9 +65,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return true;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 增加,忽略空值属性
      */
+</#if>
     @Transactional
     @Override
     public boolean addWithOutNull(final Collection<${entityName}${gen.poPostfix}> os) {
@@ -70,9 +80,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
     }
 <#if ( info.po.keyList?size> 0 ) >
 
+    <#if (gen.showComment==true)>
     /**
      * 根据主键删除
      */
+    </#if>
     @Transactional
     @Override
     public boolean delByIdObj(final ${entityName}${gen.poPostfix}... os) {
@@ -84,9 +96,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
 </#if>
 <#if ( info.po.keyList?size == 1 ) >
 
+    <#if (gen.showComment==true)>
     /**
      * 根据主键删除
      */
+    </#if>
     @Transactional
     @Override
     public boolean delByIdObj(final Collection<${entityName}${gen.poPostfix}> os) {
@@ -101,9 +115,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         <#if propertyNameType_index==0>
             <#list propertyNameType?keys as propertyName>
 
+    <#if (gen.showComment==true)>
     /**
      * 根据主键删除
      */
+    </#if>
     @Transactional
     @Override
     public boolean delById(final ${propertyNameType[propertyName]}... os) {
@@ -121,9 +137,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         <#if propertyNameType_index==0 >
             <#list propertyNameType?keys as propertyName>
 
+    <#if (gen.showComment==true)>
     /**
      * 根据主键删除
      */
+    </#if>
     @Transactional
     @Override
     public boolean delById(final Collection<${propertyNameType[propertyName]}> os) {
@@ -137,18 +155,22 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
 </#list>
 </#if>
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件删除
      */
+</#if>
     @Transactional
     @Override
     public boolean del(final ${entityName}${gen.removePostfix} where) {
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.delete(where, new HashMap<>()) > 0;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件修改,空值的不设置
      */
+</#if>
     @Transactional
     @Override
     public int modifyWithOutNull(final ${entityName}${gen.poPostfix} o, final ${entityName}${gen.modifyPostfix} where) {
@@ -156,9 +178,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.updateWithOutNull(o, where, new HashMap<>());
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件修改，空值的亦设置
      */
+</#if>
     @Transactional
     @Override
     public int modify(final ${entityName}${gen.poPostfix} o, final ${entityName}${gen.modifyPostfix} where) {
@@ -166,19 +190,23 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.update(o, where, new HashMap<>());
     }
 
+<#if (gen.showComment==true)>
     /**
      * 修改指定字段
      * @param modifier
      * @return
      */
+</#if>
     @Override
     public int modifyColumn(${entityName}${gen.modifyPostfix} modifier) {
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.updateColumn(modifier, new HashMap<>());
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据主键修改,空值的不设置
      */
+</#if>
     @Transactional
     @Override
     public boolean modifyWithOutNullByKey(final ${entityName}${gen.poPostfix} o) {
@@ -186,9 +214,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.updateWithOutNullByKey(o) == 1;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据主键修改,空值的不设置
      */
+</#if>
     @Transactional
     @Override
     public boolean modifyWithOutNullByKey(final ${entityName}${gen.poPostfix}... os) {
@@ -199,9 +229,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return true;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据主键修改,空值的不设置
      */
+</#if>
     @Transactional
     @Override
     public boolean modifyWithOutNullByKey(final Collection<${entityName}${gen.poPostfix}> os) {
@@ -212,9 +244,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return true;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据主键修改，空值的亦设置
      */
+</#if>
     @Transactional
     @Override
     public boolean modifyByKey(final ${entityName}${gen.poPostfix} o) {
@@ -223,9 +257,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return true;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据主键修改，空值的亦设置
      */
+</#if>
     @Transactional
     @Override
     public boolean modifyByKey(final ${entityName}${gen.poPostfix}... os) {
@@ -236,9 +272,11 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return true;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据主键修改，空值的亦设置
      */
+</#if>
     @Transactional
     @Override
     public boolean modifyByKey(final Collection<${entityName}${gen.poPostfix}> os) {
@@ -249,68 +287,81 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return true;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      * @param query
      * @return
      */
+</#if>
     @Override
     public ${entityName}${gen.poPostfix} findOne(final ${entityName}${gen.queryPostfix} query) {
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.selectOne(query, new HashMap<>());
     }
-
 <#if ( info.po.keyList?size> 0 ) >
+
+    <#if (gen.showComment==true)>
     /**
      * 根据主键查询
      */
+    </#if>
     @Override
     public ${entityName}${gen.poPostfix} findByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>final ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>) {
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.selectByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>);
     }
 </#if>
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      * @param property
      * @return
      */
+</#if>
     @Override
     public ${entityName}${gen.poPostfix} findPropertyByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>final ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>, final ${entityName}${gen.queryPostfix} property) {
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.selectColumnByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>, property);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      * @param query
      * @return
      */
+</#if>
     @Override
     public List<${entityName}${gen.poPostfix}> findList(final ${entityName}${gen.queryPostfix} query) {
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.selectList(query, new HashMap<>());
     }
 
+<#if (gen.showComment==true)>
     /**
      * 分页查询数据
      * @param column
      * @param val
      * @return
      */
+</#if>
     @Override
     public List<${entityName}${gen.poPostfix}> findListWhereIn(final ${entityName}${gen.queryPostfix}.COLUMN column, Object... val) {
         return findListWhereIn(column, 50, val);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 分页查询数据
      * @param column
      * @param val
      * @return
      */
+</#if>
     @Override
     public List<${entityName}${gen.poPostfix}> findListWhereIn(final ${entityName}${gen.queryPostfix}.COLUMN[] selectColumns, final ${entityName}${gen.queryPostfix}.COLUMN column, Object... val) {
         return findListWhereIn(selectColumns, column, 50, val);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 分页查询数据
      * @param column
@@ -318,6 +369,7 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
      * @param val
      * @return
      */
+</#if>
     @Override
     public List<${entityName}${gen.poPostfix}> findListWhereIn(final ${entityName}${gen.queryPostfix}.COLUMN column, int pageSize, Object... val) {
         Set<Object> allVals = new HashSet<>();
@@ -362,6 +414,7 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return all;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 分页查询数据
      * @param column
@@ -369,6 +422,7 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
      * @param val
      * @return
      */
+</#if>
     @Override
     public List<${entityName}${gen.poPostfix}> findListWhereIn(final ${entityName}${gen.queryPostfix}.COLUMN[] selectColumns, final ${entityName}${gen.queryPostfix}.COLUMN column, int pageSize, Object... val) {
         Set<Object> allVals = new HashSet<>();
@@ -413,40 +467,48 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return all;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      * @param params
      * @return
      */
+</#if>
     @Override
     public List<${entityName}${gen.poPostfix}> findListBySQL(final String sql, final Map<String,Object> params) {
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.selectListBySQL(sql, params);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据sql进行count
      * @param params
      * @return
      */
+</#if>
     @Override
     public long countBySQL(final String sql, final Map<String,Object> params) {
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.countBySQL(sql, params);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 查询数量
      */
+</#if>
     @Override
     public long count(final ${entityName}${gen.queryPostfix} query){
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.count(query, new HashMap());
     }
 
+<#if (gen.showComment==true)>
     /**
      * 分页查询
      *
      * @param query
      * @return
      */
+</#if>
     @Override
     public DataPage findPage(final ${entityName}${gen.queryPostfix} query) {
         DataPage page = new DataPage();
@@ -458,12 +520,14 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return page;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 使用sql分页查询
      * @param sql
      * @param params 防SQL注入参数
      * @return
      */
+</#if>
     @Override
     public DataPage findPageBySQL(final String sql, final Map<String,Object> params) {
         DataPage page = new DataPage();

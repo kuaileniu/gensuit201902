@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.HashMap;
 import java.util.Map;
 
+<#if (gen.showComment==true)>
 /**
  * 在类加载时add进 include中
  * @Component
@@ -15,6 +16,7 @@ import java.util.Map;
  *    }
  * }
  */
+</#if>
 public enum MapperInclude {
     Instance;
 

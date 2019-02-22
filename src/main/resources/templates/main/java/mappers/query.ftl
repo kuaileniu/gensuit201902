@@ -9,53 +9,70 @@ import org.apache.commons.lang3.ArrayUtils;
 import ${gen.enumPackage?replace("/",".")}.${WhereRelate};
 import ${gen.enumPackage?replace("/",".")}.${order};
 
+<#if (gen.showComment==true)>
 /**
  * ${info.po.tableName} 的查询类
  * (${classRemark})
  */
+</#if>
 public class ${className} {
 <#-- 分页做拦截，分页 支持多类型数据库参考  org.activiti.engine.impl.db.DbSqlSessionFactory   5.x 版本的  https://github.com/Activiti/Activiti/blob/activiti-5.22.0/modules/activiti-engine/src/main/java/org/activiti/engine/impl/db/DbSqlSessionFactory.java-->
+
+<#if (gen.showComment==true)>
     /**
      * 表名
      */
+</#if>
     public static final String TABLE_NAME = "${info.po.tableName}";
 
+<#if (gen.showComment==true)>
     /**
      * 是否去重
      */
+</#if>
     private boolean distinct = false;
 
+<#if (gen.showComment==true)>
     /**
      * 每页数据集合数
      */
+</#if>
     private Integer maxResults = null;
 
+<#if (gen.showComment==true)>
     /**
      * 第一条数据起始位置
      */
+</#if>
     private Integer firstResult = null;
 
-
+<#if (gen.showComment==true)>
     /**
      * 字段枚举
      */
+</#if>
     public enum COLUMN {
     <#list info.po.javaPropDbColumn?keys as key>
         ${key}("${info.po.javaPropDbColumn[key]}"),
     </#list>
         ;
+
+<#if (gen.showComment==true)>
         /**
         * 数据库字段名称
         */
+</#if>
         private String column;
 
         private COLUMN (String column){
             this.column = column;
         }
 
+<#if (gen.showComment==true)>
         /**
          * 获取数据库字段名称
          */
+</#if>
         public String column() {
             return column;
         }
@@ -79,7 +96,9 @@ public class ${className} {
         }
     }
 
+<#if (gen.showComment==true)>
     // 查询 where 条件项
+</#if>
     public static class WhereItem {
         private boolean or = false;
         private COLUMN column = null;
@@ -116,7 +135,9 @@ public class ${className} {
         }
      }
 
+<#if (gen.showComment==true)>
     // 排序项
+</#if>
     public class OrderByItem {
         private COLUMN column = null;
         private OrderBy order = OrderBy.ASC;
@@ -137,7 +158,9 @@ public class ${className} {
              return order;
         }
     }
+<#if (gen.showComment==true)>
     // 打算查询出的字段
+</#if>
     private List<COLUMN> selectColumns;
 
     public List<COLUMN> getSelectColumns() {
@@ -173,14 +196,18 @@ public class ${className} {
         return this;
     }
 
+<#if (gen.showComment==true)>
     //查询条件
+</#if>
     private List<WhereItem> where;
 
     public List<WhereItem> getWhere(){
         return where;
     }
 
+<#if (gen.showComment==true)>
     // 排序
+</#if>
     private List<OrderByItem> orderBy;
 
     public List<OrderByItem> getOrderBy() {
@@ -267,9 +294,11 @@ public class ${className} {
         return firstResult;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 设置第一条数据起始位置
      */
+</#if>
     public ${entityName}${gen.queryPostfix} setFirstResult(Integer firstResult) {
         this.firstResult = firstResult;
         return this;
@@ -279,9 +308,11 @@ public class ${className} {
         return maxResults;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 每页数据集合数
      */
+</#if>
     public ${entityName}${gen.queryPostfix} setMaxResults(Integer maxResults) {
         this.maxResults = maxResults;
         return this;

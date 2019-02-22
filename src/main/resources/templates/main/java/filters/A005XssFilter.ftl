@@ -15,11 +15,13 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+<#if (gen.showComment==true)>
 /**
  * 拦截防止xss注入
  * 通过Jsoup过滤请求参数内的特定字符
  * https://github.com/q7322068/rest-base
  */
+</#if>
 @WebFilter(urlPatterns = {"/api/*"}, asyncSupported = true, dispatcherTypes = {DispatcherType.REQUEST}, filterName = "XssFilter") // 优先级同 Class类名排序,按位名称小的优先级高
 public class A005XssFilter implements Filter {
     private Logger log = LoggerFactory.getLogger(this.getClass());

@@ -308,10 +308,11 @@ public class WebUtil {
         }
     }
 
-
+<#if (gen.showComment==true)>
     // 获取浏览器名称
     // 获取浏览器 版本
     // 获取登录用户操作系统
+</#if>
     public static ClientBrowser getBrowser(HttpServletRequest request) {
         ClientBrowser cb = new ClientBrowser();
         try {
@@ -336,6 +337,7 @@ public class WebUtil {
         return cb;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 写出图片
      *
@@ -347,6 +349,7 @@ public class WebUtil {
      * @return true成功写出
      * 例 WebUtil.imgWrite(response, code, 100, 30, 8);
      */
+</#if>
     public static boolean imgWrite(HttpServletResponse resp, final String code, final int width, final int height, final int ganRaoXian) {
         ServletOutputStream sos = null;
         try {
@@ -470,7 +473,7 @@ public class WebUtil {
         out.flush();
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * 获取有前缀并带日期的token
      *
@@ -478,11 +481,13 @@ public class WebUtil {
      * @param id
      * @return
      */
+</#if>
     public static String ztoken(String header, String id) {
         String today = FastDateFormat.getInstance("yyyyMMddHHmmss").format(new Date());
         return header + today + id;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 发送post请求
      *
@@ -490,6 +495,7 @@ public class WebUtil {
      * @param params 请求参数Map<String, ? extends Object> params  Object可以为String或者File或者基本类型
      * @throws IOException
      */
+</#if>
     public static String sendPost(String url, Map<String, String> params) throws IOException {
         String result = null;
         CloseableHttpClient httpclient = HttpClients.createDefault();
@@ -525,20 +531,24 @@ public class WebUtil {
         return StringUtil.replaceBlank(result);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 在发生https请求之前执行
      *
      * @param proxyHost
      * @param port
      */
+</#if>
     public static void setHttpsProxy(String proxyHost, String port) {
         System.setProperty("https.proxyHost", proxyHost);
         System.setProperty("https.proxyPort", port);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 设置代理
      */
+</#if>
     public static void setProxy() {
         //Http代理，只能代理http
         System.setProperty("http.proxyHost", "127.0.0.1");
@@ -558,13 +568,14 @@ public class WebUtil {
         // -DproxyHost=127.0.0.1 -DproxyPort=9876
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * 对url 编码
      *
      * @param url
      * @return
      */
+</#if>
     public static String urlEncode(String url) {
         try {
             String jiaMiCodeUrl = URLEncoder.encode(url, GenConstant.utf8);
@@ -575,6 +586,7 @@ public class WebUtil {
         return null;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 向磁盘写文件
      *
@@ -584,6 +596,7 @@ public class WebUtil {
      * @param data     文件字节
      * @return
      */
+</#if>
     public static String saveFile(String base, String path, String fileName, byte[] data) {
         String fileIncludeName = null;
         FileOutputStream fos = null;
@@ -621,12 +634,14 @@ public class WebUtil {
         return fileIncludeName;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 从磁盘读取文件
      *
      * @param fileIncludePath 文件路径和名称（含文件名后缀）
      * @return
      */
+</#if>
     public static byte[] readFile(String fileIncludePath) {
         try {
             File file = new File(fileIncludePath);
@@ -640,12 +655,14 @@ public class WebUtil {
         return null;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据文件全名获取我文件后缀
      *
      * @param fileName
      * @return 含有".",例 ".png"
      */
+</#if>
     public static String filePostfix(String fileName) {
         if (!fileName.contains(".")) {
             return null;
@@ -654,11 +671,13 @@ public class WebUtil {
         return fileName.substring(lastIndexOfPoint);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据文件类型和年月划分的文件路径
      *
      * @return
      */
+</#if>
     public static String location(String fileType) {
         int year = Calendar.getInstance().get(Calendar.YEAR) - 2000;
         int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
@@ -673,12 +692,14 @@ public class WebUtil {
 
     }
 
+<#if (gen.showComment==true)>
     /**
      * springboot打包后取不到
      *
      * @param fileIncludePath spring resources文件夹下的相对路径，不以/ 开头，例如downloadfile/订购函.docx
      * @return
      */
+</#if>
     public static File getResourcesFile(String fileIncludePath) {
         String filePath = "classpath:" + fileIncludePath;
         try {
@@ -690,11 +711,12 @@ public class WebUtil {
         return null;
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * @param fileIncludePath spring resources文件夹下的相对路径，不以/ 开头，例如downloadfile/订购函.docx
      * @return
      */
+</#if>
     public static InputStream getResourcesFileStream(String fileIncludePath) {
         String filePath = "classpath:" + fileIncludePath;
         try {
@@ -740,13 +762,14 @@ public class WebUtil {
         return false;
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * @param in
      * @param folder   路径文件夹
      * @param fileName 文件名称含后缀
      * @return
      */
+</#if>
     public static String writeToDisk(InputStream in, String folder, String fileName) {
         try {
             String filePathName = folder + "/" + fileName;
@@ -763,12 +786,14 @@ public class WebUtil {
         }
     }
 
+<#if (gen.showComment==true)>
     /**
      * @param bytes
      * @param folder   路径文件夹
      * @param fileName 文件名称含后缀
      * @return
      */
+</#if>
     public static String writeToDisk(byte[] bytes, String folder, String fileName) {
         try {
             String filePathName = folder + "/" + fileName;
@@ -784,6 +809,7 @@ public class WebUtil {
         }
     }
 
+<#if (gen.showComment==true)>
      /**
      * 递归解压压缩包
      * 注意:wrar393sc.exe 压缩的解压不出
@@ -793,6 +819,7 @@ public class WebUtil {
      * @return
      * @throws Exception
      */
+</#if>
     public static List<String> unZip(InputStream in, String path) {
         List<String> nameList = new ArrayList<>();
         ZipInputStream zin = new ZipInputStream(in, Charset.forName("GBK"));//输入源zip路径
@@ -824,6 +851,7 @@ public class WebUtil {
         return nameList;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 递归解压压缩包
      * 注意:wrar393sc.exe 压缩的解压不出
@@ -833,6 +861,7 @@ public class WebUtil {
      * @return Map<不含路径的原文件名, 磁盘存储路径文件名称>
      * @throws Exception
      */
+</#if>
     public static Map<String, String> unZipResetPathName(InputStream in, String path) {
         Map<String, String> nameList = new HashMap<>();
         ZipInputStream zin = new ZipInputStream(in, Charset.forName("GBK"));//输入源zip路径

@@ -25,16 +25,20 @@ public class StringUtil {
         return cs == null || cs.length() == 0;
     }
 
+<#if (gen.showComment==true)>
     /**
      * return false if null or "" or "   "
      */
+</#if>
     public static boolean isNotBlank(final CharSequence cs) {
         return !isBlank(cs);
     }
 
+<#if (gen.showComment==true)>
     /**
      * return true if null or "" or "   "
      */
+</#if>
     public static boolean isBlank(final CharSequence cs) {
         int strLen;
         if (cs == null || (strLen = cs.length()) == 0) {
@@ -48,7 +52,7 @@ public class StringUtil {
         return true;
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * 相同并且都不为空及"" ,"  "
      *
@@ -56,6 +60,7 @@ public class StringUtil {
      * @param b
      * @return true 相同且不为空;
      */
+</#if>
     public static boolean equalsNotBlank(final String a, final String b) {
         if (isBlank(a) || isBlank(b)) {
             return false;
@@ -63,6 +68,7 @@ public class StringUtil {
         return a.equals(b);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 都不为空及"" ,"  "且都不相同
      *
@@ -70,6 +76,7 @@ public class StringUtil {
      * @param b
      * @return true  不为空且不相同;
      */
+</#if>
     public static boolean notEqualsNotBlank(final String a, final String b) {
         return !equalsNotBlank(a, b);
     }
@@ -84,9 +91,10 @@ public class StringUtil {
     }
 
 
-
+<#if (gen.showComment==true)>
 //    2.用正则表达式
 //    表达式修改为“^-?[0-9]+”即可，修改为“-?[0-9]+.?[0-9]+”即可匹配所有数字。
+</#if>
     public static boolean isNumericWithMatcher(String str){
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(str);
@@ -96,12 +104,14 @@ public class StringUtil {
         return true;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 是金额数字
      *
      * @param str
      * @return true，是金额数字;
      */
+</#if>
     public static boolean isMoney(final String str) {
         if(str==null){
             return false;
@@ -201,6 +211,7 @@ public class StringUtil {
         return str.substring(start, end);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 截取后n位长度
      *
@@ -208,6 +219,7 @@ public class StringUtil {
      * @param n
      * @return
      */
+</#if>
     public static String subLastN(String str, int n) {
         if (str == null || str.length() < n) {
             return str;
@@ -216,6 +228,7 @@ public class StringUtil {
         return str.substring(begin);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 截取前n位字符
      *
@@ -223,6 +236,7 @@ public class StringUtil {
      * @param n
      * @return
      */
+</#if>
     public static String subFrontN(String str, int n) {
         if (str == null || str.length() < n) {
             return str;
@@ -230,6 +244,7 @@ public class StringUtil {
         return str.substring(0,n);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 不够要求总位数的情况下，前面填充字符
      *
@@ -238,6 +253,7 @@ public class StringUtil {
      * @param fillChar  填充的字符
      * @return 填充后的字符串
      */
+</#if>
     public static String fillFront(final long sourceNum, final int totalBit, final char fillChar) {
         String sourceNumStr = sourceNum + "";
         int currentBit = sourceNumStr.length();
@@ -252,12 +268,14 @@ public class StringUtil {
         return fillChars + sourceNumStr;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据文件全名获取文件后缀
      *
      * @param fileName
      * @return 不含".",例 "png"
      */
+</#if>
     public static String filePostfix(String fileName) {
         if (!fileName.contains(".")) {
             return null;
@@ -265,12 +283,14 @@ public class StringUtil {
         int lastIndexOfPoint = fileName.lastIndexOf(".");
         return fileName.substring(lastIndexOfPoint + 1);
     }
-    
+
+<#if (gen.showComment==true)>
     /**
      * 1.去除空格：s = s.replace('\\s','');
      * 2.去除回车：s = s.replace('\n','');
      * 注：\n 回车(\u000a)       \t 水平制表符(\u0009)       \s 空格(\u0008)       \r 换行(\u000d)
      */
+</#if>
     public static String replaceBlank(String str) {
         String dest = "";
         if (str != null) {
@@ -362,9 +382,11 @@ public class StringUtil {
                 .create();
     }
 
+<#if (gen.showComment==true)>
     /**
      * yyyy-MM-dd HH:mm:ss
      **/
+</#if>
     public static String toJson(Object src, String timePattern) {
         return new GsonBuilder()
                 .setDateFormat(timePattern)
@@ -384,16 +406,20 @@ public class StringUtil {
         return gson.fromJson(json, type);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 分割字符串进SET
      */
+ </#if>
     public static Set<String> split(String str) {
         return split(str, ",");
     }
 
+<#if (gen.showComment==true)>
     /**
      * 分割字符串进SET
      */
+</#if>
     public static Set<String> split(String str, String separator) {
         Set<String> set = new HashSet<>();
         if (str == null || str.trim() ==""){
@@ -405,9 +431,11 @@ public class StringUtil {
         return set;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 将字符串转换成日期 yyyy-MM-dd HH:mm:ss.SSS
      **/
+</#if>
     public static Date toDate(String dateTime, String pattern) {
         try {
             return FastDateFormat.getInstance(pattern).parse(dateTime);
@@ -417,20 +445,24 @@ public class StringUtil {
         return null;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 抽取日期中的年yyyy，月，日，时，分，秒
      * @param date
      * @param pattern  yyyy-MM-dd HH:mm:ss.SSS
      * @return
     */
+</#if>
     public static String fromDate(Date date,String pattern){
         return FastDateFormat.getInstance(pattern).format(date);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 获取当日 00:00:00的时间
      * @return 2018-10-13 00:00:00
      */
+</#if>
     public static String today000000() {
         Calendar calendar = Calendar.getInstance();
         // 时
@@ -446,20 +478,24 @@ public class StringUtil {
         return fromDate(time,"yyyy-MM-dd HH:mm:ss");
     }
 
+<#if (gen.showComment==true)>
     /**
      * 获取当前时间的字符串
      * @return
      */
+</#if>
     public static String currentHHMMddHHmmss(){
         return FastDateFormat.getInstance("yyyyMMddHH:mm:ss").format(new Date());
     }
 
+<#if (gen.showComment==true)>
     /**
      * #.00 表示两位小数 #.0000四位小数,超过位数的部分四舍五入
      *
      * @param bigDecimal
      * @return
     */
+</#if>
     public static String decimalFormat(BigDecimal bigDecimal) {
         if (null == bigDecimal) {
             return null;
@@ -468,6 +504,7 @@ public class StringUtil {
         return df.format(bigDecimal);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 是否含有
      *
@@ -475,6 +512,7 @@ public class StringUtil {
      * @param searchSeq
      * @return
      */
+</#if>
     public static boolean contains(CharSequence seq, CharSequence searchSeq) {
         if (seq != null && searchSeq != null) {
             return indexOf(seq, searchSeq, 0) >= 0;
@@ -483,6 +521,7 @@ public class StringUtil {
         }
     }
 
+<#if (gen.showComment==true)>
     /**
      * 是否含有(忽略大小写)
      *
@@ -490,6 +529,7 @@ public class StringUtil {
      * @param searchStr
      * @return
      */
+</#if>
     public static boolean containsIgnoreCase(CharSequence str, CharSequence searchStr) {
         if (str != null && searchStr != null) {
             int len = searchStr.length();
@@ -506,12 +546,14 @@ public class StringUtil {
         }
     }
 
+<#if (gen.showComment==true)>
     /**
      * 是否含空格
      *
      * @param seq
      * @return
      */
+</#if>
     public static boolean containsWhitespace(CharSequence seq) {
         if (isEmpty(seq)) {
             return false;
@@ -566,37 +608,49 @@ public class StringUtil {
         }
     }
 
+<#if (gen.showComment==true)>
     /**
      * 汉语中数字大写
      */
+</#if>
     private static final String[] CN_UPPER_NUMBER = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
 
+<#if (gen.showComment==true)>
     /**
      * 汉语中货币单位大写，这样的设计类似于占位符
      */
+</#if>
     private static final String[] CN_UPPER_MONETRAY_UNIT = {"分", "角", "元", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟", "兆", "拾", "佰", "仟"};
 
+<#if (gen.showComment==true)>
     /**
      * 特殊字符：整
      */
+</#if>
     private static final String CN_FULL = "整";
 
+<#if (gen.showComment==true)>
     /**
      * 特殊字符：负
      */
+</#if>
     private static final String CN_NEGATIVE = "负";
 
+<#if (gen.showComment==true)>
     /**
      * 金额的精度，默认值为2
      */
+</#if>
     private static final int MONEY_PRECISION = 2;
 
+<#if (gen.showComment==true)>
     /**
      * 特殊字符：零元整
      */
+</#if>
     private static final String CN_ZEOR_FULL = "零元" + CN_FULL;
 
-
+<#if (gen.showComment==true)>
     /**
      * 把输入的金额转换为汉语中人民币的大写
      * BigDecimal numberOfMoney = new BigDecimal("65321.0100");
@@ -605,6 +659,7 @@ public class StringUtil {
      * @param numberOfMoney 输入的金额
      * @return 对应的汉语大写
      */
+</#if>
     public static String number2CN(BigDecimal numberOfMoney) {
         StringBuffer sb = new StringBuffer();
         // -1, 0, or 1 as the value of this BigDecimal is negative, zero, or
@@ -680,6 +735,7 @@ public class StringUtil {
         return sb.toString();
     }
 
+<#if (gen.showComment==true)>
     /**
      * 末尾无元整俩字（针对众签合同模板）
      * 把输入的金额转换为汉语中人民币的大写
@@ -689,6 +745,7 @@ public class StringUtil {
      * @param numberOfMoney 输入的金额
      * @return 对应的汉语大写
      */
+</#if>
     public static String number2CNNoYuanZheng(BigDecimal numberOfMoney) {
          String cn = number2CN(numberOfMoney);
          if(cn.endsWith("元整")){
@@ -696,20 +753,24 @@ public class StringUtil {
          }
          return cn;
     }
-	
+
+<#if (gen.showComment==true)>
     /**
      * 获取n（小于19位） 的随机数
      * @param bits
      * @return
      */
+</#if>
     public static String getNString(int bits) {
         String random = System.currentTimeMillis() + "";
         return subLastN(random, bits);
     }
-	 
+
+<#if (gen.showComment==true)>
     /**
      * 获取分隔符前面的字符串
      */
+</#if>
     public static String substringBefore(String str, String separator) {
         if (!isEmpty(str) && separator != null) {
             if (separator.isEmpty()) {
@@ -723,6 +784,7 @@ public class StringUtil {
         }
     }
 
+<#if (gen.showComment==true)>
     /**
      * Decodes the passed UTF-8 String using an algorithm that's compatible with
      * JavaScript's <code>decodeURIComponent</code> function. Returns
@@ -731,6 +793,7 @@ public class StringUtil {
      * @param s The UTF-8 encoded String to be decoded
      * @return the decoded String
      */
+</#if>
     public static String decodeURIComponent(String s) {
         if (s == null) {
             return null;
@@ -744,6 +807,7 @@ public class StringUtil {
         return result;
     }
 
+<#if (gen.showComment==true)>
     /**
      * Encodes the passed String as UTF-8 using an algorithm that's compatible
      * with JavaScript's <code>encodeURIComponent</code> function. Returns
@@ -752,6 +816,7 @@ public class StringUtil {
      * @param s The String to be encoded
      * @return the encoded String
      */
+</#if>
     public static String encodeURIComponent(String s) {
         String result = null;
         try {
