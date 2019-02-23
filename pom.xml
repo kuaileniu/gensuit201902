@@ -322,15 +322,15 @@
                 <!--<env>jxpj20180723</env>-->
             <!--</properties>-->
         <!--</profile>-->
-        <!--<profile>-->
-            <!--<id>cypa-odm</id>-->
-            <!--<activation>-->
-                <!--<activeByDefault>true</activeByDefault>-->
-            <!--</activation>-->
-            <!--<properties>-->
-                <!--<env>cypa-odm</env>-->
-            <!--</properties>-->
-        <!--</profile>-->
+        <profile>
+            <id>cypa-odm</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>cypa-odm</env>
+            </properties>
+        </profile>
         <!--<profile>-->
             <!--<id>caiji</id>-->
             <!--<activation>-->
@@ -349,14 +349,14 @@
                 <!--<env>jiangli</env>-->
             <!--</properties>-->
         <!--</profile>-->
-        <profile>
-            <id>qipai</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <env>qipai</env>
-            </properties>
-        </profile>
+        <!--<profile>-->
+            <!--<id>qipai</id>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--<properties>-->
+                <!--<env>qipai</env>-->
+            <!--</properties>-->
+        <!--</profile>-->
     </profiles>
 </project>
