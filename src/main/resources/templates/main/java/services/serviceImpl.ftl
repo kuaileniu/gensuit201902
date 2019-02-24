@@ -979,7 +979,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
                 }
                 if (whereItem != null && whereItem.getVals() != null && whereItem.getVals().length > 0) {
                   for (String val : whereItem.getVals()) {
-                      if (val == null || val.trim().length() < 1) {
+                      if (val == null || val.trim().length() < 1 || "undefined".equals(val)) {
                           continue;
                       }
                       if (whereItem.isOr()) {
