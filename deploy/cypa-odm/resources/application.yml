@@ -311,6 +311,7 @@ zhsit:
       t_ri_zhi_yun_ying_xun_shi: RiZhiYunYingXunShi
       t_ri_zhi_yun_ying_ri_chang_shi_wu: RiZhiYunYingRiChangShiWu
       t_ri_zhi_yun_ying_jiao_jie: RiZhiYunYingJiaoJie
+      t_customer_hotel: CustomerHotel
 
 
 

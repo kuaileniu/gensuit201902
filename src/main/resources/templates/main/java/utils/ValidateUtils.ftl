@@ -170,7 +170,32 @@ public class ValidateUtils {
      */
 </#if>
     public static String getBirthDay(String idNo) {
+        if (idNo == null || idNo.length() != 18) {
+            return null;
+        }
+        String startNum = idNo.substring(0, 17);
+        if (!StringUtil.isNumeric(startNum)) {
+            return null;
+        }
         return StringUtil.substring(idNo,6,14);
     }
 
+<#if (gen.showComment==true)>
+    /**
+     * 从身份证号中获取出生年月日
+     * @param idNo
+     * @return java.util.Date
+     */
+</#if>
+    public static Date getBirthDate(String idNo) {
+        if (idNo == null || idNo.length() != 18) {
+            return null;
+        }
+        String startNum = idNo.substring(0, 17);
+        if (!StringUtil.isNumeric(startNum)) {
+            return null;
+        }
+        String birthday = StringUtil.substring(idNo, 6, 14);
+        return StringUtil.toDate(birthday, "yyyyMMdd");
+    }
 }
