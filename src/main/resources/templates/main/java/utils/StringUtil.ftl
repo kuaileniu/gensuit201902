@@ -178,6 +178,10 @@ public class StringUtil {
         return str;
     }
 
+    public static String trim(String str) {
+        return str == null ? null : str.trim();
+    }
+
     public static String substring(final String str, int start, int end) {
         if (str == null) {
             return null;

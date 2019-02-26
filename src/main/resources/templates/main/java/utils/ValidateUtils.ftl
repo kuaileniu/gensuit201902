@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 /**
@@ -155,7 +156,7 @@ public class ValidateUtils {
 </#if>
     public static String getSex(String idNo) {
         if (!isValidIdNo(idNo)) {
-            return "";
+            return null;
         }
         char sexChar = idNo.charAt(idNo.length() - 2);
         byte sexByte = Byte.parseByte(sexChar + "");
