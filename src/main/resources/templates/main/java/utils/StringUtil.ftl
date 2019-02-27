@@ -836,5 +836,94 @@ public class StringUtil {
         }
 
         return result;
+    }
+
+<#if (gen.showComment==true)>
+    /**
+     * @param yaNfuM 押一付年
+     * @param yaOrFu 押，求押的月数；付，求付的月数；
+     * @return
+     */
+</#if>	 
+    public static Integer monthNum(String yaNfuM, String yaOrFu) {
+        yaNfuM = yaNfuM.substring(1);
+        String[] months = yaNfuM.split("付");
+        if (months.length == 1) {
+            return null;
+        }
+        if ("押".equals(yaOrFu)) {
+            return numConvert(months[0]);
+        } else if ("付".equals(yaOrFu)) {
+            return numConvert(months[1]);
+        }
+        return null;
+    }
+	
+<#if (gen.showComment==true)>	
+	/**
+     * 中文月份转数字
+     * @param hanZi
+     * @return
+     */
+</#if>		 
+    public static Integer numConvert(String hanZi) {
+        switch (hanZi) {
+            case "一":
+            case "壹":
+            case "1":
+                return 1;
+            case "二":
+            case "貳":
+            case "2":
+                return 2;
+            case "三":
+            case "叁":
+            case "3":
+                return 3;
+            case "四":
+            case "肆":
+            case "4":
+                return 4;
+            case "五":
+            case "伍":
+            case "5":
+                return 5;
+            case "六":
+            case "陸":
+            case "6":
+                return 6;
+            case "七":
+            case "柒":
+            case "7":
+                return 7;
+            case "八":
+            case "捌":
+            case "8":
+                return 8;
+            case "九":
+            case "久":
+            case "9":
+                return 9;
+            case "十":
+            case "拾":
+            case "10":
+                return 10;
+            case "十一":
+            case "拾壹":
+            case "拾一":
+            case "十壹":
+            case "11":
+                return 11;
+            case "十二":
+            case "拾二":
+            case "拾貳":
+            case "十貳":
+            case "年":
+            case "12":
+                return 12;
+            default:
+                return null;
+        }
     }	
+
 }
