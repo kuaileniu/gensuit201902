@@ -42,7 +42,7 @@ public class ValidateUtils {
      */
 </#if>
     public static boolean isValidIdNo(String idNo) {
-        return isIdNoPattern(idNo) && isValidProvinceId(idNo.substring(0, 2))
+        return (idNo != null) && isIdNoPattern(idNo) && isValidProvinceId(idNo.substring(0, 2))
                 && isValidDate(idNo.substring(6, 14)) && checkIdNoLastNum(idNo);
     }
 
