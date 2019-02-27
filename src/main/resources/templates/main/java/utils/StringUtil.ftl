@@ -846,6 +846,9 @@ public class StringUtil {
      */
 </#if>	 
     public static Integer monthNum(String yaNfuM, String yaOrFu) {
+        if (yaNfuM == null) {
+            return null;
+        }
         yaNfuM = yaNfuM.substring(1);
         String[] months = yaNfuM.split("付");
         if (months.length == 1) {
@@ -868,6 +871,11 @@ public class StringUtil {
 </#if>		 
     public static Integer numConvert(String hanZi) {
         switch (hanZi) {
+            case "0":
+            case "零":
+            case "O":
+            case "o":
+                return 0;
             case "一":
             case "壹":
             case "1":
