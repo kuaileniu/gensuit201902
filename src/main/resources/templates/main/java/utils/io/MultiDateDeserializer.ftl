@@ -35,9 +35,13 @@ public class MultiDateDeserializer extends StdDeserializer<Date> {
     public Date deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         JsonNode node = jp.getCodec().readTree(jp);
         final String date = node.textValue();
+
         switch (node.getNodeType()) {
             case NUMBER: 
             case STRING:
+                if (date == null || date.trim().length() < 1) {
+                    return null;
+                }
         }
         
         for (String DATE_FORMAT : DATE_FORMATS) {
@@ -46,6 +50,7 @@ public class MultiDateDeserializer extends StdDeserializer<Date> {
             } catch (ParseException e) {
             }
         }
-        throw new JsonParseException(jp, "Unparseable date: \"" + date + "\". Supported formats: " + Arrays.toString(DATE_FORMATS));
+        return null;
+        <#--throw new JsonParseException(jp, "Unparseable date: \"" + date + "\". Supported formats: " + Arrays.toString(DATE_FORMATS));-->
     }
 }
