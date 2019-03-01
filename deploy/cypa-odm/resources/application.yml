@@ -317,6 +317,8 @@ zhsit:
       t_customer_fa_piao: CustomerFaPiao
       t_customer_shou_ju: CustomerShouJu
       t_ri_zhi_xiao_shou: RiZhiXiaoShou
+      t_ri_zhi_xiao_shou_xun_wen_deng_ji: RiZhiXiaoShouXunWenDengJi
+      t_ri_zhi_xiao_shou_ping_tai: RiZhiXiaoShouPingTai
 
 
 
