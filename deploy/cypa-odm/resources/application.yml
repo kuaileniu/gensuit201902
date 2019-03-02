@@ -302,6 +302,8 @@ zhsit:
       t_ri_zhi_yun_ying_kong_fang: RiZhiYunYingKongFang
       t_ri_zhi_yun_ying_chu_zu_lv: RiZhiYunYingChuZuLv
       t_ri_zhi_yun_ying_xun_wen_deng_ji: RiZhiYunYingXunWenDengJi
+      t_ri_zhi_yun_ying_jin_dian_deng_ji: RiZhiYunYingJinDianDengJi
+      t_ri_zhi_yun_ying_lai_dian_deng_ji: RiZhiYunYingLaiDianDengJi
       t_ri_zhi_yun_ying_tou_su: RiZhiYunYingTouSu
       t_ri_zhi_yun_ying_bao_xiu: RiZhiYunYingBaoXiu
       t_ri_zhi_yun_ying_bao_jie: RiZhiYunYingBaoJie
@@ -319,6 +321,7 @@ zhsit:
       t_ri_zhi_xiao_shou: RiZhiXiaoShou
       t_ri_zhi_xiao_shou_xun_wen_deng_ji: RiZhiXiaoShouXunWenDengJi
       t_ri_zhi_xiao_shou_ping_tai: RiZhiXiaoShouPingTai
+
 
 
 
