@@ -321,7 +321,8 @@ zhsit:
       t_ri_zhi_xiao_shou: RiZhiXiaoShou
       t_ri_zhi_xiao_shou_xun_wen_deng_ji: RiZhiXiaoShouXunWenDengJi
       t_ri_zhi_xiao_shou_ping_tai: RiZhiXiaoShouPingTai
-
+      t_ri_zhi_xiao_shou_da_ke_hu: RiZhiXiaoShouDaKeHu
+      t_ri_zhi_xiao_shou_zhong_jie: RiZhiXiaoShouZhongJie
 
 
 
