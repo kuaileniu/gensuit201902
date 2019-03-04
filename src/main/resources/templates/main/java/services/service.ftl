@@ -225,7 +225,7 @@ public interface Gen${entityName}${gen.servicePostfix} {
     /**
      * 自定义查询条件
      *
-     * @param requestModel
+     * @param query
      * @return ${entityName}列表
      */
     public List<${entityName}${gen.poPostfix}> findList(final ${entityName}${gen.queryPostfix} query);
@@ -233,7 +233,7 @@ public interface Gen${entityName}${gen.servicePostfix} {
     /**
      * 自定义查询条件
      *
-     * @param query
+     * @param requestModel
      * @return ${entityName}列表
      */
     public List<${entityName}${gen.poPostfix}> findLs(final RequestModel requestModel);
