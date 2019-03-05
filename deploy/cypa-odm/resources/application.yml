@@ -286,7 +286,8 @@ zhsit:
       t_zhong_qian_code: ZhongQianCode
       t_work_diary_type: WorkDiaryType
 #      t_gong_zuo_ri_zhi: GongZuoRiZhi
-      t_ri_zhi_yun_ying: RiZhiYunYing
+#      t_ri_zhi_yun_ying: RiZhiYunYing
+      t_ri_zhi: RiZhi
       t_ri_zhi_item: RiZhiItem
 #      t_xiao_shou_ri_zhi: XiaoShouRiZhi
 #      t_guan_jia_ri_zhi: GuanJiaRiZhi
@@ -318,7 +319,7 @@ zhsit:
       t_customer_hotel: CustomerHotel
       t_customer_fa_piao: CustomerFaPiao
       t_customer_shou_ju: CustomerShouJu
-      t_ri_zhi_xiao_shou: RiZhiXiaoShou
+#      t_ri_zhi_xiao_shou: RiZhiXiaoShou
       t_ri_zhi_xiao_shou_da_ke_hu: RiZhiXiaoShouDaKeHu
       t_ri_zhi_xiao_shou_zhong_jie: RiZhiXiaoShouZhongJie
       t_ri_zhi_xiao_shou_xun_wen_deng_ji: RiZhiXiaoShouXunWenDengJi
