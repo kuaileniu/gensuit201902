@@ -284,7 +284,8 @@ zhsit:
       t_mobile_msg: MobileMsg
       t_zhong_qian_log: ZhongQianLog
       t_zhong_qian_code: ZhongQianCode
-      t_work_diary_type: WorkDiaryType
+#      t_work_diary_type: WorkDiaryType
+      t_ri_zhi_type: RiZhiType
 #      t_gong_zuo_ri_zhi: GongZuoRiZhi
 #      t_ri_zhi_yun_ying: RiZhiYunYing
       t_ri_zhi: RiZhi
@@ -327,6 +328,7 @@ zhsit:
       t_ri_zhi_tong_yong: RiZhiTongYong
       t_gong_zuo_lei_bie: GongZuoLeiBie
       t_gong_zuo_miao_shu: GongZuoMiaoShu
+      t_ri_zhi_xiang_mu: RiZhiXiangMu
 
 
 
