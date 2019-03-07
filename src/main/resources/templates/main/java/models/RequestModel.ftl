@@ -1,6 +1,8 @@
 package ${gen.modelPackage?replace("/",".")};
 
 import ${gen.enumPackage?replace("/",".")}.*;
+import ${gen.utilPackage?replace("/",".")}.Zset;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
 
@@ -345,6 +347,11 @@ public class RequestModel {
 
         public WhereItem setVals(String... vals) {
             this.vals = vals;
+            return this;
+        }
+		
+		public WhereItem addVals(Zset<String> set) {
+            this.vals = (String[]) ArrayUtils.addAll(this.vals, set.toArray());
             return this;
         }
     }
