@@ -171,9 +171,10 @@ zhsit:
       t_staff_menu: StaffMenu
       t_cache: Cache
       t_wan_jia: WanJia
-      t_fang_jian: FangJian
-      t_wan_jia_fang_jian: WanJiaFangJian
+      t_room: Room
+      t_wan_jia_room: WanJiaRoom
       t_wan_jia_card: WanJiaCard
+
 
 
 
