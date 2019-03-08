@@ -214,6 +214,9 @@ public class ${className} {
         return orderBy;
     }
 
+    public ${entityName}${gen.queryPostfix} WHERE(COLUMN column, final Object val) {
+        return WHERE(column, WhereRelate.Equal, val);
+    }
 
     public ${entityName}${gen.queryPostfix} WHERE(COLUMN column, WhereRelate whereRelate, final Object... vals) {
         if (column == null || whereRelate == null) {
