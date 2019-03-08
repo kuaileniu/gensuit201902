@@ -294,7 +294,9 @@ zhsit:
 #      t_guan_jia_ri_zhi: GuanJiaRiZhi
       t_ri_zhi_pi_zhu: RiZhiPiZhu
       t_role_group: RoleGroup
-      t_bei_guan_role: BeiGuanRole
+#      t_bei_guan_role: BeiGuanRole
+      t_role_guan_kong: RoleGuanKong
+
 #      t_ri_zhi_item_name: RiZhiItemName
       t_ri_zhi_item_type: RiZhiItemType
 #      t_ri_zhi_yun_ying: RiZhiYunYing
