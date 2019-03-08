@@ -175,6 +175,7 @@ public class JavaManager implements ApplicationContextAware {
         solidObjectsList.add(new SolidObject(GenConstants.RandomUtil, GenConstants.RandomUtil_FTL, gen.getUtilPackage(), FileType.MavenMainJava));
 //        solidObjectsList.add(new SolidObject(GenConstants.JWTUtil, GenConstants.JWTUtil_FTL, gen.getUtilPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.AESUtil, GenConstants.AESUtil_FTL, gen.getUtilPackage(), FileType.MavenMainJava));
+        solidObjectsList.add(new SolidObject(GenConstants.ByteUtil, GenConstants.ByteUtil_FTL, gen.getUtilPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.XssUtil, GenConstants.XssUtil_FTL, gen.getUtilPackage(), FileType.MavenMainJava));
 
 //        solidObjectsList.add(new SolidObject(GenConstants.SqlMapperUtil, GenConstants.SqlMapperUtil_FTL, gen.getUtilPackage(), FileType.MavenMainJava));

@@ -170,6 +170,7 @@ public class GenConstants {
     public static final String RandomUtil = "RandomUtil";
     public static final String JWTUtil = "JWTUtil";
     public static final String AESUtil = "AESUtil";
+    public static final String ByteUtil = "ByteUtil";
     public static final String XssUtil = "XssUtil";
     public static final String SqlMapperUtil = "SqlMapperUtil";
     public static final String JDKSerializer = "JDKSerializer";
@@ -324,6 +325,7 @@ public class GenConstants {
     public static final String RandomUtil_FTL = main_java_ftl + "utils/RandomUtil.ftl";
     public static final String JWTUtil_FTL = main_java_ftl + "utils/JWTUtil.ftl";
     public static final String AESUtil_FTL = main_java_ftl + "utils/AESUtil.ftl";
+    public static final String ByteUtil_FTL = main_java_ftl + "utils/ByteUtil.ftl";
     public static final String XssUtil_FTL = main_java_ftl + "utils/XssUtil.ftl";
     public static final String SqlMapperUtil_FTL = main_java_ftl + "utils/SqlMapperUtil.ftl";
     public static final String JavaClass2ProtoBuf_FTL = main_java_ftl + "utils/io/JavaClass2ProtoBuf.ftl";
