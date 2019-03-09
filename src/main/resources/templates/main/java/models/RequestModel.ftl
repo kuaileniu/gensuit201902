@@ -351,9 +351,45 @@ public class RequestModel {
         }
 		
 		public WhereItem addVals(Zset<String> set) {
+            if(set.size()<1){
+                return this;
+            }
             this.vals = (String[]) ArrayUtils.addAll(this.vals, set.toArray());
             return this;
         }
     }
 
+<#if (gen.showComment==true)>	
+    /**
+     * 排除参数
+     *
+     * @param mainPropName      属性存在有效值，则删除另一个值 mayDeletePropName
+     * @param mayDeletePropName
+     */
+</#if>	 
+    public RequestModel paiChiCanShu(String mainPropName, String mayDeletePropName) {
+        List<RequestModel.WhereItem> whereItemList = this.getWhereItems();
+        if (whereItemList == null || whereItemList.size() < 1) {
+            return this;
+        }
+        out_loop:
+        for (RequestModel.WhereItem whereItem : whereItemList) {
+            if (mainPropName.equals(whereItem.getProp())) {
+                String[] vals = whereItem.getVals();
+                if (vals.length > 0) {
+                    String mainPropVal = vals[0];
+                    if (mainPropVal == null || "undefined".equals(mainPropVal)) {
+                    } else {
+                        for (RequestModel.WhereItem item : whereItemList) {
+                            if (mayDeletePropName.equals(item.getProp())) {
+                                whereItemList.remove(item);
+                                break out_loop;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+		return this;
+    }
 }
