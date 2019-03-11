@@ -305,6 +305,21 @@ public class StringUtil {
         return dest;
     }
 
+<#if (gen.showComment==true)>	
+    /**
+     * 
+     * @param bool 
+     * @return bool是否为true
+     */
+</#if>
+    public static boolean isTrue(Object bool) {
+        if (bool instanceof Boolean) {
+            return true == ((Boolean) bool).booleanValue();
+        } else if (bool instanceof String) {
+            return "true".equals(bool);
+        }
+        return false;
+    }
 
     private static class LongDefault0Adapter implements JsonSerializer<Long>, JsonDeserializer<Long> {
         @Override

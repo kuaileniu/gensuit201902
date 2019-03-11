@@ -84,7 +84,7 @@ zhsit:
   # 是否生成测试类
     createTest: true
   # 是否显示注释
-    showComment: true
+#    showComment: true
   # ServerApplication路径
     serverApplicationPackage: cn/zhsit/cypaodm
   # 包的根路径
@@ -332,6 +332,7 @@ zhsit:
       t_gong_zuo_miao_shu: GongZuoMiaoShu
       t_ri_zhi_xiang_mu: RiZhiXiangMu
       t_ri_zhi_yun_ying_shou_ru: RiZhiYunYingShouRu
+      t_ri_zhi_xiao_shou_ri_chang_shi_wu: RiZhiXiaoShouRiChangShiWu
 
 
 
