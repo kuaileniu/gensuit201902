@@ -351,7 +351,7 @@ public class RequestModel {
         }
 		
 		public WhereItem addVals(Zset set) {
-            if(set.size()<1){
+            if (set.size() < 1 ) {
                 return this;
             }
             this.vals = ArrayUtils.addAll(this.vals, set.toArray());
