@@ -312,7 +312,7 @@ public class RequestModel {
 <#if (gen.showComment==true)>
         //值,Equal时为一个,In 时为多个,前端需传数组
 </#if>
-        private String[] vals;
+        private Object[] vals;
 
         public boolean isOr() {
             return or;
@@ -341,20 +341,20 @@ public class RequestModel {
             return this;
         }
 
-        public String[] getVals() {
+        public Object[] getVals() {
             return vals;
         }
 
-        public WhereItem setVals(String... vals) {
+        public WhereItem setVals(Object... vals) {
             this.vals = vals;
             return this;
         }
 		
-		public WhereItem addVals(Zset<String> set) {
+		public WhereItem addVals(Zset set) {
             if(set.size()<1){
                 return this;
             }
-            this.vals = (String[]) ArrayUtils.addAll(this.vals, set.toArray());
+            this.vals = ArrayUtils.addAll(this.vals, set.toArray());
             return this;
         }
     }
@@ -375,9 +375,9 @@ public class RequestModel {
         out_loop:
         for (RequestModel.WhereItem whereItem : whereItemList) {
             if (mainPropName.equals(whereItem.getProp())) {
-                String[] vals = whereItem.getVals();
+                Object[] vals = whereItem.getVals();
                 if (vals.length > 0) {
-                    String mainPropVal = vals[0];
+                    Object mainPropVal = vals[0];
                     if (mainPropVal == null || "undefined".equals(mainPropVal)) {
                     } else {
                         for (RequestModel.WhereItem item : whereItemList) {

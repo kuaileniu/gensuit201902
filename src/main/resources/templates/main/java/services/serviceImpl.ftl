@@ -364,74 +364,6 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
      */
     @Override
     public ${entityName}${gen.poPostfix} findOne(final RequestModel requestModel) {
-        <#--${entityName}${gen.queryPostfix} query = new ${entityName}${gen.queryPostfix}();-->
-        <#--List<String> props = requestModel.getProps();-->
-        <#--if (props != null) {-->
-            <#--for (String prop : props) {-->
-                <#--if (prop == null || prop.trim().length() < 1) {-->
-                    <#--continue;-->
-                <#--}-->
-                <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(prop);-->
-                <#--if (null != column) {-->
-                    <#--query.ADD_SELECT_COLUMN(column);-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-
-        <#--if (requestModel.getAsc() != null) {-->
-            <#--for (String prop : requestModel.getAsc()) {-->
-                <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(prop);-->
-                <#--if (null != column) {-->
-                    <#--query.ORDER_BY_ASC(column);-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-
-        <#--if (requestModel.getDesc() != null) {-->
-            <#--for (String prop : requestModel.getDesc()) {-->
-                <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(prop);-->
-                <#--if (null != column) {-->
-                    <#--query.ORDER_BY_DESC(column);-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-        <#--if (requestModel.getWhereItems() != null) {-->
-            <#--for (RequestModel.WhereItem whereItem : requestModel.getWhereItems()) {-->
-                <#--if (whereItem != null && (WhereRelate.IsNotNull == whereItem.getWhereRelate() || WhereRelate.IsNull == whereItem.getWhereRelate())) {-->
-                    <#--if (whereItem.isOr()) {-->
-                        <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                        <#--if (null != column) {-->
-                            <#--query.OR_WHERE(column, whereItem.getWhereRelate());-->
-                        <#--}-->
-                    <#--} else {-->
-                        <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                        <#--if (null != column) {-->
-                            <#--query.WHERE(column, whereItem.getWhereRelate());-->
-                        <#--}-->
-                    <#--}-->
-                    <#--continue;-->
-                <#--}              -->
-                <#--if (whereItem != null && whereItem.getVals() != null && whereItem.getVals().length > 0) {-->
-                  <#--for (String val : whereItem.getVals()) {-->
-                      <#--if (val == null || val.trim().length() < 1) {-->
-                          <#--continue;-->
-                      <#--}-->
-                      <#--if (whereItem.isOr()) {-->
-                          <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                          <#--if (null != column) {-->
-                              <#--query.OR_WHERE(column, whereItem.getWhereRelate(), whereItem.getVals());-->
-                          <#--}-->
-                      <#--} else {-->
-                          <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                          <#--if (null != column) {-->
-                              <#--query.WHERE(column, whereItem.getWhereRelate(), whereItem.getVals());-->
-                          <#--}-->
-                      <#--}                      -->
-                  <#--}-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-        <#--${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findOne(query);-->
         ${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findOne(createQuery(requestModel));
         return o;
     }
@@ -457,74 +389,6 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
      */
     @Override
     public ${entityName}${gen.poPostfix} findOneExcludeHidden(final RequestModel requestModel) {
-        <#--${entityName}${gen.queryPostfix} query = new ${entityName}${gen.queryPostfix}();-->
-        <#--List<String> props = requestModel.getProps();-->
-        <#--if (props != null) {-->
-            <#--for (String prop : props) {-->
-                <#--if (prop == null || prop.trim().length() < 1) {-->
-                    <#--continue;-->
-                <#--}-->
-                <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(prop);-->
-                <#--if (null != column) {-->
-                    <#--query.ADD_SELECT_COLUMN(column);-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-
-        <#--if (requestModel.getAsc() != null) {-->
-            <#--for (String prop : requestModel.getAsc()) {-->
-                <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(prop);-->
-                <#--if (null != column) {-->
-                    <#--query.ORDER_BY_ASC(column);-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-
-        <#--if (requestModel.getDesc() != null) {-->
-            <#--for (String prop : requestModel.getDesc()) {-->
-                <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(prop);-->
-                <#--if (null != column) {-->
-                    <#--query.ORDER_BY_DESC(column);-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-        <#--if (requestModel.getWhereItems() != null) {-->
-            <#--for (RequestModel.WhereItem whereItem : requestModel.getWhereItems()) {-->
-                <#--if (whereItem != null && (WhereRelate.IsNotNull == whereItem.getWhereRelate() || WhereRelate.IsNull == whereItem.getWhereRelate())) {-->
-                    <#--if (whereItem.isOr()) {-->
-                        <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                        <#--if (null != column) {-->
-                            <#--query.OR_WHERE(column, whereItem.getWhereRelate());-->
-                        <#--}-->
-                    <#--} else {-->
-                        <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                        <#--if (null != column) {-->
-                            <#--query.WHERE(column, whereItem.getWhereRelate());-->
-                        <#--}-->
-                    <#--}-->
-                    <#--continue;-->
-                <#--}-->
-                <#--if (whereItem != null && whereItem.getVals() != null && whereItem.getVals().length > 0) {-->
-                  <#--for (String val : whereItem.getVals()) {-->
-                      <#--if (val == null || val.trim().length() < 1) {-->
-                          <#--continue;-->
-                      <#--}-->
-                      <#--if (whereItem.isOr()) {-->
-                          <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                          <#--if (null != column) {-->
-                              <#--query.OR_WHERE(column, whereItem.getWhereRelate(), whereItem.getVals());-->
-                          <#--}-->
-                      <#--} else {-->
-                          <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                          <#--if (null != column) {-->
-                              <#--query.WHERE(column, whereItem.getWhereRelate(), whereItem.getVals());-->
-                          <#--}-->
-                      <#--}                      -->
-                  <#--}-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-        <#--${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findOne(query);-->
         ${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findOne(createQuery(requestModel));
         <@setHiddenNull obj="o"/>
         return o;
@@ -787,77 +651,6 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
      */
     @Override
     public DataPage findPage(final RequestModel requestModel) {
-        <#--${entityName}${gen.queryPostfix} query = new ${entityName}${gen.queryPostfix}();-->
-        <#--query.setFirstResult(requestModel.getOffset());-->
-        <#--query.setMaxResults(requestModel.getPageSize() > GenConstant.defaultMaxResults ? GenConstant.defaultMaxResults : requestModel.getPageSize());-->
-       <#---->
-        <#--List<String> props = requestModel.getProps();-->
-        <#--if (props != null) {-->
-            <#--for (String prop : props) {-->
-                <#--if (prop == null || prop.trim().length() < 1) {-->
-                    <#--continue;-->
-                <#--}-->
-                <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(prop);-->
-                <#--if (null != column) {-->
-                    <#--query.ADD_SELECT_COLUMN(column);-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-
-        <#--if (requestModel.getAsc() != null) {-->
-            <#--for (String prop : requestModel.getAsc()) {-->
-                <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(prop);-->
-                <#--if (null != column) {-->
-                    <#--query.ORDER_BY_ASC(column);-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-
-        <#--if (requestModel.getDesc() != null) {-->
-            <#--for (String prop : requestModel.getDesc()) {-->
-                <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(prop);-->
-                <#--if (null != column) {-->
-                    <#--query.ORDER_BY_DESC(column);-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-        <#--if (requestModel.getWhereItems() != null) {-->
-            <#--for (RequestModel.WhereItem whereItem : requestModel.getWhereItems()) {-->
-                <#--if (whereItem != null && (WhereRelate.IsNotNull == whereItem.getWhereRelate() || WhereRelate.IsNull == whereItem.getWhereRelate())) {-->
-                    <#--if (whereItem.isOr()) {-->
-                        <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                        <#--if (null != column) {-->
-                            <#--query.OR_WHERE(column, whereItem.getWhereRelate());-->
-                        <#--}-->
-                    <#--} else {-->
-                        <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                        <#--if (null != column) {-->
-                            <#--query.WHERE(column, whereItem.getWhereRelate());-->
-                        <#--}-->
-                    <#--}-->
-                    <#--continue;-->
-                <#--}-->
-                <#--if (whereItem != null && whereItem.getVals() != null && whereItem.getVals().length > 0) {-->
-                    <#--for (String val : whereItem.getVals()) {-->
-                        <#--if (val == null || val.trim().length() < 1) {-->
-                            <#--continue;-->
-                        <#--}-->
-                        <#--if (whereItem.isOr()) {-->
-                            <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                            <#--if (null != column) {-->
-                                <#--query.OR_WHERE(column, whereItem.getWhereRelate(), whereItem.getVals());-->
-                            <#--}-->
-                        <#--} else {-->
-                            <#--${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());-->
-                            <#--if (null != column) {-->
-                                <#--query.WHERE(column, whereItem.getWhereRelate(), whereItem.getVals());-->
-                            <#--}-->
-                        <#--}-->
-                    <#--}-->
-                <#--}-->
-            <#--}-->
-        <#--}-->
-        <#--DataPage page = bs.gen${entityName}${gen.managerPostfix}.findPage(query);-->
         DataPage page = bs.gen${entityName}${gen.managerPostfix}.findPage(createQuery(requestModel, true));
         List<${entityName}${gen.poPostfix}> data = page.getData();
         if (null == data) {
@@ -978,9 +771,14 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
                     continue;
                 }
                 if (whereItem != null && whereItem.getVals() != null && whereItem.getVals().length > 0) {
-                  for (String val : whereItem.getVals()) {
-                      if (val == null || val.trim().length() < 1 || "undefined".equals(val)) {
+                  for (Object val : whereItem.getVals()) {
+                      if (val == null) {
                           continue;
+                      }
+                      if (val instanceof String) {
+                          if (((String) val).trim().length() < 1 || "undefined".equals(val)) {
+                              continue;
+                          }
                       }
                       if (whereItem.isOr()) {
                           ${entityName}${gen.queryPostfix}.COLUMN column = ${entityName}${gen.queryPostfix}.COLUMN.nameOf(whereItem.getProp());
