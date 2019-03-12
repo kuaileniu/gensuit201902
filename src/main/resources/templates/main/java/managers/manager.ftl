@@ -9,6 +9,7 @@ import ${gen.queryPackage?replace("/",".")}.${entityName}${gen.queryPostfix};
 import ${gen.removePackage?replace("/",".")}.${entityName}${gen.removePostfix};
 import ${gen.modifyPackage?replace("/",".")}.${entityName}${gen.modifyPostfix};
 import ${gen.modelPackage?replace("/",".")}.DataPage;
+import ${gen.utilPackage?replace("/",".")}.Zset;
 
 public interface Gen${entityName}${gen.managerPostfix} {
 
@@ -195,6 +196,15 @@ public interface Gen${entityName}${gen.managerPostfix} {
      */
 </#if>
     public List<${entityName}${gen.poPostfix}> findList(final ${entityName}${gen.queryPostfix} query);
+
+<#if (gen.showComment==true)>
+    /**
+     * 自定义查询条件,需保证ADD_SELECT_COLUMN 有且只有一个值
+     * @param query
+     * @return
+     */
+</#if>
+    public Zset findZset(final ${entityName}${gen.queryPostfix} query);
 
 <#if (gen.showComment==true)>
     /**

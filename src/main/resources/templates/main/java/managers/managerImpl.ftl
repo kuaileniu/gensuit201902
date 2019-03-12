@@ -13,6 +13,8 @@ import ${gen.modelPackage?replace("/",".")}.DataPage;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import ${gen.utilPackage?replace("/",".")}.Zset;
+import ${gen.utilPackage?replace("/",".")}.ClazzUtil;
 
 <#if (gen.showComment==true)>
 /**
@@ -333,6 +335,24 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
     @Override
     public List<${entityName}${gen.poPostfix}> findList(final ${entityName}${gen.queryPostfix} query) {
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.selectList(query, new HashMap<>());
+    }
+
+<#if (gen.showComment==true)>
+    /**
+     * 自定义查询条件,需保证ADD_SELECT_COLUMN 有且只有一个值
+     * @param query
+     * @return
+     */
+</#if>
+    @Override
+    public Zset findZset(final ${entityName}${gen.queryPostfix} query) {
+        List<${entityName}${gen.poPostfix}> list = bm.${entityName?uncap_first}${gen.mapperPostfix}.selectList(query, new HashMap<>());
+        ${entityName}${gen.queryPostfix}.COLUMN column = query.getSelectColumns().get(0);
+        Zset set = new Zset();
+        for (${entityName}${gen.poPostfix} po : list) {
+            set.add(ClazzUtil.getFieldValue(po, column.name()));
+        }
+        return set;
     }
 
 <#if (gen.showComment==true)>
