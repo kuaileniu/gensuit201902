@@ -497,6 +497,12 @@ public class StringUtil {
         return fromDate(time,"yyyy-MM-dd HH:mm:ss");
     }
 
+    public static String yesterday() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE,-1);
+        return fromDate(calendar.getTime(),"yyyyMMdd");
+    }
+
 <#if (gen.showComment==true)>
     /**
      * 获取当前时间的字符串
