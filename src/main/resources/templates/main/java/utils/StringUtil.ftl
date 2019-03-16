@@ -497,6 +497,17 @@ public class StringUtil {
         return fromDate(time,"yyyy-MM-dd HH:mm:ss");
     }
 
+<#if (gen.showComment==true)>
+   /**
+    *
+    * @return 今日年月日
+    */
+</#if>
+    public static String today() {
+        Calendar calendar = Calendar.getInstance();
+        return fromDate(calendar.getTime(), "yyyyMMdd");
+    }
+
     public static String yesterday() {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE,-1);
