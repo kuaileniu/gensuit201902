@@ -181,7 +181,7 @@ public class POHelper extends BaseHelper {
      *
      * @param po
      */
-    private void addPropertyInfo(PO po) {
+    public void addPropertyInfo(PO po) {
         List<Field> fieldList = dbCollection.findFieldByTable(po.getTableName());
         for (Field field : fieldList) {
             String fieldName = field.getName();

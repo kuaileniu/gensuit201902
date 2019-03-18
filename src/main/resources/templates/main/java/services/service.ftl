@@ -147,6 +147,11 @@ public interface Gen${entityName}${gen.servicePostfix} {
     public ResponseModel modifyWithOutNullByKey(final ${entityName}${gen.poPostfix} o);
 
     /**
+     * 根据主键修改,空值的不设置,当属性类型为String时，""、"    "的值不设置
+     */
+    public ResponseModel modifyWithOutBlankByKey(final ${entityName}${gen.poPostfix} o);
+
+    /**
      * 根据主键修改，空值的亦设置
      */
     public ResponseModel modifyByKey(${entityName}${gen.poPostfix} o);

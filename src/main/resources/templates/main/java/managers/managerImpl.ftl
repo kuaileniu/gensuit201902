@@ -209,13 +209,23 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
      * 根据主键修改,空值的不设置
      */
 </#if>
-    @Transactional
     @Override
     public boolean modifyWithOutNullByKey(final ${entityName}${gen.poPostfix} o) {
         <@modifyRong  isWithOutNull=true />
         return bm.${entityName?uncap_first}${gen.mapperPostfix}.updateWithOutNullByKey(o) == 1;
     }
 
+<#if (gen.showComment==true)>
+    /**
+     * 根据主键修改,空值的不设置,属性类型为String时，值为""、"    "的也不设置
+     */
+</#if>
+    @Override
+    public boolean modifyWithOutBlankByKey(final ${entityName}${gen.poPostfix} o) {
+        <@modifyRong  isWithOutNull=true />
+        return bm.${entityName?uncap_first}${gen.mapperPostfix}.updateWithOutBlankByKey(o) == 1;
+    }
+	
 <#if (gen.showComment==true)>
     /**
      * 根据主键修改,空值的不设置
@@ -230,7 +240,22 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         }
         return true;
     }
-
+	
+<#if (gen.showComment==true)>
+    /**
+     * 根据主键修改,空值的不设置,属性类型为String时，值为""、"    "的也不设置
+     */
+</#if>
+    @Transactional
+    @Override
+    public boolean modifyWithOutBlankByKey(final ${entityName}${gen.poPostfix}... os) {
+        for (${entityName}${gen.poPostfix} o : os) {
+            <@modifyRong  isWithOutNull=true />
+            bm.${entityName?uncap_first}${gen.mapperPostfix}.updateWithOutBlankByKey(o);
+        }
+        return true;
+    }
+	
 <#if (gen.showComment==true)>
     /**
      * 根据主键修改,空值的不设置

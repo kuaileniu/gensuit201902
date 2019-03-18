@@ -10,7 +10,7 @@ import ${gen.queryPackage?replace("/",".")}.${entityName}${gen.queryPostfix};
 import ${gen.modifyPackage?replace("/",".")}.${entityName}${gen.modifyPostfix};
 import ${gen.poPackage?replace("/",".")}.${entityName}${gen.poPostfix};
 import ${gen.removePackage?replace("/",".")}.${entityName}${gen.removePostfix};
-
+import ${gen.utilPackage?replace("/",".")}.StringUtil;
 
 public class ${className} {
 
@@ -154,6 +154,25 @@ public class ${className} {
         }}.toString();
     }
 </#if>
+<#if ( info.po.keyList?size> 0 ) >
+
+    <#if (gen.showComment==true)>
+    /**
+     * 根据主键更新,null或 "" 值的字段不更新
+     * 若有主键值，主键值不更新
+     */
+    </#if>
+    public String updateWithOutBlankByKey(@Param("o") final ${entityName}${gen.poPostfix} o) {
+        return new SQL() {{
+            UPDATE("${info.po.tableName}");
+        <#list info.po.javaPropDbColumn?keys as javaProperty>
+            <@setNotKeyColumnWithOutBlankMacro javaProperty="${javaProperty}"/>
+        </#list>
+        <@whereColumnIsKeyMacro />
+        }}.toString();
+    }
+</#if>
+
 <#if ( info.po.keyList?size> 0 ) >
     <#if (gen.showComment==true)>
     /**
@@ -356,6 +375,26 @@ public class ${className} {
             if (o.get${javaProperty?cap_first}() != null) {
                 SET("${info.po.javaPropDbColumn[javaProperty]} = ${r"#"}{o.${javaProperty}}");
             }
+    </#if>
+</#macro>
+
+<#macro setNotKeyColumnWithOutBlankMacro javaProperty isKey = false >
+    <#list info.po.keyList as propertyNameType>
+        <#list propertyNameType?keys as propertyName>
+            <#if propertyName == javaProperty ><#local isKey=true /></#if>
+        </#list>
+    </#list>
+    <#if isKey>
+    <#else> 
+			<#if (info.po.objectPropertyJavaTypeMap[javaProperty] == 'String') >
+			if (StringUtil.isNotBlank(o.get${javaProperty?cap_first}())) {
+                SET("${info.po.javaPropDbColumn[javaProperty]} = ${r"#"}{o.${javaProperty}}");
+            }
+			<#else> 
+            if (o.get${javaProperty?cap_first}() != null) {
+                SET("${info.po.javaPropDbColumn[javaProperty]} = ${r"#"}{o.${javaProperty}}");
+            }
+			</#if>
     </#if>
 </#macro>
 

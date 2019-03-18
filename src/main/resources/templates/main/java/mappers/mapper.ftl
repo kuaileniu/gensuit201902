@@ -20,84 +20,93 @@ import org.apache.ibatis.annotations.DeleteProvider;
 @Mapper
 public interface ${className}{
 
-<#if (gen.showComment==true)>
+    <#if (gen.showComment==true)>
     /**
      * 插入单条数据
      */
-</#if>
+    </#if>
     @InsertProvider(type = ${entityName}${gen.providerPostfix}.class, method = "insertOne")
     public int insert(final ${entityName}${gen.poPostfix} o);
 
-<#if (gen.showComment==true)>
+    <#if (gen.showComment==true)>
     /**
      * 插入单条数据,忽略空值字段
      */
-</#if>
+    </#if>
     @InsertProvider(type = ${entityName}${gen.providerPostfix}.class, method = "insertOneWithOutNull")
     public int insertWithOutNull(final ${entityName}${gen.poPostfix} o);
 
-<#if (gen.showComment==true)>
+    <#if (gen.showComment==true)>
     /**
      * 根据条件删除数据
      */
-</#if>
+    </#if>
     @DeleteProvider(type = ${entityName}${gen.providerPostfix}.class, method = "delete")
     public int delete(final ${entityName}${gen.removePostfix} where, final @Param("p") Map<String,Object> emptyHashMap);
 <#if ( info.po.keyList?size> 0 ) >
 
-<#if (gen.showComment==true)>
+    <#if (gen.showComment==true)>
     /**
      * 根据key删除数据
      */
-</#if>
+    </#if>
     @DeleteProvider(type = ${entityName}${gen.providerPostfix}.class, method = "deleteByKey")
     public int deleteByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>final @Param("${propertyName}") ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>);
 </#if>
 
-<#if (gen.showComment==true)>
+    <#if (gen.showComment==true)>
     /**
      * 更新,null值的字段不更新
      * 若有主键值，主键值不更新
      */
-</#if>
+    </#if>
     @UpdateProvider(type = ${entityName}${gen.providerPostfix}.class, method = "updateWithOutNull")
     public int updateWithOutNull(final @Param("o") ${entityName}${gen.poPostfix} o, final @Param("m") ${entityName}${gen.modifyPostfix} where, final @Param("p") Map<String,Object> emptyHashMap);
 
-<#if (gen.showComment==true)>
+    <#if (gen.showComment==true)>
     /**
      * 更新,null值的字段一起更新
      * 若有主键值，主键值不更新
      */
-</#if>
+    </#if>
     @UpdateProvider(type = ${entityName}${gen.providerPostfix}.class , method = "update")
     public int update(final @Param("o") ${entityName}${gen.poPostfix} o, final @Param("m") ${entityName}${gen.modifyPostfix} where, final @Param("p") Map<String, Object> emptyHashMap);
 <#if ( info.po.keyList?size> 0 ) >
 
-<#if (gen.showComment==true)>
+    <#if (gen.showComment==true)>
     /**
      * 只更新指定的字段
      */
-</#if>
+    </#if>
     @UpdateProvider(type = ${entityName}${gen.providerPostfix}.class, method = "updateColumn")
     public int updateColumn(final @Param("m")${entityName}${gen.modifyPostfix} modifier, @Param("p") Map<String, Object> params);
 
-<#if (gen.showComment==true)>
+    <#if (gen.showComment==true)>
     /**
      * 根据主键修改
      * 若有主键值，主键值不更新
      */
-</#if>
+    </#if>
     @UpdateProvider(type = ${entityName}${gen.providerPostfix}.class, method = "updateWithOutNullByKey")
     public int updateWithOutNullByKey(final @Param("o") ${entityName}${gen.poPostfix} o);
+
+    <#if (gen.showComment==true)>
+    /**
+     * 根据主键修改
+     * 若有主键值，主键值不更新
+     */
+    </#if>
+    @UpdateProvider(type = ${entityName}${gen.providerPostfix}.class, method = "updateWithOutBlankByKey")
+    public int updateWithOutBlankByKey(final @Param("o") ${entityName}${gen.poPostfix} o);
 </#if>
 <#if ( info.po.keyList?size> 0 ) >
 
-<#if (gen.showComment==true)>
+    <#if (gen.showComment==true)>
     /**
      * 根据主键修改,null值的字段一起更新
      * 若有主键值，主键值不更新
      */
-</#if>
+    </#if>
     @UpdateProvider(type = ${entityName}${gen.providerPostfix}.class, method = "updateByKey")
     public int updateByKey(final @Param("o") ${entityName}${gen.poPostfix} o);
 </#if>
@@ -115,13 +124,13 @@ public interface ${className}{
     </#list>
     })
     public ${entityName}${gen.poPostfix} selectOne(final ${entityName}${gen.queryPostfix} query, final @Param("p") Map<String,Object> emptyHashMap);
-   <#if ( info.po.keyList?size> 0 ) >
+<#if ( info.po.keyList?size> 0 ) >
 
-<#if (gen.showComment==true)>
+    <#if (gen.showComment==true)>
     /**
      * 根据主键查询
      */
-</#if>
+    </#if>
     @SelectProvider(type = ${entityName}${gen.providerPostfix}.class, method = "selectByKey")
     @Results({
        <#list info.po.javaPropDbColumn?keys as javaProperty>
@@ -129,14 +138,14 @@ public interface ${className}{
        </#list>
     })
     public ${entityName}${gen.poPostfix} selectByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>final @Param("${propertyName}") ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>);
-   </#if>
-    <#if ( info.po.keyList?size> 0 ) >
+</#if>
+<#if ( info.po.keyList?size> 0 ) >
 
-<#if (gen.showComment==true)>
+    <#if (gen.showComment==true)>
     /**
      * 根据主键查询,指定查询字段
      */
-</#if>
+    </#if>
     @SelectProvider(type = ${entityName}${gen.providerPostfix}.class, method = "selectColumnByKey")
     @Results({
        <#list info.po.javaPropDbColumn?keys as javaProperty>
@@ -144,7 +153,7 @@ public interface ${className}{
        </#list>
     })
     public ${entityName}${gen.poPostfix} selectColumnByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>final @Param("${propertyName}") ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>, final ${entityName}${gen.queryPostfix} columns);
-   </#if>
+</#if>
 
 <#if (gen.showComment==true)>
     /**

@@ -336,6 +336,18 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     }
 
     /**
+     * 根据主键修改,空值的不设置,当属性类型为String时，""、"    "的值不设置
+     */
+    @Override
+    public ResponseModel modifyWithOutBlankByKey(final ${entityName}${gen.poPostfix} o) {
+        boolean success = bs.gen${entityName}${gen.managerPostfix}.modifyWithOutBlankByKey(o);
+        if(success){
+           return ResponseModel.ok().setCode(0).setMsg("操作成功！");
+        }
+        return ResponseModel.error().setCode(1).setMsg("操作失败！");
+    }
+	
+    /**
      * 根据主键修改，空值的亦设置
      */
     @Override

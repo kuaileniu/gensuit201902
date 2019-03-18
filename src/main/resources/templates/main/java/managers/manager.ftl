@@ -128,10 +128,24 @@ public interface Gen${entityName}${gen.managerPostfix} {
 
 <#if (gen.showComment==true)>
     /**
+     * 根据主键修改,空值的不设置,属性类型为String时，值为""、"    "的不设置
+     */
+</#if>
+    public boolean modifyWithOutBlankByKey(final ${entityName}${gen.poPostfix} o);
+
+<#if (gen.showComment==true)>
+    /**
      * 根据主键修改,空值的不设置
      */
 </#if>
     public boolean modifyWithOutNullByKey(final ${entityName}${gen.poPostfix}... os);
+
+<#if (gen.showComment==true)>
+    /**
+     * 根据主键修改,空值的不设置,属性类型为String时，值为""、"    "的也不设置
+     */
+</#if>
+    public boolean modifyWithOutBlankByKey(final ${entityName}${gen.poPostfix}... os);
 
 <#if (gen.showComment==true)>
     /**
