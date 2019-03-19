@@ -25,6 +25,11 @@ public interface Gen${entityName}${gen.servicePostfix} {
     /**
      * 增加
      */
+    public ResponseModel addWithOutBlank(final ${entityName}${gen.poPostfix}... os);
+
+    /**
+     * 增加
+     */
     public ResponseModel add(final Collection<${entityName}${gen.poPostfix}> os);
 
     /**

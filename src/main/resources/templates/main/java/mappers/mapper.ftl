@@ -38,6 +38,14 @@ public interface ${className}{
 
     <#if (gen.showComment==true)>
     /**
+     * 插入单条数据,忽略空值字段,String类型的属性值为“”、"  "的不添加
+     */
+    </#if>
+    @InsertProvider(type = ${entityName}${gen.providerPostfix}.class, method = "insertWithOutBlank")
+    public int insertWithOutBlank(final ${entityName}${gen.poPostfix} o);
+
+    <#if (gen.showComment==true)>
+    /**
      * 根据条件删除数据
      */
     </#if>

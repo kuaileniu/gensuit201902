@@ -29,6 +29,13 @@ public interface Gen${entityName}${gen.managerPostfix} {
 
 <#if (gen.showComment==true)>
     /**
+     * 增加，忽略空值属性,属性类型为String时，不添加“”、“   ”
+     */
+</#if>
+    public boolean addWithOutBlank(final ${entityName}${gen.poPostfix}... os);
+
+<#if (gen.showComment==true)>
+    /**
      * 增加
      */
 </#if>

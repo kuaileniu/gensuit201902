@@ -46,6 +46,28 @@ public class ${className} {
 
 <#if (gen.showComment==true)>
     /**
+     * 插入单条数据,忽略空值字段,String类型的属性值为“”、"  "的不添加
+     */
+</#if>
+    public String insertWithOutBlank(final ${entityName}${gen.poPostfix} o) {
+        return new SQL() {{
+            INSERT_INTO("${info.po.tableName}");
+        <#list info.po.javaPropDbColumn?keys as javaProperty>
+			<#if (info.po.objectPropertyJavaTypeMap[javaProperty] == 'String') >
+			if (StringUtil.isNotBlank(o.get${javaProperty?cap_first}())) {
+                VALUES("${info.po.javaPropDbColumn[javaProperty]}", "${r"#"}{${javaProperty}}");
+            }
+			<#else> 
+            if (o.get${javaProperty?cap_first}() != null) {
+                VALUES("${info.po.javaPropDbColumn[javaProperty]}", "${r"#"}{${javaProperty}}");
+            }
+			</#if>			
+        </#list>
+        }}.toString();
+    }
+
+<#if (gen.showComment==true)>
+    /**
      * 根据条件删除
      */
 </#if>

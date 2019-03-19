@@ -55,6 +55,20 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
 
 <#if (gen.showComment==true)>
     /**
+     * 增加，忽略空值属性,属性类型为String时，不添加“”、“   ”
+     */
+</#if>
+    @Transactional
+    @Override
+    public boolean addWithOutBlank(final ${entityName}${gen.poPostfix}... os) {
+        for (${entityName}${gen.poPostfix} o : os) {
+            bm.${entityName?uncap_first}${gen.mapperPostfix}.insertWithOutBlank(o);
+        }
+        return true;
+    }
+
+<#if (gen.showComment==true)>
+    /**
      * 增加
      */
 </#if>

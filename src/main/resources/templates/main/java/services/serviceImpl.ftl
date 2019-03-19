@@ -5,13 +5,11 @@ import java.util.*;
 import ${gen.enumPackage?replace("/",".")}.*;
 import ${gen.poPackage?replace("/",".")}.*;
 import ${gen.servicePackage?replace("/",".")}.Gen${entityName}${gen.servicePostfix};
-<#--import ${gen.queryPackage?replace("/",".")}.${entityName}${gen.queryPostfix};-->
 import ${gen.queryPackage?replace("/",".")}.*;
 import ${gen.removePackage?replace("/",".")}.${entityName}${gen.removePostfix};
 import ${gen.modifyPackage?replace("/",".")}.${entityName}${gen.modifyPostfix};
 import ${gen.modelPackage?replace("/",".")}.*;
 import ${gen.utilPackage?replace("/",".")}.*;
-<#--import ${gen.handlerPackage?replace("/",".")}.*;-->
 import ${gen.constantsPackage?replace("/",".")}.*;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +60,29 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
 
         try {
             bs.gen${entityName}${gen.managerPostfix}.addWithOutNull(os);
+        } catch (Exception ex) {
+            if (ex instanceof DuplicateKeyException) {
+                log.error("数据库DuplicateKeyException", ex);
+                return ResponseModel.error(GenConstant.repeat).setCode(1);
+            }
+        }
+        return ResponseModel.ok().setCode(0);
+    }
+
+    /**
+     * 增加
+     */
+    @Override
+    public ResponseModel addWithOutBlank(final ${entityName}${gen.poPostfix}... os) {
+        for (${entityName}${gen.poPostfix} o : os) {
+            <@setUnionId obj="o"/>
+            <@setPwd obj="o"/>
+            <@setDefaultEqual obj="o"/>
+            <@setCreateModifyTime obj="o"/>
+        }
+
+        try {
+            bs.gen${entityName}${gen.managerPostfix}.addWithOutBlank(os);
         } catch (Exception ex) {
             if (ex instanceof DuplicateKeyException) {
                 log.error("数据库DuplicateKeyException", ex);
