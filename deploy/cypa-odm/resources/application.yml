@@ -164,9 +164,7 @@ zhsit:
       t_shi_shou: ShiShou
       t_shi_shou_detail: ShiShouDetail
       t_area: Area
-#      t_batch_task: BatchTask
       t_ca_auth: CaAuth
-#      t_call_back_log: CallBackLog
       t_order_call_back_log: OrderCallBackLog
       t_carousel_image: CarouselImage
       t_channel: Channel
@@ -205,57 +203,34 @@ zhsit:
       t_permission: Permission
       t_repair_apply_for: RepairApplyFor
       t_request_log: RequestLog
-#      t_research: Research
       t_role: Role
       t_role_menu: RoleMenu
       t_role_permission: RolePermission
       t_role_hotel: RoleHotel
       t_room: Room
       t_room_bill: RoomBill
-#      t_room_book_apply_for: RoomBookApplyFor
-#      t_room_check_in_apply_for: RoomCheckInApplyFor
-#      t_room_check_out_apply_for: RoomCheckOutApplyFor
-#      t_room_ding_jin: RoomDingJin
       t_room_door_record: RoomDoorRecord
       t_room_energy_consumption: RoomEnergyConsumption
-#      t_room_housemate_apply_for: RoomHousemateApplyFor
       t_room_plan: RoomPlan
       t_room_price: RoomPrice
       t_room_price_his: RoomPriceHis
-#      t_room_renew_apply_for: RoomRenewApplyFor
       t_room_type: RoomType
-#      t_room_ya_jin: RoomYaJin
-#      t_search_type: SearchType
       t_shou_ju: ShouJu
-#      t_shou_ju_apply_for: ShouJuApplyFor
       t_ying_fu: YingFu
       t_ying_shou: YingShou
       t_ying_shou_detail: YingShouDetail
       t_staff: Staff
       t_staff_role: StaffRole
-#      t_task_locker: TaskLocker
-#      t_tourist: Tourist
-#      t_staff_work_type: StaffWorkType
       t_gate_equipment: GateEquipment
       t_user_gate_equipment: UserGateEquipment
-#      t_operation_type: OperationType
-#      t_operation_step: OperationStep
-#      t_operation_instance: OperationInstance
-#      t_operation_instance_step: OperationInstanceStep
-#      t_instance_step_data: InstanceStepData
       t_education: Education
-#      t_industry: Industry
       t_orientation: Orientation
       t_msg_tpl: MsgTpl
       t_contract_pic: ContractPic
-#      t_yu_ding_he_yue_pic: YuDingHeYuePic
-#      t_yu_ding_he_yue: YuDingHeYue
       t_contract_code: ContractCode
-#      t_business: Business
       t_invoice_context: InvoiceContext
       t_he_yue_tpl_val: HeYueTplVal
       t_yu_ding_shen_qing: YuDingShenQing
-#      t_enterprise_reg: EnterpriseReg
       t_ru_zhu_shen_qing: RuZhuShenQing
       t_zu_lin_he_yue: ZuLinHeYue
       t_shou_ju_code: ShouJuCode
@@ -265,8 +240,6 @@ zhsit:
       t_room_type_she_shi: RoomTypeSheShi
       t_shou_ru_level: ShouRuLevel
       t_hang_ye: HangYe
-#      t_salesman: Salesman
-#      t_hotel_salesman: HotelSalesman
       t_cleaner: Cleaner
       t_hotel_cleaner: HotelCleaner
       t_repairman: Repairman
@@ -284,28 +257,18 @@ zhsit:
       t_mobile_msg: MobileMsg
       t_zhong_qian_log: ZhongQianLog
       t_zhong_qian_code: ZhongQianCode
-#      t_work_diary_type: WorkDiaryType
       t_ri_zhi_type: RiZhiType
-#      t_gong_zuo_ri_zhi: GongZuoRiZhi
-#      t_ri_zhi_yun_ying: RiZhiYunYing
       t_ri_zhi: RiZhi
       t_ri_zhi_item: RiZhiItem
-#      t_xiao_shou_ri_zhi: XiaoShouRiZhi
-#      t_guan_jia_ri_zhi: GuanJiaRiZhi
       t_ri_zhi_pi_zhu: RiZhiPiZhu
       t_role_group: RoleGroup
-#      t_bei_guan_role: BeiGuanRole
       t_role_guan_kong: RoleGuanKong
-
-#      t_ri_zhi_item_name: RiZhiItemName
       t_ri_zhi_item_type: RiZhiItemType
-#      t_ri_zhi_yun_ying: RiZhiYunYing
       t_ri_zhi_yun_ying_xin_qian: RiZhiYunYingXinQian
       t_ri_zhi_yun_ying_tui_zu: RiZhiYunYingTuiZu
       t_ri_zhi_yun_ying_xu_zu: RiZhiYunYingXuZu
       t_ri_zhi_yun_ying_kong_fang: RiZhiYunYingKongFang
       t_ri_zhi_yun_ying_chu_zu_lv: RiZhiYunYingChuZuLv
-#      t_ri_zhi_yun_ying_xun_wen_deng_ji: RiZhiYunYingXunWenDengJi
       t_ri_zhi_yun_ying_jin_dian_deng_ji: RiZhiYunYingJinDianDengJi
       t_ri_zhi_yun_ying_lai_dian_deng_ji: RiZhiYunYingLaiDianDengJi
       t_ri_zhi_yun_ying_tou_su: RiZhiYunYingTouSu
@@ -322,7 +285,6 @@ zhsit:
       t_customer_hotel: CustomerHotel
       t_customer_fa_piao: CustomerFaPiao
       t_customer_shou_ju: CustomerShouJu
-#      t_ri_zhi_xiao_shou: RiZhiXiaoShou
       t_ri_zhi_xiao_shou_da_ke_hu: RiZhiXiaoShouDaKeHu
       t_ri_zhi_xiao_shou_zhong_jie: RiZhiXiaoShouZhongJie
       t_ri_zhi_xiao_shou_xun_wen_deng_ji: RiZhiXiaoShouXunWenDengJi
@@ -335,6 +297,7 @@ zhsit:
       t_ri_zhi_xiao_shou_ri_chang_shi_wu: RiZhiXiaoShouRiChangShiWu
       t_odm_data: OdmData
       t_ri_zhi_yun_ying_yu_ding: RiZhiYunYingYuDing
+      t_ri_zhi_yun_ying_huan_fang: RiZhiYunYingHuanFang
 
 
 
