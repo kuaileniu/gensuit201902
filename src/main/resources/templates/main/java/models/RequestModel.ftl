@@ -392,4 +392,25 @@ public class RequestModel {
         }
 		return this;
     }
+	
+	
+    public Object findVal(String propName) {
+        List<RequestModel.WhereItem> whereItemList = this.getWhereItems();
+        if (whereItemList == null || whereItemList.size() < 1) {
+            return null;
+        }
+        for (RequestModel.WhereItem whereItem : whereItemList) {
+            if (whereItem == null) {
+                continue;
+            }
+            if (propName.equals(whereItem.getProp())) {
+                Object[] vals = whereItem.getVals();
+                if (vals != null && vals.length > 0) {
+                    return vals[0];
+                }
+                break;
+            }
+        }
+        return null;
+    }
 }
