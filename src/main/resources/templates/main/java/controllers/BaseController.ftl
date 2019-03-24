@@ -37,9 +37,9 @@ public class BaseController {
 <#if (gen.useRedis == true)>
     @Autowired public CacheHelper cacheHelper;
 </#if>
-<#list allController as o>
-    @Autowired public Gen${o.po.entityName}${gen.controllerPostfix} gen${o.po.entityName}${gen.controllerPostfix};
-</#list>
+<#--<#list allController as o>-->
+    <#--@Autowired public Gen${o.po.entityName}${gen.controllerPostfix} gen${o.po.entityName}${gen.controllerPostfix};-->
+<#--</#list>-->
 <#list allService as o>
     @Autowired public Gen${o.po.entityName}${gen.servicePostfix} gen${o.po.entityName}${gen.servicePostfix};
 </#list>

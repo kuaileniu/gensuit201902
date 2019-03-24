@@ -148,6 +148,18 @@ public class StringUtil {
         return new BigDecimal(money);
     }
 
+<#if (gen.showComment==true)>	
+    /**
+     * @param str       http://odm.zhsit.cn/api/files/download/204xosu1i54ulhk6wet1zmvhq
+     * @param separator "/"
+     * @return separator "/" 返回 204xosu1i54ulhk6wet1zmvhq  ；separator "\\" 返回 "http://odm.zhsit.cn/api/files/download/204xosu1i54ulhk6wet1zmvhq"
+     */
+</#if>	 
+    public static String fromLastSeparator(String str, String separator) {
+        int start = str.lastIndexOf(separator);
+        int end = str.length();
+        return substring(str, start + 1, end);
+    }
 
     public static String replaceChars(final String str, final String searchChars, String replaceChars) {
         if (isEmpty(str) || isEmpty(searchChars)) {
