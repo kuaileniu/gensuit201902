@@ -2,8 +2,8 @@ package ${gen.enumPackage?replace("/",".")};
 
 public enum Province {
 
-    beiJing("北京", "bj", 1),
-    tianJin("天津", "tj", 2),
+    beiJing("北京", "bj", "11"),
+    tianJin("天津", "tj", "12"),
     heBei("河北", "hebei"),
     shanXi1("山西", "sx1"),
     neiMengGu("内蒙古", "nmg"),
@@ -38,7 +38,7 @@ public enum Province {
     aoMen("澳门", "am"),
     guoWai("国外", "gw");
 
-
+    private String num;
     private String shorName;
     private String fullName;
     private String code;
@@ -59,6 +59,20 @@ public enum Province {
         this.orderNum = orderNum;
     }
 
+    private Province(String shorName, String code, String num) {
+        this.shorName = shorName;
+        this.num = num;
+        this.code = code;
+        this.orderNum = orderNum;
+    }
+
+    private Province(String shorName, String code, String num, int orderNum) {
+        this.shorName = shorName;
+        this.num = num;
+        this.code = code;
+        this.orderNum = orderNum;
+    }
+
     private Province(String shorName, String code, int orderNum, String fullName) {
         this.shorName = shorName;
         this.code = code;
@@ -67,10 +81,30 @@ public enum Province {
     }
 
 
-    public static Province of(String shorName) {
+    public static Province ofName(String shorName) {
         Province[] provinces = Province.values();
         for (Province p : provinces) {
             if (p.shorName.equals(shorName)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public static Province ofCode(String code) {
+        Province[] provinces = Province.values();
+        for (Province p : provinces) {
+            if (p.code.equals(code)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public static Province ofNum(String num) {
+        Province[] provinces = Province.values();
+        for (Province p : provinces) {
+            if (p.num.equals(num)) {
                 return p;
             }
         }
@@ -83,5 +117,9 @@ public enum Province {
 
     public String code() {
         return this.code;
+    }
+
+    public String num() {
+        return num;
     }
 }
