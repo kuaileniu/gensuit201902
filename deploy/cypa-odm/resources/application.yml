@@ -301,6 +301,7 @@ zhsit:
       t_ri_zhi_yun_ying_yu_ding: RiZhiYunYingYuDing
       t_ri_zhi_yun_ying_huan_fang: RiZhiYunYingHuanFang
       t_customer_he_tong: CustomerHeTong
+      t_customer_yu_ding: CustomerYuDing
 
 
 
