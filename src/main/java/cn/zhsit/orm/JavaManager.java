@@ -112,6 +112,7 @@ public class JavaManager implements ApplicationContextAware {
         solidObjectsList.add(new SolidObject(GenConstants.enum_order, GenConstants.ORDER_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
 //        solidObjectsList.add(new SolidObject(GenConstants.enum_comparative, GenConstants.COMPARATIVE_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.enum_WhereRelate, GenConstants.WhereRelate_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
+        solidObjectsList.add(new SolidObject(GenConstants.enum_Province, GenConstants.Province_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.enum_Op, GenConstants.Op_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.enum_SrcType, GenConstants.SrcType_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.enum_UserType, GenConstants.UserType_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
@@ -203,6 +204,7 @@ public class JavaManager implements ApplicationContextAware {
         solidObjectsList.add(new SolidObject(GenConstants.JavaClass2ProtoBuf, GenConstants.JavaClass2ProtoBuf_FTL, gen.getIoPackage(), FileType.MavenMainJava));
 
         solidObjectsList.add(new SolidObject(GenConstants.SystemUtil, GenConstants.SystemUtil_FTL, gen.getSystemPackage(), FileType.MavenMainJava));
+        solidObjectsList.add(new SolidObject(GenConstants.OS, GenConstants.OS_FTL, gen.getSystemPackage(), FileType.MavenMainJava));
         if (gen.isUseRedis()) {
             solidObjectsList.add(new SolidObject(GenConstants.RedisConfig, GenConstants.RedisConfig_FTL, gen.getConfigPackage(), FileType.MavenMainJava));
         }

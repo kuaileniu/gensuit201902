@@ -4,8 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.Date;
 import java.util.regex.Pattern;
+import ${gen.enumPackage?replace("/",".")}.Province;
 
 /**
  * 校验工具
@@ -198,5 +200,59 @@ public class ValidateUtils {
         }
         String birthday = StringUtil.substring(idNo, 6, 14);
         return StringUtil.toDate(birthday, "yyyyMMdd");
+    }
+
+    public static HashMap<String, Province> codeProvince = new HashMap<String, Province>();
+
+    static {
+        codeProvince.put("11", Province.beiJing);
+        codeProvince.put("12", Province.tianJin);
+        codeProvince.put("13", Province.heBei);
+        codeProvince.put("14", Province.shanXi1);
+        codeProvince.put("15", Province.neiMengGu);
+        codeProvince.put("21", Province.liaoNing);
+        codeProvince.put("22", Province.jiLin);
+        codeProvince.put("23", Province.heiLongJiang);
+        codeProvince.put("31", Province.shangHai);
+        codeProvince.put("32", Province.jiangSu);
+        codeProvince.put("33", Province.zheJiang);
+        codeProvince.put("34", Province.anHui);
+        codeProvince.put("35", Province.fuJian);
+        codeProvince.put("36", Province.jiangXi);
+        codeProvince.put("37", Province.shanDong);
+        codeProvince.put("41", Province.heNan);
+        codeProvince.put("42", Province.huBei);
+        codeProvince.put("43", Province.huNan);
+        codeProvince.put("44", Province.guangDong);
+        codeProvince.put("45", Province.guangXi);
+        codeProvince.put("46", Province.haiNan);
+        codeProvince.put("50", Province.chongQing);
+        codeProvince.put("51", Province.siChuan);
+        codeProvince.put("52", Province.guiZhou);
+        codeProvince.put("53", Province.yunNan);
+        codeProvince.put("54", Province.xiZang);
+        codeProvince.put("61", Province.shanXi3);
+        codeProvince.put("62", Province.ganSu);
+        codeProvince.put("63", Province.qingHai);
+        codeProvince.put("64", Province.ningXia);
+        codeProvince.put("65", Province.xinJiang);
+        codeProvince.put("71", Province.taiWan);
+        codeProvince.put("81", Province.xiangGang);
+        codeProvince.put("82", Province.aoMen);
+        codeProvince.put("91", Province.guoWai);
+    }
+
+<#if (gen.showComment==true)>
+    /**
+     * 根据身份证号判断所属省份
+     * @param idNo
+     * @return
+     */
+</#if>
+    public static Province province(String idNo) {
+        if (!isValidIdNo(idNo)) {
+            return null;
+        }
+        return codeProvince.get(idNo.substring(0, 2));
     }
 }

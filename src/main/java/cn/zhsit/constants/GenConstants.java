@@ -44,6 +44,7 @@ public class GenConstants {
 
     //枚举类名
     public static final String enum_order = "OrderBy";
+    public static final String enum_Province = "Province";
     public static final String enum_WhereRelate = "WhereRelate";
     public static final String enum_Op = "Op";
     public static final String enum_SrcType = "SrcType";
@@ -195,6 +196,7 @@ public class GenConstants {
     public static final String GenMapperInclude = "GenMapperInclude";
     public static final String JavaClass2ProtoBuf = "JavaClass2ProtoBuf";
     public static final String SystemUtil = "SystemUtil";
+    public static final String OS = "OS";
     public static final String RedisConfig = "RedisConfig";
     public static final String WebConfig = "WebConfig";
     public static final String ActivitiConfig = "ActivitiConfig";
@@ -251,6 +253,7 @@ public class GenConstants {
 
     public static final String ORDER_FTL = main_java_ftl + "enums/order.ftl";
     public static final String WhereRelate_FTL = main_java_ftl + "enums/WhereRelate.ftl";
+    public static final String Province_FTL = main_java_ftl + "enums/Province.ftl";
     public static final String Op_FTL = main_java_ftl + "enums/Op.ftl";
     public static final String SrcType_FTL = main_java_ftl + "enums/SrcType.ftl";
     public static final String UserType_FTL = main_java_ftl + "enums/UserType.ftl";
@@ -340,6 +343,7 @@ public class GenConstants {
     public static final String DateHanZiJsonSerializer_FTL = main_java_ftl + "utils/io/DateHanZiJsonSerializer.ftl";
     public static final String DateTimeJsonSerializer_FTL = main_java_ftl + "utils/io/DateTimeJsonSerializer.ftl";
     public static final String SystemUtil_FTL = main_java_ftl + "utils/system/SystemUtil.ftl";
+    public static final String OS_FTL = main_java_ftl + "utils/system/OS.ftl";
     public static final String ContextHandler_FTL = main_java_ftl + "handlers/ContextHandler.ftl";
     public static final String MybatisJsonTypeHandler_FTL = main_java_ftl + "handlers/MybatisJsonTypeHandler.ftl";
     public static final String ContextFilter_FTL = main_java_ftl + "filters/ContextFilter.ftl";
