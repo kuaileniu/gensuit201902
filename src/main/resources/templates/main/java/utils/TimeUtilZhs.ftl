@@ -14,6 +14,28 @@ public class TimeUtilZhs {
 
 <#if (gen.showComment==true)>
     /**
+     * 获取n天前的时间
+     * @return
+     */
+</#if>
+    public static Date nDaysBefore(int n) {
+        return nDaysAfter(0 - n);
+    }
+
+<#if (gen.showComment==true)>
+    /**
+     * 获取n 天后的时间
+     * @return
+     */
+</#if>
+    public static Date nDaysAfter(int n) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, n);
+        return calendar.getTime();
+    }
+
+<#if (gen.showComment==true)>
+    /**
      * 获取当日 00:00:00的时间
      * @return
      */

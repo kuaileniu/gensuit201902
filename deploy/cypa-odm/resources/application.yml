@@ -302,6 +302,9 @@ zhsit:
       t_ri_zhi_yun_ying_huan_fang: RiZhiYunYingHuanFang
       t_customer_he_tong: CustomerHeTong
       t_customer_yu_ding: CustomerYuDing
+      t_room_tong_zhu: RoomTongZhu
+      t_ri_zhi_yun_ying_tong_zhu: RiZhiYunYingTongZhu
+      t_customer_tui_zu: CustomerTuiZu
 
 
 
