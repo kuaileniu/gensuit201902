@@ -1,5 +1,6 @@
 package ${gen.serviceImplPackage?replace("/",".")};
 
+import ${gen.managerImplPackage?replace("/",".")}.*;
 import ${gen.managerPackage?replace("/",".")}.*;
 import ${gen.helperPackage?replace("/",".")}.*;
 import ${gen.servicePackage?replace("/",".")}.*;
@@ -44,6 +45,7 @@ public class BaseService {
 <#if (gen.saveFastDFS == true)>
     @Autowired public FastDFSComponent fastDFSComponent;
 </#if>
+    @Autowired public BaseManager bm;
     public BaseService setSystemCode(String systemCode) {
         this.systemCode = systemCode;
         return this;
