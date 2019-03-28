@@ -168,11 +168,12 @@ public class ${className} {
     </#if>
     public String updateWithOutNullByKey(@Param("o") final ${entityName}${gen.poPostfix} o) {
         return new SQL() {{
+            boolean noSet = true;
             UPDATE("${info.po.tableName}");
         <#list info.po.javaPropDbColumn?keys as javaProperty>
             <@setNotKeyColumnWithOutNullMacro javaProperty="${javaProperty}"/>
         </#list>
-        <@whereColumnIsKeyMacro />
+        <@withOutWhereColumnIsKeyMacro />
         }}.toString();
     }
 </#if>
@@ -186,11 +187,12 @@ public class ${className} {
     </#if>
     public String updateWithOutBlankByKey(@Param("o") final ${entityName}${gen.poPostfix} o) {
         return new SQL() {{
+            boolean noSet = true;
             UPDATE("${info.po.tableName}");
         <#list info.po.javaPropDbColumn?keys as javaProperty>
             <@setNotKeyColumnWithOutBlankMacro javaProperty="${javaProperty}"/>
         </#list>
-        <@whereColumnIsKeyMacro />
+        <@withOutWhereColumnIsKeyMacro />
         }}.toString();
     }
 </#if>
@@ -411,15 +413,30 @@ public class ${className} {
 			<#if (info.po.objectPropertyJavaTypeMap[javaProperty] == 'String') >
 			if (StringUtil.isNotBlank(o.get${javaProperty?cap_first}())) {
                 SET("${info.po.javaPropDbColumn[javaProperty]} = ${r"#"}{o.${javaProperty}}");
+                noSet = false;
             }
 			<#else> 
             if (o.get${javaProperty?cap_first}() != null) {
                 SET("${info.po.javaPropDbColumn[javaProperty]} = ${r"#"}{o.${javaProperty}}");
+                noSet = false;
             }
 			</#if>
     </#if>
 </#macro>
 
+<#--  where ("table_id = #{tableId}) ，条件是关键字  -->
+<#macro withOutWhereColumnIsKeyMacro >
+    <#list info.po.keyList as propertyNameType>
+        <#list propertyNameType?keys as propertyName>
+            if (noSet) {
+                WHERE("${info.po.javaPropDbColumn[propertyName]} = ${r"#"}{o.${propertyName}}");
+                WHERE("${info.po.javaPropDbColumn[propertyName]} <> ${r"#"}{o.${propertyName}}");
+            } else {
+                WHERE("${info.po.javaPropDbColumn[propertyName]} = ${r"#"}{o.${propertyName}}");
+            }
+        </#list>
+    </#list>
+</#macro>
 <#--  where ("table_id = #{tableId}) ，条件是关键字  -->
 <#macro whereColumnIsKeyMacro >
     <#list info.po.keyList as propertyNameType>
