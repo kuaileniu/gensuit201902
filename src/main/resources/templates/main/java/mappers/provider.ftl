@@ -91,10 +91,10 @@ public class ${className} {
     </#if>
     public String deleteByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>@Param("${propertyName}") final ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>) {
         return new SQL() {{
-                DELETE_FROM("${info.po.tableName}");
+            DELETE_FROM("${info.po.tableName}");
           <#list info.po.keyList as propertyNameType>
               <#list propertyNameType?keys as propertyName>
-                WHERE("${info.po.javaPropDbColumn[propertyName]} = ${r"#"}{${propertyName}}");
+            WHERE("${info.po.javaPropDbColumn[propertyName]} = ${r"#"}{${propertyName}}");
              </#list>
           </#list>
         }}.toString();
@@ -109,11 +109,21 @@ public class ${className} {
 </#if>
     public String updateWithOutNull(@Param("o") final ${entityName}${gen.poPostfix} o, @Param("m") final ${entityName}${gen.modifyPostfix} where, @Param("p") Map<String, Object> params) {
         return new SQL() {{
+            boolean noSet = true;
             UPDATE("${info.po.tableName}");
         <#list info.po.javaPropDbColumn?keys as javaProperty>
             <@setNotKeyColumnWithOutNullMacro javaProperty="${javaProperty}"/>
         </#list>
+            if (noSet) {
+<#list info.po.keyList as propertyNameType>
+    <#list propertyNameType?keys as propertyName>
+                WHERE("${info.po.javaPropDbColumn[propertyName]} = ${r"#"}{o.${propertyName}}");
+                WHERE("${info.po.javaPropDbColumn[propertyName]} <> ${r"#"}{o.${propertyName}}");
+    </#list>
+</#list>
+            } else {
             <@whereColumnQueryUpdateMacroNoSQlInjection whereEntityName="${entityName}${gen.modifyPostfix}" whereParam="where"/>
+            }
         }}.toString();
     }
 
@@ -220,9 +230,9 @@ public class ${className} {
      * 查询一条记录
      */
 </#if>
-    public String selectOne(final ${entityName}${gen.queryPostfix}  query, @Param("p") Map<String, Object> params) {
+    public String selectOne(final ${entityName}${gen.queryPostfix} query, @Param("p") Map<String, Object> params) {
         SQL sql = new SQL() {{
-            if (null == query.getSelectColumns() ) {
+            if (null == query.getSelectColumns()) {
                 <#--SELECT("<#list info.po.javaPropDbColumn?keys as javaProperty>${info.po.javaPropDbColumn[javaProperty]}<#if javaProperty_has_next>,</#if></#list>");-->
                 if (query.isDistinct()) {
                     SELECT_DISTINCT("<#list info.po.javaPropDbColumn?values as dbColumn>${dbColumn}<#if dbColumn_has_next>,</#if></#list>");
@@ -395,9 +405,11 @@ public class ${className} {
         </#list>
     </#list>
     <#if isKey>
-    <#else> 
+    <#else>
+
             if (o.get${javaProperty?cap_first}() != null) {
                 SET("${info.po.javaPropDbColumn[javaProperty]} = ${r"#"}{o.${javaProperty}}");
+                noSet = false;
             }
     </#if>
 </#macro>
@@ -411,11 +423,13 @@ public class ${className} {
     <#if isKey>
     <#else> 
 			<#if (info.po.objectPropertyJavaTypeMap[javaProperty] == 'String') >
+
 			if (StringUtil.isNotBlank(o.get${javaProperty?cap_first}())) {
                 SET("${info.po.javaPropDbColumn[javaProperty]} = ${r"#"}{o.${javaProperty}}");
                 noSet = false;
             }
-			<#else> 
+			<#else>
+
             if (o.get${javaProperty?cap_first}() != null) {
                 SET("${info.po.javaPropDbColumn[javaProperty]} = ${r"#"}{o.${javaProperty}}");
                 noSet = false;
@@ -428,6 +442,7 @@ public class ${className} {
 <#macro withOutWhereColumnIsKeyMacro >
     <#list info.po.keyList as propertyNameType>
         <#list propertyNameType?keys as propertyName>
+
             if (noSet) {
                 WHERE("${info.po.javaPropDbColumn[propertyName]} = ${r"#"}{o.${propertyName}}");
                 WHERE("${info.po.javaPropDbColumn[propertyName]} <> ${r"#"}{o.${propertyName}}");
@@ -441,6 +456,7 @@ public class ${className} {
 <#macro whereColumnIsKeyMacro >
     <#list info.po.keyList as propertyNameType>
         <#list propertyNameType?keys as propertyName>
+
             WHERE("${info.po.javaPropDbColumn[propertyName]} = ${r"#"}{o.${propertyName}}");
         </#list>
     </#list>
