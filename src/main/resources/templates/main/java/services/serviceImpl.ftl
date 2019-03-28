@@ -369,6 +369,18 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     }
 
     /**
+     * 根据条件修改，修改指定的字段,值为null、""、"   "的不修改
+     */
+    @Override
+    public ResponseModel modifyPropertyWithOutBlank(final ${entityName}${gen.modifyPostfix} property) {
+        int num = bs.gen${entityName}${gen.managerPostfix}.modifyColumnWithOutBlank(property);
+        if (num > 0) {
+            return ResponseModel.ok().setCode(0);
+        }
+        return ResponseModel.ok().setCode(1);
+    }
+
+    /**
      * 根据主键修改,空值的不设置
      */
     @Override

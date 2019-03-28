@@ -152,6 +152,11 @@ public interface Gen${entityName}${gen.servicePostfix} {
     public ResponseModel modifyPropertyWithOutNull(final ${entityName}${gen.modifyPostfix} property);
 
     /**
+     * 根据条件修改，修改指定的字段,值为null、""、"   "的不修改
+     */
+    public ResponseModel modifyPropertyWithOutBlank(final ${entityName}${gen.modifyPostfix} property);
+
+    /**
      * 根据主键修改,空值的不设置
      */
     public ResponseModel modifyWithOutNullByKey(final ${entityName}${gen.poPostfix} o);

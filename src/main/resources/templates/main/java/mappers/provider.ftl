@@ -115,12 +115,12 @@ public class ${className} {
             <@setNotKeyColumnWithOutNullMacro javaProperty="${javaProperty}"/>
         </#list>
             if (noSet) {
-<#list info.po.keyList as propertyNameType>
-    <#list propertyNameType?keys as propertyName>
+            <#list info.po.keyList as propertyNameType>
+                <#list propertyNameType?keys as propertyName>
                 WHERE("${info.po.javaPropDbColumn[propertyName]} = ${r"#"}{o.${propertyName}}");
                 WHERE("${info.po.javaPropDbColumn[propertyName]} <> ${r"#"}{o.${propertyName}}");
-    </#list>
-</#list>
+                </#list>
+            </#list>
             } else {
             <@whereColumnQueryUpdateMacroNoSQlInjection whereEntityName="${entityName}${gen.modifyPostfix}" whereParam="where"/>
             }
@@ -171,7 +171,7 @@ public class ${className} {
 
 <#if (gen.showComment==true)>
     /**
-     * 只更新指定的字段
+     * 只更新指定的字段,值为null的不修改
      */
 </#if>
     public String updateColumnWithOutNull(@Param("m") final ${entityName}${gen.modifyPostfix} modifier, @Param("p") Map<String, Object> params) {
@@ -202,12 +202,65 @@ public class ${className} {
 			}
 
             if (noSet) {
-<#list info.po.keyList as propertyNameType>
-    <#list propertyNameType?keys as propertyName>
+                <#list info.po.keyList as propertyNameType>
+                    <#list propertyNameType?keys as propertyName>
                 WHERE("${info.po.javaPropDbColumn[propertyName]} = ${r"#"}{o.${propertyName}}");
                 WHERE("${info.po.javaPropDbColumn[propertyName]} <> ${r"#"}{o.${propertyName}}");
-    </#list>
-</#list>
+                    </#list>
+                </#list>
+            } else {
+                <@whereColumnQueryUpdateMacroNoSQlInjection whereEntityName="${entityName}${gen.modifyPostfix}" whereParam="modifier"/>
+            }
+        }}.toString();
+    }
+
+<#if (gen.showComment==true)>
+    /**
+     * 只更新指定的字段,值为null、""、"   "的不修改
+     */
+</#if>
+    public String updateColumnWithOutBlank(@Param("m") final ${entityName}${gen.modifyPostfix} modifier, @Param("p") Map<String, Object> params) {
+        return new SQL() {{
+            boolean noSet = true;
+            UPDATE("${info.po.tableName}");
+            Map<${entityName}${gen.modifyPostfix}.COLUMN, String> nativeColumn = modifier.getUpdateNativeColumns();
+
+            if (nativeColumn != null) {
+                for (${entityName}${gen.modifyPostfix}.COLUMN column : nativeColumn.keySet()) {
+                    if (nativeColumn.get(column) != null) {
+                        SET(column.column() + " = " + nativeColumn.get(column));
+                        noSet = false;
+                    }
+                }
+            }
+
+            Map<${entityName}${gen.modifyPostfix}.COLUMN, Object> columns = modifier.getUpdateColumns();
+            if (columns != null) {
+				for (${entityName}${gen.modifyPostfix}.COLUMN column : columns.keySet()) {
+                    boolean isBlank = true;
+                    Object val = columns.get(column);
+                    if (val != null) {
+                        isBlank = false;
+                        if (StringUtil.isBlank((String) val)) {
+                            isBlank = true;
+                        }
+                    }
+                    if (!isBlank) {
+                        String setKey = "updateSetKey_"+column.column();
+                        SET(column.column()+" = ${r"#"}{p."+ setKey +"}");
+                        params.put(setKey,columns.get(column));
+                        noSet = false;
+                    }
+				}
+			}
+
+            if (noSet) {
+                <#list info.po.keyList as propertyNameType>
+                    <#list propertyNameType?keys as propertyName>
+                WHERE("${info.po.javaPropDbColumn[propertyName]} = ${r"#"}{o.${propertyName}}");
+                WHERE("${info.po.javaPropDbColumn[propertyName]} <> ${r"#"}{o.${propertyName}}");
+                    </#list>
+                </#list>
             } else {
                 <@whereColumnQueryUpdateMacroNoSQlInjection whereEntityName="${entityName}${gen.modifyPostfix}" whereParam="modifier"/>
             }

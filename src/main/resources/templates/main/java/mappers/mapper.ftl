@@ -99,6 +99,14 @@ public interface ${className}{
 
     <#if (gen.showComment==true)>
     /**
+     * 只更新指定的字段,值为null,"","     "的不修改
+     */
+    </#if>
+    @UpdateProvider(type = ${entityName}${gen.providerPostfix}.class, method = "updateColumnWithOutBlank")
+    public int updateColumnWithOutBlank(final @Param("m")${entityName}${gen.modifyPostfix} modifier, @Param("p") Map<String, Object> params);
+
+    <#if (gen.showComment==true)>
+    /**
      * 根据主键修改
      * 若有主键值，主键值不更新
      */
