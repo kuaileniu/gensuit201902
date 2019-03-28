@@ -220,6 +220,18 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
 
 <#if (gen.showComment==true)>
     /**
+     * 修改指定字段,值为null的不修改
+     * @param modifier
+     * @return
+     */
+</#if>
+    @Override
+    public int modifyColumnWithOutNull(${entityName}${gen.modifyPostfix} modifier) {
+        return bm.${entityName?uncap_first}${gen.mapperPostfix}.updateColumnWithOutNull(modifier, new HashMap<>());
+    }
+
+<#if (gen.showComment==true)>
+    /**
      * 根据主键修改,空值的不设置
      */
 </#if>

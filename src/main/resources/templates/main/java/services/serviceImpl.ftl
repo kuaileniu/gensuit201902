@@ -313,8 +313,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
      */
     @Override
     public ResponseModel del(final ${entityName}${gen.removePostfix} where) {
-        bs.gen${entityName}${gen.managerPostfix}.del(where);
-        return ResponseModel.ok().setCode(0);
+        boolean success = bs.gen${entityName}${gen.managerPostfix}.del(where);
+        if (success) {
+            return ResponseModel.ok().setCode(0);
+        }
+        return ResponseModel.ok().setCode(1);
     }
 
     /**
@@ -322,8 +325,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
      */
     @Override
     public ResponseModel modifyWithOutNull(final ${entityName}${gen.poPostfix} o, final ${entityName}${gen.modifyPostfix} where) {
-        bs.gen${entityName}${gen.managerPostfix}.modifyWithOutNull(o, where);
-        return ResponseModel.ok().setCode(0);
+        int num = bs.gen${entityName}${gen.managerPostfix}.modifyWithOutNull(o, where);
+        if (num > 0) {
+            return ResponseModel.ok().setCode(0);
+        }
+        return ResponseModel.ok().setCode(1);
     }
 
     /**
@@ -331,8 +337,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
      */
     @Override
     public ResponseModel modify(final ${entityName}${gen.poPostfix} o, final ${entityName}${gen.modifyPostfix} where) {
-        bs.gen${entityName}${gen.managerPostfix}.modify(o, where);
-        return ResponseModel.ok().setCode(0);
+        int num = bs.gen${entityName}${gen.managerPostfix}.modify(o, where);
+        if (num > 0) {
+            return ResponseModel.ok().setCode(0);
+        }
+        return ResponseModel.ok().setCode(1);
     }
 
     /**
@@ -340,8 +349,23 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
      */
     @Override
     public ResponseModel modifyProperty(final ${entityName}${gen.modifyPostfix} property) {
-        bs.gen${entityName}${gen.managerPostfix}.modifyColumn(property);
-        return ResponseModel.ok().setCode(0);
+        int num = bs.gen${entityName}${gen.managerPostfix}.modifyColumn(property);
+        if (num > 0) {
+            return ResponseModel.ok().setCode(0);
+        }
+        return ResponseModel.ok().setCode(1);
+    }
+
+    /**
+     * 根据条件修改，修改指定的字段,值为null的不修改
+     */
+    @Override
+    public ResponseModel modifyPropertyWithOutNull(final ${entityName}${gen.modifyPostfix} property) {
+        int num = bs.gen${entityName}${gen.managerPostfix}.modifyColumnWithOutNull(property);
+        if (num > 0) {
+            return ResponseModel.ok().setCode(0);
+        }
+        return ResponseModel.ok().setCode(1);
     }
 
     /**
@@ -351,9 +375,9 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel modifyWithOutNullByKey(final ${entityName}${gen.poPostfix} o) {
         boolean success = bs.gen${entityName}${gen.managerPostfix}.modifyWithOutNullByKey(o);
         if(success){
-           return ResponseModel.ok().setCode(0).setMsg("操作成功！");
+           return ResponseModel.ok().setCode(0);
         }
-        return ResponseModel.error().setCode(1).setMsg("操作失败！");
+        return ResponseModel.error().setCode(1);
     }
 
     /**
@@ -363,9 +387,9 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel modifyWithOutBlankByKey(final ${entityName}${gen.poPostfix} o) {
         boolean success = bs.gen${entityName}${gen.managerPostfix}.modifyWithOutBlankByKey(o);
         if(success){
-           return ResponseModel.ok().setCode(0).setMsg("操作成功！");
+           return ResponseModel.ok().setCode(0);
         }
-        return ResponseModel.error().setCode(1).setMsg("操作失败！");
+        return ResponseModel.error().setCode(1);
     }
 	
     /**
@@ -374,7 +398,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     @Override
     public ResponseModel modifyByKey(${entityName}${gen.poPostfix} o) {
         bs.gen${entityName}${gen.managerPostfix}.modifyByKey(o);
-        return ResponseModel.ok().setCode(0).setMsg("操作成功！");
+        return ResponseModel.ok().setCode(0);
     }
 
     /**

@@ -128,6 +128,15 @@ public interface Gen${entityName}${gen.managerPostfix} {
 
 <#if (gen.showComment==true)>
     /**
+     * 修改指定字段,值为null的不修改
+     * @param modifier
+     * @return
+     */
+</#if>
+    public int modifyColumnWithOutNull(final ${entityName}${gen.modifyPostfix} modifier);
+
+<#if (gen.showComment==true)>
+    /**
      * 根据主键修改,空值的不设置
      */
 </#if>
