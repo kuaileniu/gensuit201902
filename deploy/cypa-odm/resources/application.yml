@@ -305,6 +305,8 @@ zhsit:
       t_room_tong_zhu: RoomTongZhu
       t_ri_zhi_yun_ying_tong_zhu: RiZhiYunYingTongZhu
       t_customer_tui_zu: CustomerTuiZu
+      t_customer_bao_xiu: CustomerBaoXiu
+      t_customer_bao_jie: CustomerBaoJie
 
 
 

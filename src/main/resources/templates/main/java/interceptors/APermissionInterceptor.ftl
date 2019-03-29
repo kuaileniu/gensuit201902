@@ -44,7 +44,7 @@ public class APermissionInterceptor extends HandlerInterceptorAdapter {
             // 判断是否具有权限
             boolean have = permissionHandler.havePermission(userId, code);
             if (!have) {
-                ContextHandler.Instance.setResponseBody(ResponseModel.ok().setCode(2).setMsg("You have no permission"));
+                ContextHandler.Instance.setResponseBody(ResponseModel.ok().setCode(2).setMsg("You have no permission:"+code));
                 log.info("用户:" + ContextHandler.Instance.getUserId() + ",无 " + code + " 操作权限");
             }
             return have;
