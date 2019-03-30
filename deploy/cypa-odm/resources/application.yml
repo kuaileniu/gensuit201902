@@ -242,8 +242,10 @@ zhsit:
       t_room_type_she_shi: RoomTypeSheShi
       t_shou_ru_level: ShouRuLevel
       t_hang_ye: HangYe
-      t_cleaner: Cleaner
-      t_hotel_cleaner: HotelCleaner
+#      t_cleaner: Cleaner
+      t_bao_jie_yuan: BaoJieYuan
+#      t_hotel_cleaner: HotelCleaner
+      t_hotel_bao_jie_yuan: HotelBaoJieYuan
       t_repairman: Repairman
       t_hotel_repairman: HotelRepairman
       t_activity_type: ActivityType
