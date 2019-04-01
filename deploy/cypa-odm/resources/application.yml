@@ -171,7 +171,7 @@ zhsit:
       t_channel: Channel
       t_city: City
       t_cleaning_apply_for: CleaningApplyFor
-      t_complaint: Complaint
+#      t_complaint: Complaint
       t_customer: Customer
       t_customer_dai_jin_quan: CustomerDaiJinQuan
       t_customer_in_room: CustomerInRoom
