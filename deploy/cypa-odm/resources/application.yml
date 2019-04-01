@@ -311,6 +311,10 @@ zhsit:
       t_customer_qian_fei: CustomerQianFei
       t_chu_zu: ChuZu
       t_tou_su: TouSu
+      t_gong_qu_dian: GongQuDian
+      t_fu_kuan_tong_zhi: FuKuanTongZhi
+      t_shou_ru: ShouRu
+
 
 
 
