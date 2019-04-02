@@ -978,4 +978,37 @@ public class StringUtil {
         }
     }	
 
+<#if (gen.showComment==true)>	
+    /**
+     * 获取日期对应的周几
+     * @param date
+     * @return
+     */
+</#if>	
+    public static String date2Week(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int w = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0)
+            w = 0;
+        switch (w) {
+            case 0:
+                return "周日";
+            case 1:
+                return "周一";
+            case 2:
+                return "周二";
+            case 3:
+                return "周三";
+            case 4:
+                return "周四";
+            case 5:
+                return "周五";
+            case 6:
+                return "周六";
+            case 7:
+                return "周日";
+        }
+        return "周日";
+    }
 }
