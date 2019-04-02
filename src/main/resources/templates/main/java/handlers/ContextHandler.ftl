@@ -1,6 +1,7 @@
 package ${gen.handlerPackage?replace("/",".")};
 
 import ${gen.enumPackage?replace("/",".")}.UserType;
+import java.util.HashMap;
 
 <#if (gen.showComment==true)>
 /**
@@ -71,6 +72,19 @@ public enum ContextHandler {
         //返回的消息体对象
     </#if>
         private Object responseBody;
+
+        private HashMap<String, Object> info = new HashMap<>();
+    }
+
+    public ContextHandler addInfo(String key, Object obj) {
+        checkNull();
+        context.get().info.put(key, obj);
+        return this;
+    }
+
+    public Object getInfo(String key){
+        checkNull();
+        return context == null ? null : context.get().info.get(key);
     }
 
     public ContextHandler setToken(String token) {
