@@ -76,13 +76,13 @@ zhsit:
   # 是否使用alain
 #    useAlain: true
   # 是否生成工作流
-    workflow: false
+    workflow: true
   # 是否生成数据库中所有的表
     createAll: false
   # 是否生成测试类
     createTest: true
   # 是否显示注释
-#    showComment: true
+    showComment: true
   # ServerApplication路径
     serverApplicationPackage: cn/zhsit/babycreator
   # 包的根路径
@@ -172,6 +172,7 @@ zhsit:
       t_staff_permission: StaffPermission
       t_staff_role: StaffRole
       t_system_project: SystemProject
+      t_staff_system_project: StaffSystemProject
 
   # 表对象对应类后缀，词尾
     poPostfix:
