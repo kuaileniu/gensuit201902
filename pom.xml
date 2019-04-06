@@ -322,15 +322,15 @@
                 <!--<env>jxpj20180723</env>-->
             <!--</properties>-->
         <!--</profile>-->
-        <profile>
-            <id>cypa-odm</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <env>cypa-odm</env>
-            </properties>
-        </profile>
+        <!--<profile>-->
+            <!--<id>cypa-odm</id>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--<properties>-->
+                <!--<env>cypa-odm</env>-->
+            <!--</properties>-->
+        <!--</profile>-->
         <!--<profile>-->
             <!--<id>caiji</id>-->
             <!--<activation>-->
@@ -358,5 +358,14 @@
                 <!--<env>qipai</env>-->
             <!--</properties>-->
         <!--</profile>-->
+        <profile>
+            <id>baby-creator</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>baby-creator</env>
+            </properties>
+        </profile>
     </profiles>
 </project>
