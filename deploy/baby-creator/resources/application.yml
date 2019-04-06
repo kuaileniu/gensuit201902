@@ -158,17 +158,20 @@ zhsit:
 
   # 要生成的表和实体的名称对应,加不加引号都可以
     tableEntity:
-      t_customer: Customer
-      t_permission: Permission
-      t_staff: Staff
+      t_db_table: DbTable
       t_menu: Menu
+      t_org: Org
+      t_permission: Permission
       t_role: Role
       t_role_group: RoleGroup
       t_role_guan_kong: RoleGuanKong
-      t_staff_role: StaffRole
       t_role_menu: RoleMenu
+      t_role_permission: RolePermission
+      t_staff: Staff
       t_staff_menu: StaffMenu
-
+      t_staff_permission: StaffPermission
+      t_staff_role: StaffRole
+      t_system_project: SystemProject
 
   # 表对象对应类后缀，词尾
     poPostfix:
