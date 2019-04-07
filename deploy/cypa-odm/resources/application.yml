@@ -315,6 +315,8 @@ zhsit:
       t_fu_kuan_tong_zhi: FuKuanTongZhi
       t_shou_ru: ShouRu
       t_sheng_shi_xian: ShengShiXian
+      t_ping_tai: PingTai
+      t_ping_tai_qing_kuang: PingTaiQingKuang
 
 
   # 表对象对应类后缀，词尾
