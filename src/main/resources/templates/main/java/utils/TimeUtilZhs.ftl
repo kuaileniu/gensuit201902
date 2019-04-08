@@ -1,5 +1,6 @@
 package ${gen.utilPackage?replace("/",".")};
 
+import org.apache.commons.lang3.time.FastDateFormat;
 import java.time.*;
 import java.util.Calendar;
 import java.util.Date;
@@ -321,4 +322,11 @@ public class TimeUtilZhs {
         // default to return 魔羯
         return XingZuoArray[11];
     }
+
+
+    public static int dateInMonth(Date date) {
+        String month= FastDateFormat.getInstance("yyyyMM").format(date);
+        return Integer.valueOf(month);
+    }
+
 }
