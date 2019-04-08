@@ -1043,6 +1043,6 @@ public class StringUtil {
             case 12:
                 return "十二月";
         }
-        return "月月";
+        return "一月";
     }
 }
