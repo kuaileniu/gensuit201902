@@ -358,5 +358,14 @@
                 <!--<env>qipai</env>-->
             <!--</properties>-->
         <!--</profile>-->
+        <!--<profile>-->
+            <!--<id>baby-creator</id>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--<properties>-->
+                <!--<env>baby-creator</env>-->
+            <!--</properties>-->
+        <!--</profile>-->
     </profiles>
 </project>
