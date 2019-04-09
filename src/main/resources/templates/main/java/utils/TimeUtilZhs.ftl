@@ -148,7 +148,44 @@ public class TimeUtilZhs {
         String day = FastDateFormat.getInstance("yyyyMMdd").format(Calendar.getInstance().getTime());
         return Integer.valueOf(day);
     }
+	
+<#if (gen.showComment==true)>
+    /**
+     * 获取给定时间对应的 年月日 数字 20190409
+     *
+     * @return
+     */
+</#if>
+    public static int intDay(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        String day = FastDateFormat.getInstance("yyyyMMdd").format(cal);
+        return Integer.valueOf(day);
+    }
+	
+<#if (gen.showComment==true)>	
+    /**
+     * 获取给定日期的所在月的第一天日期数字
+     *
+     * @return
+     */
+</#if>	 
+    public static int monthStartInt(Date date) {
+        Date d = monthStart(date);
+        return intDay(d);
+    }
 
+<#if (gen.showComment==true)>
+    /**
+     * 获取给定日期的所在月的最后天日期数字
+     *
+     * @return
+     */
+</#if>	 
+    public static int monthEndInt(Date date) {
+        Date d = monthEnd(date);
+        return intDay(d);
+    }
 	
 <#if (gen.showComment==true)>
     /**

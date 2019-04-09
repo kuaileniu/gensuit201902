@@ -366,7 +366,7 @@ public class RequestModel {
      * @param mainPropName      属性存在有效值，则删除另一个值 mayDeletePropName
      * @param mayDeletePropName
      */
-</#if>	 
+</#if>
     public RequestModel paiChiCanShu(String mainPropName, String mayDeletePropName) {
         List<RequestModel.WhereItem> whereItemList = this.getWhereItems();
         if (whereItemList == null || whereItemList.size() < 1) {
@@ -374,6 +374,9 @@ public class RequestModel {
         }
         out_loop:
         for (RequestModel.WhereItem whereItem : whereItemList) {
+            if (whereItem == null) {
+                continue;
+            }
             if (mainPropName.equals(whereItem.getProp())) {
                 Object[] vals = whereItem.getVals();
                 if (vals.length > 0) {
