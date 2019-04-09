@@ -96,6 +96,49 @@ public class TimeUtilZhs {
 
 <#if (gen.showComment==true)>
     /**
+     * 获取给定日期的所在月的第一天00:00:00的时间
+     * @return
+     */
+</#if>
+    public static Date monthStart(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.DAY_OF_MONTH,1);
+        // 时
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        // 分
+        calendar.set(Calendar.MINUTE, 0);
+        // 秒
+        calendar.set(Calendar.SECOND, 0);
+        // 毫秒
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTime();
+    }
+	
+<#if (gen.showComment==true)>
+    /**
+     * 获取给定日期的所在月的最后一天23:59:59的时间
+     * @return
+     */
+</#if>
+    public static Date monthEnd(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.MONTH, 1);
+        calendar.set(Calendar.DAY_OF_MONTH,0);
+        // 时
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        // 分
+        calendar.set(Calendar.MINUTE, 59);
+        // 秒
+        calendar.set(Calendar.SECOND, 59);
+        // 毫秒
+        calendar.set(Calendar.MILLISECOND, 999);
+        return calendar.getTime();
+    }
+	
+<#if (gen.showComment==true)>
+    /**
      * 比较时间
      *
      * @param time1
