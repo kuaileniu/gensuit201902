@@ -136,6 +136,19 @@ public class TimeUtilZhs {
         calendar.set(Calendar.MILLISECOND, 999);
         return calendar.getTime();
     }
+
+<#if (gen.showComment==true)>
+    /**
+     * 获取当日 年月日 数字 20190409
+     *
+     * @return
+     */
+</#if>
+    public static int todayIntDay() {
+        String day = FastDateFormat.getInstance("yyyyMMdd").format(Calendar.getInstance().getTime());
+        return Integer.valueOf(day);
+    }
+
 	
 <#if (gen.showComment==true)>
     /**
