@@ -23,45 +23,6 @@ public class A001MappedFilter implements Filter {
     RequestMappingHandlerMapping mapped;
 
     private boolean filterLog = false;
-
-    <#--  @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        int num = 0;
-        Set<String> includePaths = MapperInclude.include;
-        List<RequestMappingInfo> unregisterMappingList = new ArrayList<>();
-        Map<RequestMappingInfo, HandlerMethod> requestMethodMap = mapped.getHandlerMethods();
-        Iterator<RequestMappingInfo> its = requestMethodMap.keySet().iterator();
-        while (its.hasNext()) {
-            RequestMappingInfo requestMappingInfo = its.next();
-            for (String path : requestMappingInfo.getPatternsCondition().getPatterns()) {
-                if (filterLog) {
-                    System.out.println("MapperInclude.include.add(\"" + path + "\");");
-                    num++;
-                }
-                if (includePaths.contains(path)) {
-                } else {
-                    unregisterMappingList.add(requestMappingInfo);
-                }
-            }
-        }
-        if (filterLog) {
-            System.out.println("allTotal:" + num);
-        }
-//        requestMethodMap.forEach((requestMappingInfo, handlerMethod) -> {
-//            requestMappingInfo.getPatternsCondition().getPatterns().forEach(path -> {
-//                if (filterLog) {
-//                    System.out.println("include.add(\"" + path + "\");");
-//                }
-//                if (includePaths.contains(path)) {
-//                } else {
-//                    unregisterMappingList.add(requestMappingInfo);
-//                }
-//            });
-//        });
-        for (RequestMappingInfo requestMappingInfo : unregisterMappingList) {
-            mapped.unregisterMapping(requestMappingInfo);
-        }         
-    }  -->
     
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
