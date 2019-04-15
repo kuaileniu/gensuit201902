@@ -1,13 +1,12 @@
 <#--package ${packageStr};-->
 package ${gen.queryPackage?replace("/",".")};
 
-import java.util.Set;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 import org.apache.commons.lang3.ArrayUtils;
 
-import ${gen.enumPackage?replace("/",".")}.${WhereRelate};
-import ${gen.enumPackage?replace("/",".")}.${order};
+<#--import ${gen.enumPackage?replace("/",".")}.${WhereRelate};-->
+<#--import ${gen.enumPackage?replace("/",".")}.${order};-->
+import ${gen.enumPackage?replace("/",".")}.*;
 
 <#if (gen.showComment==true)>
 /**
@@ -201,8 +200,15 @@ public class ${className} {
 </#if>
     private List<WhereItem> where;
 
+    //原生查询条件
+    private List<Map<COLUMN, String>> whereNative;
+
     public List<WhereItem> getWhere(){
         return where;
+    }
+
+    public List<Map<COLUMN, String>> getWhereNative() {
+        return whereNative;
     }
 
 <#if (gen.showComment==true)>
@@ -218,12 +224,23 @@ public class ${className} {
         return WHERE(column, WhereRelate.Equal, val);
     }
 
+    public ${entityName}${gen.queryPostfix} WHERE_NATIVE(COLUMN column, final String val) {
+        Map<COLUMN, String> map = new HashMap();
+        map.put(column, val);
+        whereNative.add(map);
+        return this;
+    }
+
+    public ${entityName}${gen.queryPostfix} WHERE_Func(Func func,COLUMN column, WhereRelate whereRelate, final Object val) {
+        return WHERE(column, WhereRelate.Equal, val);
+    }
+
     public ${entityName}${gen.queryPostfix} WHERE(COLUMN column, WhereRelate whereRelate, final Object... vals) {
         if (column == null || whereRelate == null) {
             throw new RuntimeException("column 和 whereRelate 不可为空。");
         }
         if (where == null) {
-             where = new ArrayList<>();
+            where = new ArrayList<>();
         }
         Object[] allVals = null;
         if (vals != null) {
