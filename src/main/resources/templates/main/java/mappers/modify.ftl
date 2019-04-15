@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.ArrayList;
 import org.apache.commons.lang3.ArrayUtils;
 
-import ${gen.enumPackage?replace("/",".")}.${WhereRelate};
+<#--import ${gen.enumPackage?replace("/",".")}.${WhereRelate};-->
+import ${gen.enumPackage?replace("/",".")}.*;
 
 <#if (gen.showComment==true)>
 /**
@@ -56,11 +57,20 @@ public class ${entityName}${gen.modifyPostfix} {
        }
     }
 
-    public class WhereItem {
+    public static class WhereItem {
         private boolean or = false;
-        private COLUMN column=null;
+        private WhereType type = WhereType.Default;
+        private COLUMN column = null;
         private WhereRelate whereRelate;
+        private Func func;
         private Object[] val;
+
+        public static WhereItem instance() {
+            return new WhereItem();
+        }
+
+        public WhereItem() {
+        }
 
         public WhereItem(COLUMN column, WhereRelate whereRelate, Object... val) {
             this.column = column;
@@ -83,12 +93,20 @@ public class ${entityName}${gen.modifyPostfix} {
           return whereRelate;
         }
 
+        public Func getFunc() {
+            return func;
+        }
+
         public Object[] getVal() {
            return val;
         }
 
         public boolean isOr() {
            return or;
+        }
+
+        public WhereType getType() {
+            return type;
         }
     }
 

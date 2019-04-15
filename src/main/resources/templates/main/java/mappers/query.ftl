@@ -94,16 +94,44 @@ public class ${className} {
             return null;
         }
     }
-
+	
 <#if (gen.showComment==true)>
     // 查询 where 条件项
 </#if>
     public static class WhereItem {
         private boolean or = false;
+        private WhereType type = WhereType.Default;
         private COLUMN column = null;
+        private Func func;
         private WhereRelate whereRelate;
         private Object[] val;
 
+        public static WhereItem instance() {
+            return new WhereItem();
+        }
+
+        public WhereItem() {
+        }
+		
+        public WhereItem whereNative(boolean or, COLUMN column, WhereRelate whereRelate, Object val) {
+		    this.type = WhereType.Native;
+            this.or = or;
+			this.column = column;
+            this.whereRelate=whereRelate;
+            this.val = new Object[]{val};
+            return this;
+        }
+
+		public WhereItem whereFunc(boolean or, COLUMN column, Func func, WhereRelate whereRelate, Object val) {
+            this.type = WhereType.Func;
+			this.or = or;
+            this.column = column;
+            this.func = func;
+            this.whereRelate = whereRelate;
+            this.val = new Object[]{val};
+            return this;
+        }
+		
         public WhereItem(COLUMN column, WhereRelate whereRelate, Object... val) {
             this.column = column;
             this.whereRelate = whereRelate;
@@ -124,6 +152,10 @@ public class ${className} {
         public WhereRelate getWhereRelate() {
           return whereRelate;
         }
+		
+        public Func getFunc() {
+            return func;
+        }
 
         public Object[] getVal() {
            return val;
@@ -131,6 +163,10 @@ public class ${className} {
 
         public boolean isOr() {
            return or;
+        }
+
+        public WhereType getType() {
+            return type;
         }
      }
 
@@ -200,15 +236,8 @@ public class ${className} {
 </#if>
     private List<WhereItem> where;
 
-    //原生查询条件
-    private List<Map<COLUMN, String>> whereNative;
-
     public List<WhereItem> getWhere(){
         return where;
-    }
-
-    public List<Map<COLUMN, String>> getWhereNative() {
-        return whereNative;
     }
 
 <#if (gen.showComment==true)>
@@ -220,19 +249,24 @@ public class ${className} {
         return orderBy;
     }
 
-    public ${entityName}${gen.queryPostfix} WHERE_Equal(COLUMN column, final Object val) {
+    public ${entityName}${gen.queryPostfix} WHERE_EQUAL(COLUMN column, final Object val) {
         return WHERE(column, WhereRelate.Equal, val);
     }
 
-    public ${entityName}${gen.queryPostfix} WHERE_NATIVE(COLUMN column, final String val) {
-        Map<COLUMN, String> map = new HashMap();
-        map.put(column, val);
-        whereNative.add(map);
+    public ${entityName}${gen.queryPostfix} WHERE_NATIVE(COLUMN column, WhereRelate whereRelate, final String val) {
+        if (column == null || whereRelate == null || val == null || val.trim().length() == 0) {
+            throw new RuntimeException("column、whereRelate、val 不可为空。");
+        }
+        where.add(WhereItem.instance().whereNative(false, column, whereRelate, val));
         return this;
     }
 
-    public ${entityName}${gen.queryPostfix} WHERE_Func(Func func,COLUMN column, WhereRelate whereRelate, final Object val) {
-        return WHERE(column, WhereRelate.Equal, val);
+    public ${entityName}${gen.queryPostfix} WHERE_FUNC(Func func, COLUMN column, WhereRelate whereRelate, final Object val) {
+        if (column == null || whereRelate == null || func == null) {
+            throw new RuntimeException("column、whereRelate、func 不可为空。");
+        }
+        where.add(WhereItem.instance().whereFunc(false, column, func, whereRelate, val));
+        return this;
     }
 
     public ${entityName}${gen.queryPostfix} WHERE(COLUMN column, WhereRelate whereRelate, final Object... vals) {

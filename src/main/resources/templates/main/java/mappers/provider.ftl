@@ -11,6 +11,7 @@ import ${gen.modifyPackage?replace("/",".")}.${entityName}${gen.modifyPostfix};
 import ${gen.poPackage?replace("/",".")}.${entityName}${gen.poPostfix};
 import ${gen.removePackage?replace("/",".")}.${entityName}${gen.removePostfix};
 import ${gen.utilPackage?replace("/",".")}.StringUtil;
+import ${gen.enumPackage?replace("/",".")}.*;
 
 public class ${className} {
 
@@ -596,11 +597,13 @@ public class ${className} {
                         case NotBetween:
                             key++;
                             String pk0 = key + "";
-                            key++;
-                            String pk1 = key + "";
-                            params.put(pk0, whereItem.getVal()[0]);
-                            params.put(pk1, whereItem.getVal()[1]);
-                            WHERE(whereItem.getColumn().column() + whereItem.getWhereRelate().code() + "${r"#"}{p." + pk0 + "}" + " AND " + "${r"#"}{p." + pk1 + "}");
+                            if (WhereType.Default == whereItem.getType()) {
+                                key++;
+                                String pk1 = key + "";
+                                params.put(pk0, whereItem.getVal()[0]);
+                                params.put(pk1, whereItem.getVal()[1]);
+                                WHERE(whereItem.getColumn().column() + whereItem.getWhereRelate().code() + "${r"#"}{p." + pk0 + "}" + " AND " + "${r"#"}{p." + pk1 + "}");
+                            }
                             break;
                         case In:
                         case NotIn:
@@ -638,10 +641,17 @@ public class ${className} {
                             WHERE(whereItem.getColumn().column() + whereItem.getWhereRelate().code() + "${r"#"}{p." + pk0 + "}");
                             break;
                         default:
-                            key++;
-                            pk0 = key + "";
-                            params.put(pk0, whereItem.getVal()[0]);
-                            WHERE(whereItem.getColumn().column() + whereItem.getWhereRelate().code() + "${r"#"}{p." + pk0 + "}");
+						    if (WhereType.Default == whereItem.getType()) {
+								key++;
+								pk0 = key + "";
+								params.put(pk0, whereItem.getVal()[0]);
+								WHERE(whereItem.getColumn().column() + whereItem.getWhereRelate().code() + "${r"#"}{p." + pk0 + "}");			 
+                            }
+                    }
+                    if (WhereType.Native == whereItem.getType()) {
+                        WHERE(whereItem.getColumn().column() + " " + whereItem.getWhereRelate().code() + " " + (String) whereItem.getVal()[0]);
+                    } else if (WhereType.Func == whereItem.getType()) {
+                        WHERE(whereItem.getFunc().code()+ "("+ whereItem.getColumn().column()+ ") " + whereItem.getWhereRelate().code() + " " + whereItem.getVal()[0]);
                     }
                 }
             }
