@@ -285,7 +285,8 @@ zhsit:
       t_ri_zhi_yun_ying_ri_chang_shi_wu: RiZhiYunYingRiChangShiWu
       t_ri_zhi_yun_ying_jiao_jie: RiZhiYunYingJiaoJie
       t_ri_zhi_yun_ying_zi_jin: RiZhiYunYingZiJin
-      t_customer_hotel: CustomerHotel
+#      t_customer_hotel: CustomerHotel
+      t_customer_room: CustomerRoom
       t_customer_fa_piao: CustomerFaPiao
       t_customer_shou_ju: CustomerShouJu
       t_ri_zhi_xiao_shou_da_ke_hu: RiZhiXiaoShouDaKeHu
