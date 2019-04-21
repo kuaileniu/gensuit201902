@@ -14,10 +14,10 @@ spring:
 
   datasource:
     name: cypaodm20180723
-    url: jdbc:mysql://test-qipai-mysql:3306/cypa-odm?useUnicode=true&characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
-#    url: jdbc:mysql://127.0.0.1:3306/cypa-odm?useUnicode=true&characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
+#    url: jdbc:mysql://test-qipai-mysql:3306/cypa-odm?useUnicode=true&characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
+    url: jdbc:mysql://127.0.0.1:3306/cypa-odm?useUnicode=true&characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
     username: root
-    password: zhsit123456
+#    password: zhsit123456
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     filters: stat

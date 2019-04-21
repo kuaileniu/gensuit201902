@@ -99,6 +99,13 @@ public class RequestModel {
         return data;
     }
 
+    public Object findDataVal(Object key) {
+        if (null == data) {
+            return null;
+        }
+        return data.get(key);
+    }
+
     public RequestModel setData(Map data) {
         this.data = data;
         return this;
