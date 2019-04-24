@@ -87,4 +87,37 @@ public class ZOfficeUtil {
 
     }
 
+    /**
+     * @param templatePathName
+     * @param outFileName
+     * @param params
+     * @return
+     */
+    public static boolean exportExcel07(String templatePathName, String outFileName, Map<String, Object> params, HttpServletRequest request, HttpServletResponse response) {
+        if (outFileName == null) {
+            outFileName = System.currentTimeMillis() + ".xlsx";
+        }
+        try {
+            String userAgent = request.getHeader("user-agent").toLowerCase();
+            if (userAgent.contains("msie") || userAgent.contains("like gecko")) {
+                outFileName = URLEncoder.encode(outFileName, "UTF-8");
+            } else {
+                outFileName = new String(outFileName.getBytes("UTF-8"), "ISO-8859-1");
+            }
+            TemplateExportParams tpl = new TemplateExportParams(templatePathName);
+            Workbook workbook = ExcelExportUtil.exportExcel(tpl, params);
+            // 设置强制下载不打开
+            response.setContentType("application/force-download");
+            // 设置文件名
+            response.addHeader("Content-Disposition", "attachment;fileName=" + outFileName);
+            OutputStream out = response.getOutputStream();
+
+            workbook.write(out);
+            out.close();
+            return true;
+        } catch (Exception e) {
+            log.error("通过模板导出Excel文档时异常", e);
+            return false;
+        }
+    }	
 }
