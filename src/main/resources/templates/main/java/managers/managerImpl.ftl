@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import ${gen.utilPackage?replace("/",".")}.Zset;
-import ${gen.utilPackage?replace("/",".")}.ClazzUtil;
+<#--import ${gen.utilPackage?replace("/",".")}.ClazzUtil;-->
 
 <#if (gen.showComment==true)>
 /**
