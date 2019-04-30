@@ -509,6 +509,17 @@ public class StringUtil {
         return fromDate(time,"yyyy-MM-dd HH:mm:ss");
     }
 
+    public static String int2DateStr(int yyyyMMdd, String pattern) {
+        try {
+            String dateStr = yyyyMMdd + "";
+            Date date = FastDateFormat.getInstance("yyyyMMdd").parse(dateStr);
+            return fromDate(date, pattern);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 <#if (gen.showComment==true)>
    /**
     *

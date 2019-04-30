@@ -422,4 +422,18 @@ public class TimeUtilZhs {
         return Integer.valueOf(month);
     }
 
+    /**
+     *
+     * @param yyyyMMdd   必须是8位的日期数字
+     * @return
+     */
+    public static Date int2Date(int yyyyMMdd) {
+        try {
+            String dateStr = yyyyMMdd + "";
+            return FastDateFormat.getInstance("yyyyMMdd").parse(dateStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
