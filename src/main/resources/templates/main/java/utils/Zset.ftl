@@ -8,6 +8,10 @@ public class Zset<E> extends HashSet<E> {
         super();
     }
 
+    public Zset(E e) {
+        super();
+        add(e);
+    }
 	
     @Override
     public boolean add(E e) {
@@ -21,12 +25,5 @@ public class Zset<E> extends HashSet<E> {
         }
         return false;
     }
-	
-   
-    public boolean add_del(E e) {
-        if (e != null) {
-            return super.add(e);
-        }
-        return false;
-    }
+
 }
