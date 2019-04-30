@@ -509,6 +509,13 @@ public class StringUtil {
         return fromDate(time,"yyyy-MM-dd HH:mm:ss");
     }
 
+<#if (gen.showComment==true)>
+    /**
+     * @param dateStr
+     * @param pattern 参考 "yyyy-MM-dd HH:mm:ss"
+     * @return
+     */
+</#if>
     public static String int2DateStr(int yyyyMMdd, String pattern) {
         try {
             String dateStr = yyyyMMdd + "";
@@ -520,6 +527,13 @@ public class StringUtil {
         return null;
     }
 
+<#if (gen.showComment==true)>
+    /**
+     * @param dateStr
+     * @param pattern 参考 "yyyy-MM-dd HH:mm:ss"
+     * @return
+     */
+</#if>
     public static Integer dateStr2Int(String dateStr, String pattern) {
         try {
             Date date = FastDateFormat.getInstance(pattern).parse(dateStr);
