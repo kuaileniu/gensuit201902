@@ -520,6 +520,16 @@ public class StringUtil {
         return null;
     }
 
+    public static Integer dateStr2Int(String dateStr, String pattern) {
+        try {
+            Date date = FastDateFormat.getInstance(pattern).parse(dateStr);
+            return Integer.valueOf(fromDate(date, "yyyyMMdd"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 <#if (gen.showComment==true)>
    /**
     *
