@@ -1,4 +1,4 @@
-% copyµ½ÉÏ¼¶Ä¿Â¼£¬ÔÚÉÏ¼¶Ä¿Â¼Ö´ÐÐ%
+% copyåˆ°ä¸Šçº§ç›®å½•ï¼Œåœ¨ä¸Šçº§ç›®å½•æ‰§è¡Œ%
 call del genserver.jar
 cd gensuite
 call mvn clean spring-boot:run -Dmaven.test.skip=true
@@ -6,4 +6,3 @@ cd ../genserver
 call mvn clean package -Dmaven.test.skip=true
 set sourcePath=%cd%
 call copy %sourcePath%\target\genserver.jar ..
-
