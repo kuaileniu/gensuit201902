@@ -471,6 +471,7 @@ public class WebUtil {
         }
         out.write(responseBody);
         out.flush();
+        out.close();
     }
 
 <#if (gen.showComment==true)>
