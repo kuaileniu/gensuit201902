@@ -322,6 +322,8 @@ zhsit:
       t_customer_lai_dian_deng_ji: CustomerLaiDianDengJi
       t_odm_month_data: OdmMonthData
       t_pic_position_hotel: PicPositionHotel
+      t_pic_qu_yu_hotel: PicQuYuHotel
+      t_qu_yu: QuYu
 
 
   # 表对象对应类后缀，词尾
