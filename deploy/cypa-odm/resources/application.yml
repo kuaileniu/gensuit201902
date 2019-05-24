@@ -321,7 +321,7 @@ zhsit:
       t_cutomer_jin_dian_deng_ji: CustomerJinDianDengJi
       t_customer_lai_dian_deng_ji: CustomerLaiDianDengJi
       t_odm_month_data: OdmMonthData
-      t_pic_position_hotel: PicPositionHotel
+#      t_pic_position_hotel: PicPositionHotel
       t_pic_qu_yu_hotel: PicQuYuHotel
       t_qu_yu: QuYu
 
