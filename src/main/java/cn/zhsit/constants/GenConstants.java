@@ -165,6 +165,8 @@ public class GenConstants {
     public static final String ConvertUtil = "ConvertUtil";
     public static final String StringUtil = "StringUtil";
     public static final String RedisUtil = "RedisUtil";
+    public static final String Sequence = "Sequence";
+    public static final String SystemClock = "SystemClock";
     public static final String Zset = "Zset";
     public static final String ExpireMap = "ExpireMap";
     public static final String TimeUtilZhs = "TimeUtilZhs";
@@ -324,6 +326,8 @@ public class GenConstants {
     public static final String WebUtil_FTL = main_java_ftl + "utils/WebUtil.ftl";
     public static final String StringUtil_FTL = main_java_ftl + "utils/StringUtil.ftl";
     public static final String RedisUtil_FTL = main_java_ftl + "utils/RedisUtil.ftl";
+    public static final String Sequence_FTL = main_java_ftl + "utils/Sequence.ftl";
+    public static final String SystemClock_FTL = main_java_ftl + "utils/SystemClock.ftl";
     public static final String Zset_FTL = main_java_ftl + "utils/Zset.ftl";
     public static final String ExpireMap_FTL = main_java_ftl + "utils/ExpireMap.ftl";
     public static final String TimeUtilZhs_FTL = main_java_ftl + "utils/TimeUtilZhs.ftl";

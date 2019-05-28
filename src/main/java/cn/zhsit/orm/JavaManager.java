@@ -167,6 +167,8 @@ public class JavaManager implements ApplicationContextAware {
         solidObjectsList.add(new SolidObject(GenConstants.ConvertUtil, GenConstants.ConvertUtil_FTL, gen.getUtilPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.WebUtil, GenConstants.WebUtil_FTL, gen.getUtilPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.StringUtil, GenConstants.StringUtil_FTL, gen.getUtilPackage(), FileType.MavenMainJava));
+        solidObjectsList.add(new SolidObject(GenConstants.Sequence, GenConstants.Sequence_FTL, gen.getUtilPackage(), FileType.MavenMainJava));
+        solidObjectsList.add(new SolidObject(GenConstants.SystemClock, GenConstants.SystemClock_FTL, gen.getUtilPackage(), FileType.MavenMainJava));
         if (gen.isUseRedis()) {
             solidObjectsList.add(new SolidObject(GenConstants.RedisUtil, GenConstants.RedisUtil_FTL, gen.getUtilPackage(), FileType.MavenMainJava));
         }
