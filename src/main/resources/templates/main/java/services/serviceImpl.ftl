@@ -410,7 +410,6 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
      * 根据主键修改,空值的不设置
      */
 </#if>
-    @Override
     public ResponseModel modifyWithOutNullByKey(final ${entityName}${gen.poPostfix} o) {
         boolean success = bs.gen${entityName}${gen.managerPostfix}.modifyWithOutNullByKey(o);
         if(success){
@@ -419,10 +418,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.error().setCode(1);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据主键修改,空值的不设置,当属性类型为String时，""、"    "的值不设置
      */
-    @Override
+</#if>
     public ResponseModel modifyWithOutBlankByKey(final ${entityName}${gen.poPostfix} o) {
         boolean success = bs.gen${entityName}${gen.managerPostfix}.modifyWithOutBlankByKey(o);
         if(success){
@@ -430,60 +430,65 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         }
         return ResponseModel.error().setCode(1);
     }
-	
+
+<#if (gen.showComment==true)>
     /**
      * 根据主键修改，空值的亦设置
      */
-    @Override
+</#if>
     public ResponseModel modifyByKey(${entityName}${gen.poPostfix} o) {
         bs.gen${entityName}${gen.managerPostfix}.modifyByKey(o);
         return ResponseModel.ok().setCode(0);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      *
      * @param query
      * @return
      */
-    @Override
+</#if>
     public ${entityName}${gen.poPostfix} findOne(final ${entityName}${gen.queryPostfix} query) {
         ${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findOne(query);
         return o;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      *
      * @param requestModel
      * @return
      */
-    @Override
+</#if>
     public ${entityName}${gen.poPostfix} findOne(final RequestModel requestModel) {
         ${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findOne(createQuery(requestModel));
         return o;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件,隐藏字段置空
      *
      * @param query
      * @return
      */
-    @Override
+</#if>
     public ${entityName}${gen.poPostfix} findOneExcludeHidden(final ${entityName}${gen.queryPostfix} query) {
         ${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findOne(query);
         <@setHiddenNull obj="o"/>
         return o;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      *
      * @param requestModel
      * @return
      */
-    @Override
+</#if>
     public ${entityName}${gen.poPostfix} findOneExcludeHidden(final RequestModel requestModel) {
         ${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findOne(createQuery(requestModel));
         <@setHiddenNull obj="o"/>
@@ -491,10 +496,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     }
 
 <#if ( info.po.keyList?size> 0 ) >
+    <#if (gen.showComment==true)>
     /**
      * 根据主键查询
      */
-    @Override
+    </#if>
     public ResponseModel findExcludeHiddenByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>final ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>) {
         ${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>);
         <@setHiddenNull obj="o"/>
@@ -503,20 +509,22 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
 </#if>
 
 <#if ( info.po.keyList?size> 0 ) >
+    <#if (gen.showComment==true)>
     /**
      * 根据主键查询(含隐藏字段)
      */
-    @Override
+    </#if>
     public ${entityName}${gen.poPostfix} findByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>final ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>) {
         ${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>);
         return o;
     }
 </#if>
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件查询
      */
-    @Override
+</#if>
     public ${entityName}${gen.poPostfix} findOneByWhere(final ${entityName}${gen.queryPostfix}.WhereItem ... items) {
         ${entityName}${gen.queryPostfix} query = new ${entityName}${gen.queryPostfix}();
         for (${entityName}${gen.queryPostfix}.WhereItem item : items) {
@@ -533,11 +541,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
 <#if javaCollection.getAnnotationByName("Mine")??>
     <#list javaCollection.getAnnotationByName("Mine") as POproperty>
         <#if POproperty.po.entityName=="${entityName}">
-    
+    <#if (gen.showComment==true)>
     /**
      * 根据条件查询单条数据
      */
-    @Override
+    </#if>
     public ${entityName}${gen.poPostfix} findMineOneByWhere(final ${entityName}${gen.queryPostfix}.WhereItem ... items) {
         ${entityName}${gen.queryPostfix} query = new ${entityName}${gen.queryPostfix}();
         for (${entityName}${gen.queryPostfix}.WhereItem item : items) {
@@ -556,25 +564,26 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         </#if>
     </#list>
 </#if>
-
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      * @param property
      * @return
      */
-    @Override
+</#if>
     public ${entityName}${gen.poPostfix} findPropertyByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>final ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>, final ${entityName}${gen.queryPostfix} property) {
         ${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findPropertyByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>, property);
         <@setHiddenNull obj="o"/>
         return o;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      * @param query
      * @return
      */
-    @Override
+</#if>
     public List<${entityName}${gen.poPostfix}> findList(final ${entityName}${gen.queryPostfix} query) {
         List<${entityName}${gen.poPostfix}> list = bs.gen${entityName}${gen.managerPostfix}.findList(query);
         if (null == list) {
@@ -586,13 +595,14 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return list;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      *
      * @param requestModel
      * @return ${entityName}列表
      */
-    @Override
+</#if>
     public List<${entityName}${gen.poPostfix}> findLs(final RequestModel requestModel) {
         List<${entityName}${gen.poPostfix}> list = bs.gen${entityName}${gen.managerPostfix}.findList(createQuery(requestModel));
         for (${entityName}${gen.poPostfix} o : list) {
@@ -601,10 +611,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
 		return list;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      */
-    @Override
+</#if>
     public ResponseModel findList(final RequestModel requestModel) {
         return ResponseModel.ok().setCode(0).setData(findLs(requestModel));
     }
@@ -612,13 +623,14 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     <#list javaCollection.getAnnotationByName("Mine") as POproperty>
         <#if POproperty.po.entityName=="${entityName}">
 
+    <#if (gen.showComment==true)>
     /**
      * 自定义查询条件,查询自己的${entityName}列表
      *
      * @param q
      * @return
      */
-    @Override
+    </#if>
     public List<${entityName}${gen.poPostfix}> findMineList(List<Map> q) {
         // TODO 转换成 ${entityName}${gen.queryPostfix}
         ${entityName}${gen.queryPostfix} query = new ${entityName}${gen.queryPostfix}();
@@ -636,13 +648,14 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     </#list>
 </#if>
 
+<#if (gen.showComment==true)>
     /**
      * 自定义查询条件
      *
      * @param params
      * @return
      */
-    @Override
+</#if>
     public List<${entityName}${gen.poPostfix}> findListBySQL(final String sql, final Map<String,Object> params) {
         List<${entityName}${gen.poPostfix}> list = bs.gen${entityName}${gen.managerPostfix}.findListBySQL(sql, params);
         if(null == list) {
@@ -654,29 +667,32 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return list;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据sql进行count
      *
      * @param params
      * @return
      */
-    @Override
+</#if>
     public long countBySQL(final String sql, final Map<String,Object> params) {
         return bs.gen${entityName}${gen.managerPostfix}.countBySQL(sql, params);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 查询数量
      */
-    @Override
+</#if>
     public long count(final ${entityName}${gen.queryPostfix} query){
         return bs.gen${entityName}${gen.managerPostfix}.count(query);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 查询数量
      */
-    @Override
+</#if>
     public ResponseModel count(final RequestModel requestModel){
         ${entityName}${gen.queryPostfix} query = new ${entityName}${gen.queryPostfix}();
         for (RequestModel.WhereItem whereItem : requestModel.getWhereItems()) {
@@ -690,10 +706,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(0).setData(count);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 查询数量(多个)
      */
-    @Override
+</#if>
     public ResponseModel[] counts(final RequestModel[] requestModels){
         ResponseModel[] rms = new ResponseModel[requestModels.length];
         for (int i = 0; i < requestModels.length; i++) {
@@ -714,22 +731,24 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return rms;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 查询数量
      */
-    @Override
+</#if>
     public long count(final List<Map> q){
         ${entityName}${gen.queryPostfix} query  = new ${entityName}${gen.queryPostfix}();
         return bs.gen${entityName}${gen.managerPostfix}.count(query);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 分页查询
      *
      * @param query
      * @return
      */
-    @Override
+</#if>
     public DataPage findPage(final ${entityName}${gen.queryPostfix} query) {
         DataPage page = bs.gen${entityName}${gen.managerPostfix}.findPage(query);
         List<${entityName}${gen.poPostfix}> data = page.getData();
@@ -742,10 +761,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return page;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 分页查询
      */
-    @Override
+</#if>
     public DataPage findPage(final RequestModel requestModel) {
         DataPage page = bs.gen${entityName}${gen.managerPostfix}.findPage(createQuery(requestModel, true));
         List<${entityName}${gen.poPostfix}> data = page.getData();
@@ -758,10 +778,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return page;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 分页查询
      */
-    @Override
+</#if>
     public ResponseModel findPageModel(final RequestModel requestModel) {
         DataPage page = findPage(requestModel);
         ResponseModel responseModel = ResponseModel.ok().setCode(0);
@@ -770,6 +791,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return responseModel;
     }
 
+    <#if (gen.showComment==true)>
     /**
      * 使用sql分页查询
      *
@@ -777,7 +799,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
      * @param params 防SQL注入参数
      * @return
      */
-    @Override
+    </#if>
     public DataPage findPageBySQL(final String sql, final Map<String,Object> params) {
         DataPage page = bs.gen${entityName}${gen.managerPostfix}.findPageBySQL(sql, params);
         List<${entityName}${gen.poPostfix}> data = page.getData();
@@ -790,10 +812,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return page;        
     }
 
+    <#if (gen.showComment==true)>
     /**
      * 根据条件查询单条数据,若没有则insert一条数据(where条件为等于)
      */
-    @Override
+    </#if>
     public ${entityName}${gen.poPostfix} findOrInsertByEqualWhere(final ${entityName}${gen.queryPostfix}.WhereItem... whereItems) {
         ${entityName}${gen.poPostfix} o = findOneByWhere(whereItems);
         if (null != o) {

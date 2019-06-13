@@ -3,9 +3,11 @@ package ${gen.modelPackage?replace("/",".")};
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
+<#if (gen.showComment==true)>
 /**
  * ResponseModel
  */
+</#if>
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseModel {
 

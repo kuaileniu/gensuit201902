@@ -3,32 +3,46 @@ package ${gen.modelPackage?replace("/",".")};
 import java.util.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
+<#if (gen.showComment==true)>
 /**
  * Http请求返回统一格式
  */
+</#if>
 @JsonIgnoreProperties
 public class Response {
 
+<#if (gen.showComment==true)>
     // 内容正确
+</#if>
     public static final Integer SUCCESS = 0;
 
+<#if (gen.showComment==true)>
     //非法参数
+</#if>
     public static final Integer ERROR=1;
 
+<#if (gen.showComment==true)>
     //数据校验错误，但前端不要拦截
+</#if>
     public static final Integer ERROR_NO_INTERCEPT=2;
 
     public static final String WrongParamMsg = "非法参数";
 
+<#if (gen.showComment==true)>
     //当异常时返回的消息
+</#if>
     private String msg;
-
+<#if (gen.showComment==true)>
     // 异常 失败(放到HttpHeader中)
+</#if>
     //public static final Integer ERROR = 500;
+<#if (gen.showComment==true)>
     //状态
+</#if>
     private Integer status;
+<#if (gen.showComment==true)>
     //返回数据
+</#if>
     private List<ResponseModel> data = new ArrayList<>();
 
 

@@ -6,9 +6,11 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
 
+<#if (gen.showComment==true)>
 /**
  * RequestModel
  */
+</#if>
 public class RequestModel {
 
     <#--/**-->

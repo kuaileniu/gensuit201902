@@ -2,9 +2,11 @@ package ${gen.modelPackage?replace("/",".")};
 
 import java.io.Serializable;
 
+<#if (gen.showComment==true)>
 /**
  * 用户在线的分布式session
  */
+</#if>
 public class Session implements Serializable {
    //  private static final long serialVersionUID = 0L;
 
@@ -87,12 +89,14 @@ public class Session implements Serializable {
         return this;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 设置登录状态
      *
      * @param loginStatus
      * @return
      */
+</#if>
     public Session setLoginStatus(LoginStatus loginStatus) {
         this.loginStatus = loginStatus;
         if (LoginStatus.Logged == loginStatus) {
@@ -104,12 +108,14 @@ public class Session implements Serializable {
         return this;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据失效时间检查登录状态
      *
      * @param expirySecond 失效时间,秒
      * @return
      */
+</#if>
     public LoginStatus checkLoginStatus(int expirySecond) {
         long cha = System.currentTimeMillis() - checkLoggedLastTime;
         if (LoginStatus.Logged == loginStatus && cha < expirySecond * 1000) {
@@ -123,15 +129,23 @@ public class Session implements Serializable {
         }
     }
 
+<#if (gen.showComment==true)>
     /**
      * 登录状态枚举
      */
+</#if>
     public static enum LoginStatus {
+    <#if (gen.showComment==true)>
         //未登录
+    </#if>
         NotLogin((byte) 1),
+    <#if (gen.showComment==true)>
         //已经登录
+    </#if>
         Logged((byte) 2),
+    <#if (gen.showComment==true)>
         //锁定
+    </#if>
         Locked((byte) 3);
 
         private byte code;
