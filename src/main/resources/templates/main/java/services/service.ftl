@@ -90,6 +90,7 @@ public interface Gen${entityName}${gen.servicePostfix} {
         </#if>
     </#list>
 </#if>
+
     <#if (gen.showComment==true)>
     /**
      * 根据主键删除
@@ -126,6 +127,7 @@ public interface Gen${entityName}${gen.servicePostfix} {
     <#list info.po.keyList as propertyNameType>
         <#if propertyNameType_index==0>
             <#list propertyNameType?keys as propertyName>
+
                 <#if (gen.showComment==true)>
     /**
      * 根据主键删除
@@ -140,6 +142,7 @@ public interface Gen${entityName}${gen.servicePostfix} {
     <#list info.po.keyList as propertyNameType>
         <#if propertyNameType_index==0 >
             <#list propertyNameType?keys as propertyName>
+
                 <#if (gen.showComment==true)>
     /**
      * 根据主键删除
@@ -150,6 +153,7 @@ public interface Gen${entityName}${gen.servicePostfix} {
     </#if>
 </#list>
 </#if>
+
 <#if (gen.showComment==true)>
     /**
      * 根据条件删除
