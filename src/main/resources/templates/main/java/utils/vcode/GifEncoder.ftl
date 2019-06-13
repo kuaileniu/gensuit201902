@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+<#if (gen.showComment==true)>
 /**
  * Class AnimatedGifEncoder - Encodes a GIF file consisting of one or more
  * frames.
@@ -30,6 +31,7 @@ import java.io.OutputStream;
  * the associated Encoder class. Please forward any corrections to questions at
  * fmsware.com.
  */
+</#if>
 public class GifEncoder {
 	protected int width; // image size
 	protected int height;

@@ -11,11 +11,13 @@ import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
 
+<#if (gen.showComment==true)>
 /**
  * <p>
  * png格式验证码
  * </p>
  */
+</#if>
 public class SpecCaptcha extends Captcha {
 	public SpecCaptcha() {
 	}
@@ -35,17 +37,20 @@ public class SpecCaptcha extends Captcha {
 		this.font = font;
 	}
 
+<#if (gen.showComment==true)>
 	/**
 	 * 生成验证码
 	 * 
 	 * @throws java.io.IOException
 	 *             IO异常
 	 */
+</#if>
 	@Override
 	public void out(OutputStream out) {
 		graphicsImage(alphas(), out);
 	}
 
+<#if (gen.showComment==true)>
 	/**
 	 * 画随机码图
 	 * 
@@ -54,6 +59,7 @@ public class SpecCaptcha extends Captcha {
 	 * @param out
 	 *            输出流
 	 */
+</#if>
 	private boolean graphicsImage(char[] strs, OutputStream out) {
 		boolean ok = false;
 		try {
@@ -64,20 +70,33 @@ public class SpecCaptcha extends Captcha {
 			int len = strs.length;
 			g.setColor(Color.WHITE);
 			g.fillRect(0, 0, width, height);
+<#if (gen.showComment==true)>
 			// 随机画干扰的蛋蛋
+</#if>
 			for (int i = 0; i < 15; i++) {
 				color = color(150, 250);
 				g.setColor(color);
-				g.drawOval(num(width), num(height), 5 + num(10), 5 + num(10));// 画蛋蛋，有蛋的生活才精彩
+<#if (gen.showComment==true)>
+// 画蛋蛋，有蛋的生活才精彩
+</#if>
+				g.drawOval(num(width), num(height), 5 + num(10), 5 + num(10));
 				color = null;
 			}
 			g.setFont(font);
 			int h = height - ((height - font.getSize()) >> 1), w = width / len, size = w - font.getSize() + 1;
+<#if (gen.showComment==true)>
 			/* 画字符串 */
+</#if>
 			for (int i = 0; i < len; i++) {
-				ac3 = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);// 指定透明度
+<#if (gen.showComment==true)>
+				// 指定透明度
+</#if>
+				ac3 = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 				g.setComposite(ac3);
-				color = new Color(20 + num(110), 20 + num(110), 20 + num(110));// 对每个字符都用随机颜色
+<#if (gen.showComment==true)>
+// 对每个字符都用随机颜色
+</#if>
+				color = new Color(20 + num(110), 20 + num(110), 20 + num(110));
 				g.setColor(color);
 				g.drawString(strs[i] + "", (width - (len - i) * w) + size, h - 4);
 				color = null;

@@ -22,10 +22,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     private  Logger log = LoggerFactory.getLogger(this.getClass());
     @Autowired private BaseService bs;
 
+<#if (gen.showComment==true)>
     /**
      * 增加
      */
-    @Override
+</#if>
     public ResponseModel add(final ${entityName}${gen.poPostfix}... os) {
         for (${entityName}${gen.poPostfix} o : os) {
             <@setUnionId obj="o"/>
@@ -46,9 +47,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(0);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 增加
      */
+</#if>
     @Override
     public ResponseModel addWithOutNull(final ${entityName}${gen.poPostfix}... os) {
         for (${entityName}${gen.poPostfix} o : os) {
@@ -69,9 +72,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(0);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 增加
      */
+</#if>
     @Override
     public ResponseModel addWithOutBlank(final ${entityName}${gen.poPostfix}... os) {
         for (${entityName}${gen.poPostfix} o : os) {
@@ -92,9 +97,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(0);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 增加
      */
+</#if>
     @Override
     public ResponseModel add(final Collection<${entityName}${gen.poPostfix}> os) {
         for (${entityName}${gen.poPostfix} o : os) {
@@ -116,9 +123,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(0);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 增加
      */
+</#if>
     @Override
     public ResponseModel addWithOutNull(final Collection<${entityName}${gen.poPostfix}> os) {
         for (${entityName}${gen.poPostfix} o : os) {
@@ -139,10 +148,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(0);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 使用给定的Where查询，若查询不到则增加一条记录
      */
-    @Override
+</#if>
     public boolean addIfAbsentByWhere(final ${entityName}${gen.poPostfix} o, final ${entityName}${gen.queryPostfix}.WhereItem whereItem) {
         ${entityName}${gen.poPostfix} oo = findOneByWhere(whereItem);
         if (null != oo) {
@@ -152,9 +162,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return true;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件查询，若查询不到则增加一条记录
      */
+</#if>
     @Override
     public ResponseModel addIfAbsentByQuery(final ${entityName}${gen.poPostfix} o, final ${entityName}${gen.queryPostfix} query) {
         long num = count(query);
@@ -167,9 +179,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     <#list javaCollection.getAnnotationByName("Mine") as POproperty>
         <#if POproperty.po.entityName=="${entityName}">
 
+<#if (gen.showComment==true)>
     /**
      * 增加自己的
      */
+</#if>
     @Override
     public boolean addMine(final ${entityName}${gen.poPostfix}... os) {
         for (${entityName}${gen.poPostfix} o : os) {
@@ -191,9 +205,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     <#list javaCollection.getAnnotationByName("Mine") as POproperty>
         <#if POproperty.po.entityName=="${entityName}">
 
+<#if (gen.showComment==true)>
     /**
      * 增加自己的
      */
+</#if>
     @Override
     public boolean addMine(final Collection<${entityName}${gen.poPostfix}> os) {
         for (${entityName}${gen.poPostfix} o : os) {
@@ -212,10 +228,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
 </#if>
 
 <#if ( info.po.keyList?size> 0 ) >
+    <#if (gen.showComment==true)>
     /**
      * 根据主键删除
      */
-    @Override
+    </#if>
     public ResponseModel delByIdObj(final ${entityName}${gen.poPostfix}... os) {
         ${entityName}${gen.removePostfix} where = new ${entityName}${gen.removePostfix}();
         List idList = new ArrayList<>();
@@ -232,10 +249,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     <#list javaCollection.getAnnotationByName("Mine") as POproperty>
         <#if POproperty.po.entityName=="${entityName}">
             <#if ( info.po.keyList?size> 0 ) >
+<#if (gen.showComment==true)>
     /**
      * 根据主键删除自己的
      */
-    @Override
+</#if>
     public boolean delMineByIdObj(final ${entityName}${gen.poPostfix}... os) {
         ${entityName}${gen.removePostfix} where = new ${entityName}${gen.removePostfix}();
         List idList = new ArrayList<>();
@@ -254,10 +272,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
 </#if>
 
 <#if ( info.po.keyList?size == 1 ) >
+    <#if (gen.showComment==true)>
     /**
      * 根据主键删除
      */
-    @Override
+    </#if>
     public boolean delByIdObj(final Collection<${entityName}${gen.poPostfix}> os) {
         ${entityName}${gen.removePostfix} where = new ${entityName}${gen.removePostfix}();
         List idList = new ArrayList<>();
@@ -273,11 +292,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     <#list info.po.keyList as propertyNameType>
         <#if propertyNameType_index==0>
             <#list propertyNameType?keys as propertyName>
-
+    <#if (gen.showComment==true)>
     /**
      * 根据主键删除
      */
-    @Override
+    </#if>
     public ResponseModel delById(final ${propertyNameType[propertyName]}... os) {
         ${entityName}${gen.removePostfix} where = new ${entityName}${gen.removePostfix}();
         where.WHERE(${entityName}${gen.removePostfix}.COLUMN.<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyName}</#list><#break></#list>, WhereRelate.In, os);
@@ -292,11 +311,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     <#list info.po.keyList as propertyNameType>
         <#if propertyNameType_index==0 >
             <#list propertyNameType?keys as propertyName>
-
+    <#if (gen.showComment==true)>
     /**
      * 根据主键删除
      */
-    @Override
+    </#if>
     public ResponseModel delById(final Collection<${propertyNameType[propertyName]}> os) {
         ${entityName}${gen.removePostfix} where = new ${entityName}${gen.removePostfix}();
         where.WHERE(${entityName}${gen.removePostfix}.COLUMN.<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyName}</#list><#break></#list>, WhereRelate.In, os);
@@ -308,10 +327,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
 </#list>
 </#if>
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件删除
      */
-    @Override
+</#if>
     public ResponseModel del(final ${entityName}${gen.removePostfix} where) {
         boolean success = bs.gen${entityName}${gen.managerPostfix}.del(where);
         if (success) {
@@ -320,10 +340,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(1);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件修改,空值的不设置
      */
-    @Override
+</#if>
     public ResponseModel modifyWithOutNull(final ${entityName}${gen.poPostfix} o, final ${entityName}${gen.modifyPostfix} where) {
         int num = bs.gen${entityName}${gen.managerPostfix}.modifyWithOutNull(o, where);
         if (num > 0) {
@@ -332,10 +353,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(1);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件修改，空值的亦设置
      */
-    @Override
+</#if>
     public ResponseModel modify(final ${entityName}${gen.poPostfix} o, final ${entityName}${gen.modifyPostfix} where) {
         int num = bs.gen${entityName}${gen.managerPostfix}.modify(o, where);
         if (num > 0) {
@@ -344,10 +366,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(1);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件修改，修改指定的字段
      */
-    @Override
+</#if>
     public ResponseModel modifyProperty(final ${entityName}${gen.modifyPostfix} property) {
         int num = bs.gen${entityName}${gen.managerPostfix}.modifyColumn(property);
         if (num > 0) {
@@ -356,10 +379,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(1);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件修改，修改指定的字段,值为null的不修改
      */
-    @Override
+</#if>
     public ResponseModel modifyPropertyWithOutNull(final ${entityName}${gen.modifyPostfix} property) {
         int num = bs.gen${entityName}${gen.managerPostfix}.modifyColumnWithOutNull(property);
         if (num > 0) {
@@ -368,10 +392,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(1);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据条件修改，修改指定的字段,值为null、""、"   "的不修改
      */
-    @Override
+</#if>
     public ResponseModel modifyPropertyWithOutBlank(final ${entityName}${gen.modifyPostfix} property) {
         int num = bs.gen${entityName}${gen.managerPostfix}.modifyColumnWithOutBlank(property);
         if (num > 0) {
@@ -380,9 +405,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         return ResponseModel.ok().setCode(1);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 根据主键修改,空值的不设置
      */
+</#if>
     @Override
     public ResponseModel modifyWithOutNullByKey(final ${entityName}${gen.poPostfix} o) {
         boolean success = bs.gen${entityName}${gen.managerPostfix}.modifyWithOutNullByKey(o);

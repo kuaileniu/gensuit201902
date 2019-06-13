@@ -14,6 +14,7 @@ import java.util.Map;
 public class ZWordUtil {
     private static Logger log = LoggerFactory.getLogger(ZWordUtil.class);
 
+<#if (gen.showComment==true)>
     /**
      * 导出word
      * <p>第一步生成替换后的word文件，只支持docx</p>
@@ -26,6 +27,7 @@ public class ZWordUtil {
      * @param request      HttpServletRequest
      * @param response     HttpServletResponse
      */
+</#if>
     public static void exportWord(String templatePath, String fileName, Map<String, Object> params, HttpServletRequest request, HttpServletResponse response) {
         if (fileName == null) {
             fileName = System.currentTimeMillis() + ".docx";
@@ -38,9 +40,13 @@ public class ZWordUtil {
                 fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
             }
             XWPFDocument doc = WordExportUtil.exportWord07(templatePath, params);
+<#if (gen.showComment==true)>
             // 设置强制下载不打开
+</#if>
             response.setContentType("application/force-download");
+<#if (gen.showComment==true)>
             // 设置文件名
+</#if>
             response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);
             OutputStream out = response.getOutputStream();
             doc.write(out);

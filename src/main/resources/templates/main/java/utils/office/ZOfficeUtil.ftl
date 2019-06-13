@@ -21,6 +21,7 @@ import java.util.Map;
 public class ZOfficeUtil {
     private static Logger log = LoggerFactory.getLogger(ZOfficeUtil.class);
 
+<#if (gen.showComment==true)>
     /**
      * 导出word
      * <p>第一步生成替换后的word文件，只支持docx</p>
@@ -33,6 +34,7 @@ public class ZOfficeUtil {
      * @param request          HttpServletRequest
      * @param response         HttpServletResponse
      */
+</#if>
     public static boolean exportWord07(String templatePathName, String outFileName, Map<String, Object> params, HttpServletRequest request, HttpServletResponse response) {
         if (outFileName == null) {
             outFileName = System.currentTimeMillis() + ".docx";
@@ -45,9 +47,13 @@ public class ZOfficeUtil {
                 outFileName = new String(outFileName.getBytes("UTF-8"), "ISO-8859-1");
             }
             XWPFDocument doc = WordExportUtil.exportWord07(templatePathName, params);
+<#if (gen.showComment==true)>
             // 设置强制下载不打开
+</#if>
             response.setContentType("application/force-download");
+<#if (gen.showComment==true)>
             // 设置文件名
+</#if>
             response.addHeader("Content-Disposition", "attachment;fileName=" + outFileName);
             OutputStream out = response.getOutputStream();
             doc.write(out);
@@ -87,12 +93,14 @@ public class ZOfficeUtil {
 
     }
 
+<#if (gen.showComment==true)>
     /**
      * @param templatePathName
      * @param outFileName
      * @param params
      * @return
      */
+</#if>
     public static boolean exportExcel07(String templatePathName, String outFileName, Map<String, Object> params, HttpServletRequest request, HttpServletResponse response) {
         if (outFileName == null) {
             outFileName = System.currentTimeMillis() + ".xlsx";
@@ -106,9 +114,13 @@ public class ZOfficeUtil {
             }
             TemplateExportParams tpl = new TemplateExportParams(templatePathName);
             Workbook workbook = ExcelExportUtil.exportExcel(tpl, params);
+<#if (gen.showComment==true)>
             // 设置强制下载不打开
+</#if>
             response.setContentType("application/force-download");
+<#if (gen.showComment==true)>
             // 设置文件名
+</#if>
             response.addHeader("Content-Disposition", "attachment;fileName=" + outFileName);
             OutputStream out = response.getOutputStream();
 

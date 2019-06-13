@@ -9,11 +9,13 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 
+<#if (gen.showComment==true)>
 /**
  * <p>
  * Gif验证码类
  * </p>
  */
+</#if>
 public class GifCaptcha extends Captcha {
 	public GifCaptcha() {
 	}
@@ -36,8 +38,13 @@ public class GifCaptcha extends Captcha {
 	@Override
 	public void out(OutputStream os) {
 		try {
-			GifEncoder gifEncoder = new GifEncoder(); // gif编码类，这个利用了洋人写的编码类，所有类都在附件中
+<#if (gen.showComment==true)>
+            // gif编码类，这个利用了洋人写的编码类，所有类都在附件中
+</#if>
+			GifEncoder gifEncoder = new GifEncoder();
+<#if (gen.showComment==true)>
 			// 生成字符
+</#if>
 			gifEncoder.start(os);
 			gifEncoder.setQuality(180);
 			gifEncoder.setDelay(100);
@@ -65,6 +72,7 @@ public class GifCaptcha extends Captcha {
 
 	}
 
+<#if (gen.showComment==true)>
 	/**
 	 * 画随机码图
 	 * 
@@ -76,12 +84,17 @@ public class GifCaptcha extends Captcha {
 	 *            透明度使用
 	 * @return BufferedImage
 	 */
+</#if>
 	private BufferedImage graphicsImage(Color[] fontcolor, char[] strs, int flag) {
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+<#if (gen.showComment==true)>
 		// 或得图形上下文
+</#if>
 		// Graphics2D g2d=image.createGraphics();
 		Graphics2D g2d = (Graphics2D) image.getGraphics();
+<#if (gen.showComment==true)>
 		// 利用指定颜色填充背景
+</#if>
 		g2d.setColor(Color.WHITE);
 		g2d.fillRect(0, 0, width, height);
 		AlphaComposite ac3;
@@ -99,11 +112,13 @@ public class GifCaptcha extends Captcha {
 		return image;
 	}
 
+<#if (gen.showComment==true)>
 	/**
 	 * 获取透明度,从0到1,自动计算步长
 	 * 
 	 * @return float 透明度
 	 */
+</#if>
 	private float getAlpha(int i, int j) {
 		int num = i + j;
 		float r = (float) 1 / len, s = (len + 1) * r;

@@ -231,7 +231,7 @@ public class ByteUtil {
      * @param num
      * @return
      */
-<#if (gen.showComment==true)>
+</#if>
     public static byte[] intToByte32(int num) {
         byte[] arr = new byte[32];
         for (int i = 31; i >= 0; i--) {
