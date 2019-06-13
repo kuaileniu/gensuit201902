@@ -24,7 +24,9 @@ import java.io.UnsupportedEncodingException;
 public class JWTUtil {
 
     private static Logger log = LoggerFactory.getLogger(JWTUtil.class);
+<#if (gen.showComment==true)>
     // 过期时间 24 小时
+</#if>
     public static final long EXPIRE_TIME = 60 * 24 * 60 * 1000;
     public static final String SECRET_KEY = "?::4343fdf4fdf6cvf):";
 
@@ -78,10 +80,11 @@ public class JWTUtil {
         <#--return jwtBuilder.compact();-->
     <#--}-->
 
-
+<#if (gen.showComment==true)>
     /**
      * 解析JWT的Payload
      */
+</#if>
     public static String parseJwtPayload(String jwt) {
         Assert.hasText(jwt, "JWT String argument cannot be null or empty.");
         String base64UrlEncodedHeader = null;
@@ -116,7 +119,9 @@ public class JWTUtil {
         if (base64UrlEncodedPayload == null) {
             throw new MalformedJwtException("JWT string '" + jwt + "' is missing a body/payload.");
         }
+<#if (gen.showComment==true)>
         // =============== Header =================
+</#if>
         Header header = null;
         CompressionCodec compressionCodec = null;
         if (base64UrlEncodedHeader != null) {
@@ -129,7 +134,9 @@ public class JWTUtil {
             }
             compressionCodec = CODECRESOLVER.resolveCompressionCodec(header);
         }
+<#if (gen.showComment==true)>
         // =============== Body =================
+</#if>
         String payload;
         if (compressionCodec != null) {
             byte[] decompressed = compressionCodec.decompress(TextCodec.BASE64URL.decode(base64UrlEncodedPayload));
@@ -161,42 +168,55 @@ public class JWTUtil {
         <#--return jwtAccount;-->
     <#--}-->
 
+<#if (gen.showComment==true)>
     /**
      * 生成 token, 24小时后过期
      * @param username 用户名
      * @return 加密的token
      */
+</#if>
     public static String createToken(String username) {
         try {
             Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
             Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
+<#if (gen.showComment==true)>
             // 附带username信息
+</#if>
             return JWT.create()
                     .withClaim("username", username)
+<#if (gen.showComment==true)>
                     //到期时间
+</#if>
                     .withExpiresAt(date)
+<#if (gen.showComment==true)>
                     //创建一个新的JWT，并使用给定的算法进行标记
+</#if>
                     .sign(algorithm);
         } catch (UnsupportedEncodingException e) {
             return null;
         }
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * 校验 token 是否正确
      * @param token    密钥
      * @param username 用户名
      * @return 是否正确
      */
+</#if>
     public static boolean verify(String token, String username) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
+<#if (gen.showComment==true)>
             //在token中附带了username信息
+</#if>
             JWTVerifier verifier = JWT.require(algorithm)
                     .withClaim("username", username)
                     .build();
+<#if (gen.showComment==true)>
             //验证 token
+</#if>
             verifier.verify(token);
             return true;
         } catch (Exception exception) {
@@ -204,12 +224,13 @@ public class JWTUtil {
         }
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * 获得token中的信息，无需secret解密也能获得
      *
      * @return token中包含的用户名
      */
+</#if>
     public static String getUsername(String token) {
         try {
             DecodedJWT jwt = JWT.decode(token);
@@ -221,7 +242,9 @@ public class JWTUtil {
 
     public static class Claim{
         public String name;
+<#if (gen.showComment==true)>
         // TODO, val类型只能是 int,long,string date,boolean double
+</#if>
         public String val;
     }
 //    public static void main(String[] args) {

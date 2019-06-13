@@ -77,7 +77,7 @@ zhsit:
   # 是否使用redis
     useRedis: true
   # 是否使用alain
-#    useAlain: true
+  #    useAlain: true
   # 是否生成工作流
     workflow: true
   # 是否生成数据库中所有的表
@@ -85,7 +85,7 @@ zhsit:
   # 是否生成测试类
     createTest: true
   # 是否显示注释
-    showComment: true
+    showComment: false
   # ServerApplication路径
     serverApplicationPackage: cn/zhsit/cypaodm
   # 包的根路径

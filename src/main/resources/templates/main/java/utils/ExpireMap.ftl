@@ -3,15 +3,19 @@ package ${gen.utilPackage?replace("/",".")};
 
 import java.util.*;
 
+<#if (gen.showComment==true)>
 /**
  * 带有效期map 简单实现 实现了基本的方法
  */
+</#if>
 public class ExpireMap<K, V> extends HashMap<K, V> {
     private static final long serialVersionUID = 1L;
 
+<#if (gen.showComment==true)>
     /**
      * default expire time 100年
      */
+</#if>
     private long EXPIRE = 1000 * 60 * 60 * 24 * 365 * 100;
 
     private HashMap<K, Long> expireMap = new HashMap<>();
@@ -38,12 +42,14 @@ public class ExpireMap<K, V> extends HashMap<K, V> {
         return !checkExpiry(key, true) && super.containsKey(key);
     }
 
+<#if (gen.showComment==true)>
     /**
      * @param key
      * @param value
      * @param expireTime 键值对有效期 毫秒
      * @return
      */
+</#if>
     public V put(K key, V value, long expireTime) {
         expireMap.put(key, System.currentTimeMillis() + expireTime);
         return super.put(key, value);
@@ -96,11 +102,13 @@ public class ExpireMap<K, V> extends HashMap<K, V> {
         return super.get(key);
     }
 
+<#if (gen.showComment==true)>
     /**
      * @param key
      * @return null:不存在或key为null -1:过期  存在且没过期返回value 因为过期的不是实时删除，所以稍微有点作用
      * @Description: 是否过期
      */
+</#if>
     public Object isInvalid(Object key) {
         if (key == null) {
             return null;
@@ -140,11 +148,13 @@ public class ExpireMap<K, V> extends HashMap<K, V> {
         return set;
     }
 
+<#if (gen.showComment==true)>
     /**
      * @param isRemoveSuper true super删除
      * @return
      * @Description: 是否过期
      */
+</#if>
     private boolean checkExpiry(Object key, boolean isRemoveSuper) {
         if (!expireMap.containsKey(key)) {
             return Boolean.FALSE;

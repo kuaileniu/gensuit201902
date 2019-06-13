@@ -9,9 +9,11 @@ import java.util.Date;
 import java.util.regex.Pattern;
 import ${gen.enumPackage?replace("/",".")}.Province;
 
+<#if (gen.showComment==true)>
 /**
  * 校验工具
  */
+</#if>
 public class ValidateUtils {
 
     private static Logger log = LoggerFactory.getLogger(ValidateUtils.class);

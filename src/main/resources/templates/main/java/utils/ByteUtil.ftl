@@ -2,31 +2,36 @@ package ${gen.utilPackage?replace("/",".")};
 
 
 public class ByteUtil {
+<#if (gen.showComment==true)>
 //    一个16进制数有两个字节组成，例如：A9。
 //    高字节就是指16进制数的前8位（权重高的8位），如上例中的A。
 //    低字节就是指16进制数的后8位（权重低的8位），如上例中的9。
 //Little endian：将低序字节存储在起始地址
 //Big endian：将高序字节存储在起始地址
+</#if>
 
-
+<#if (gen.showComment==true)>
     /**
      * 高低字节转换器
      *
      * @param bte
      * @return
      */
+</#if>
     public static byte convertHL(byte bte) {
         int high = ((bte & 0xf0) >> 4);
         int low = (bte & 0x0f) << 4;
         return (byte) (high + low);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 高低字节转换器
      *
      * @param bytes
      * @return
      */
+</#if>
     public static byte[] convertHL(byte[] bytes) {
         byte[] back = new byte[bytes.length];
         for (int i = 0; i < bytes.length; i++) {
@@ -35,25 +40,35 @@ public class ByteUtil {
         return back;
     }
 
-
-    public static int getHeight4(byte bte) {//获取高四位
+<#if (gen.showComment==true)>
+//获取高四位
+</#if>
+    public static int getHeight4(byte bte) {
         return ((bte & 0xF0) >> 4);
     }
 
-    public static int getLow4(byte bte) {//获取低四位
+<#if (gen.showComment==true)>
+//获取低四位
+</#if>
+    public static int getLow4(byte bte) {
         return (bte & 0x0F);
     }
 
+<#if (gen.showComment==true)>
     //获取高八位
+</#if>
     public static int getHeight8(int bte) {
         return ((bte & 0xFF00) >> 8);
     }
 
+<#if (gen.showComment==true)>
     //获取低八位
+</#if>
     public static int getLow8(int bte) {
         return (bte & 0xFF);
     }
 
+<#if (gen.showComment==true)>
     /**
      * java为Big Endian字节序
      * 低地址 ------> 高地址
@@ -62,6 +77,7 @@ public class ByteUtil {
      * @param bytes
      * @return
      */
+</#if>
     public static int bytes4ToInt(byte[] bytes) {
         int num = bytes[3] & 0xFF;
         num |= ((bytes[2] << 8) & 0xFF00);
@@ -102,12 +118,14 @@ public class ByteUtil {
 //
 //    }
 
+<#if (gen.showComment==true)>
     /**
      * 将不定长byte数组转换成int值
      *
      * @param bytes
      * @return
      */
+</#if>
     public static int bytesNToInt(byte[] bytes) {
         int length = bytes.length;
         switch (length) {
@@ -123,6 +141,7 @@ public class ByteUtil {
         return bytes4ToInt(bytes);
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将32位int转换为由1个8位byte数字.
@@ -131,6 +150,7 @@ public class ByteUtil {
      * @param sum
      * @return
      */
+</#if>
     public static byte intToByte(int sum) {
         byte bte = (byte) (sum & 0xFF);
         return bte;
@@ -150,6 +170,7 @@ public class ByteUtil {
 //        return arr;
 //    }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将32位int转换为由2个8位byte数字.
@@ -158,6 +179,7 @@ public class ByteUtil {
      * @param sum
      * @return
      */
+</#if>
     public static byte[] intToByte2(int sum) {
         byte[] arr = new byte[2];
         arr[0] = (byte) (sum >> 8);
@@ -179,6 +201,7 @@ public class ByteUtil {
         return arr;
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将32位int转换为由四个8位byte数字.
@@ -187,6 +210,7 @@ public class ByteUtil {
      * @param sum
      * @return
      */
+</#if>
     public static byte[] intToByte4(int sum) {
         byte[] arr = new byte[4];
         arr[0] = (byte) (sum >> 24);
@@ -196,6 +220,7 @@ public class ByteUtil {
         return arr;
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将int转换为32位byte.
@@ -206,12 +231,17 @@ public class ByteUtil {
      * @param num
      * @return
      */
+<#if (gen.showComment==true)>
     public static byte[] intToByte32(int num) {
         byte[] arr = new byte[32];
         for (int i = 31; i >= 0; i--) {
+    <#if (gen.showComment==true)>
             // &1 也可以改为num&0x01,表示取最地位数字.
+    </#if>
             arr[i] = (byte) (num & 1);
+    <#if (gen.showComment==true)>
             // 右移一位.
+    </#if>
             num >>= 1;
         }
         return arr;
@@ -221,6 +251,7 @@ public class ByteUtil {
         return data & 0xFF;
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将4个byte数字组成的数组合并为一个float数.
@@ -229,6 +260,7 @@ public class ByteUtil {
      * @param arr
      * @return
      */
+</#if>
     public static float byte4ToFloat(byte[] arr) {
         if (arr == null || arr.length != 4) {
             throw new IllegalArgumentException("byte数组必须不为空,并且是4位!");
@@ -237,6 +269,7 @@ public class ByteUtil {
         return Float.intBitsToFloat(i);
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将一个float数字转换为4个byte数字组成的数组.
@@ -245,11 +278,13 @@ public class ByteUtil {
      * @param f
      * @return
      */
+</#if>
     public static byte[] floatToByte4(float f) {
         int i = Float.floatToIntBits(f);
         return intToByte4(i);
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将八个byte数字组成的数组转换为一个double数字.
@@ -258,6 +293,7 @@ public class ByteUtil {
      * @param arr
      * @return
      */
+</#if>
     public static double byte8ToDouble(byte[] arr) {
         if (arr == null || arr.length != 8) {
             throw new IllegalArgumentException("byte数组必须不为空,并且是8位!");
@@ -266,6 +302,7 @@ public class ByteUtil {
         return Double.longBitsToDouble(l);
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将一个double数字转换为8个byte数字组成的数组.
@@ -274,11 +311,13 @@ public class ByteUtil {
      * @param i
      * @return
      */
+</#if>
     public static byte[] doubleToByte8(double i) {
         long j = Double.doubleToLongBits(i);
         return longToByte8(j);
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将一个char字符转换为两个byte数字转换为的数组.
@@ -287,6 +326,7 @@ public class ByteUtil {
      * @param c
      * @return
      */
+</#if>
     public static byte[] charToByte2(char c) {
         byte[] arr = new byte[2];
         arr[0] = (byte) (c >> 8);
@@ -294,6 +334,7 @@ public class ByteUtil {
         return arr;
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将2个byte数字组成的数组转换为一个char字符.
@@ -302,6 +343,7 @@ public class ByteUtil {
      * @param arr
      * @return
      */
+</#if>
     public static char byte2ToChar(byte[] arr) {
         if (arr == null || arr.length != 2) {
             throw new IllegalArgumentException("byte数组必须不为空,并且是2位!");
@@ -309,6 +351,7 @@ public class ByteUtil {
         return (char) (((char) (arr[0] << 8)) | ((char) arr[1]));
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将一个16位的short转换为长度为2的8位byte数组.
@@ -317,6 +360,7 @@ public class ByteUtil {
      * @param s
      * @return
      */
+</#if>
     public static byte[] shortToByte2(Short s) {
         byte[] arr = new byte[2];
         arr[0] = (byte) (s >> 8);
@@ -324,6 +368,7 @@ public class ByteUtil {
         return arr;
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 长度为2的8位byte数组转换为一个16位short数字.
@@ -332,6 +377,7 @@ public class ByteUtil {
      * @param arr
      * @return
      */
+</#if>
     public static short byte2ToShort(byte[] arr) {
         if (arr != null && arr.length != 2) {
             throw new IllegalArgumentException("byte数组必须不为空,并且是2位!");
@@ -339,6 +385,7 @@ public class ByteUtil {
         return (short) (((short) arr[0] << 8) | ((short) arr[1] & 0xFF));
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将short转换为长度为16的byte数组.
@@ -349,6 +396,7 @@ public class ByteUtil {
      * @param s
      * @return
      */
+</#if>
     public static byte[] shortToByte16(short s) {
         byte[] arr = new byte[16];
         for (int i = 15; i >= 0; i--) {
@@ -369,7 +417,7 @@ public class ByteUtil {
         return sum;
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将长度为4的8位byte数组转换为32位int.
@@ -378,6 +426,7 @@ public class ByteUtil {
      * @param arr
      * @return
      */
+</#if>
     public static int byte4ToInt(byte[] arr) {
         if (arr == null || arr.length != 4) {
             throw new IllegalArgumentException("byte数组必须不为空,并且是4位!");
@@ -385,7 +434,9 @@ public class ByteUtil {
         return (int) (((arr[0] & 0xFF) << 24) | ((arr[1] & 0xFF) << 16) | ((arr[2] & 0xFF) << 8) | ((arr[3] & 0xFF)));
     }
 
+<#if (gen.showComment==true)>
     //arr 大字节在前 Big endion
+</#if>
     public static int byte2ToInt(byte[] arr) {
         if (arr == null || arr.length != 2) {
             throw new IllegalArgumentException("byte数组必须不为空,并且是2位!");
@@ -393,6 +444,7 @@ public class ByteUtil {
         return (int) (((arr[0] & 0xFF) << 8) | ((arr[1] & 0xFF)));
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将长度为8的8位byte数组转换为64位long.
@@ -404,6 +456,7 @@ public class ByteUtil {
      * @param arr
      * @return
      */
+</#if>
     public static long byte8ToLong(byte[] arr) {
         if (arr == null || arr.length != 8) {
             throw new IllegalArgumentException("byte数组必须不为空,并且是8位!");
@@ -413,9 +466,11 @@ public class ByteUtil {
                 | ((long) (arr[5] & 0xFF) << 16) | ((long) (arr[6] & 0xFF) << 8) | ((long) (arr[7] & 0xFF)));
     }
 
+<#if (gen.showComment==true)>
     /**
      * 将一个long数字转换为8个byte数组组成的数组.
      */
+</#if>
     public static byte[] longToByte8(long sum) {
         byte[] arr = new byte[8];
         arr[0] = (byte) (sum >> 56);
@@ -429,7 +484,7 @@ public class ByteUtil {
         return arr;
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将长度为32的byte数组转换为一个int类型值.
@@ -439,6 +494,7 @@ public class ByteUtil {
      * @param arr
      * @return
      */
+</#if>
     public static int byte32ToInt(byte[] arr) {
         if (arr == null || arr.length != 32) {
             throw new IllegalArgumentException("byte数组必须不为空,并且长度是32!");
@@ -450,6 +506,7 @@ public class ByteUtil {
         return sum;
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将长度为64的byte数组转换为一个long类型值.
@@ -459,6 +516,7 @@ public class ByteUtil {
      * @param arr
      * @return
      */
+</#if>
     public static long byte64ToLong(byte[] arr) {
         if (arr == null || arr.length != 64) {
             throw new IllegalArgumentException("byte数组必须不为空,并且长度是64!");
@@ -470,6 +528,7 @@ public class ByteUtil {
         return sum;
     }
 
+<#if (gen.showComment==true)>
     /**
      * <pre>
      * 将一个long值转换为长度为64的8位byte数组.
@@ -479,6 +538,7 @@ public class ByteUtil {
      * @param sum
      * @return
      */
+</#if>
     public static byte[] longToByte64(long sum) {
         byte[] arr = new byte[64];
         for (int i = 63; i >= 0; i--) {
@@ -488,7 +548,7 @@ public class ByteUtil {
         return arr;
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * Convert byte[] to hex string.这里我们可以将byte转换成int，
      * 然后利用Integer.toHexString(int)来转换成16进制字符串。
@@ -496,6 +556,7 @@ public class ByteUtil {
      * @param bytes
      * @return
      */
+</#if>
     public static String bytesToHexString(byte[] bytes, int startIndexInclude, int endIndexExclude) {
         if (bytes == null || bytes.length <= 0) {
             return null;
@@ -520,13 +581,14 @@ public class ByteUtil {
         return stringBuilder.toString().toUpperCase();
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * Convert byte to hex string
      *
      * @param bte
      * @return
      */
+</#if>
     public static String byteToHexString(byte bte) {
         StringBuilder stringBuilder = new StringBuilder("0x");
         int v = bte & 0xFF;
@@ -539,13 +601,14 @@ public class ByteUtil {
         return stringBuilder.toString();
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * Convert hex string to byte[]
      *
      * @param hex the hex string
      * @return byte[]
      */
+</#if>
     public static byte[] hexStringToBytes(String hex) {
         if (hex == null || hex.equals("")) {
             return null;
@@ -561,13 +624,14 @@ public class ByteUtil {
         return d;
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * Convert char to byte
      *
      * @param c char
      * @return byte
      */
+</#if>
     private static byte charToByte(char c) {
         return (byte) "0123456789ABCDEF".indexOf(c);
     }

@@ -6,14 +6,17 @@ import java.lang.reflect.*;
 import java.io.*;
 import org.apache.commons.io.FileUtils;
 
+<#if (gen.showComment==true)>
 /**
  * Class 反射工具类
  */
+</#if>
 public class ClazzUtil {
 
     public final static String TestRootPath = new File("").getAbsolutePath() + File.separator + "src" + File.separator + "test" + File.separator + "java" + File.separator;
-
+<#if (gen.showComment==true)>
     // maven工程下的test路径
+</#if>
     public static String testSourcePath(Class clazz) {
         String packagePath = TestRootPath;
         String className = clazz.getName().toString();
@@ -21,21 +24,25 @@ public class ClazzUtil {
         packagePath += javaPath + File.separator;
         return packagePath;
     }
-
+<#if (gen.showComment==true)>
     //取来测试包下的源文件
+</#if>
     public static File fetchTestSourceFile(String fileName, Class clazz) {
         String path = testSourcePath(clazz);
         File file = new File(path + fileName);
         return file;
     }
 
+<#if (gen.showComment==true)>
     //根据json文件生成对象
+</#if>
     public static <T> T fromFile(String fileName, Class<T> reflectClass, Class positionClass) throws IOException {
         String json = FileUtils.readFileToString(ClazzUtil.fetchTestSourceFile(fileName, positionClass));
         return StringUtil.fromJson(json, reflectClass);
     }
-
+<#if (gen.showComment==true)>
     //根据json文件生成List列表
+</#if>
     //List<ZMenu> menuList =  ClazzUtil.listFromFile("menu.json",new TypeToken<List<ZMenu>>(){}.getType(),this.getClass());
     public static <T> List<T> listFromFile(String fileName,Type type, Class positionClass) throws IOException {
         String json = FileUtils.readFileToString(ClazzUtil.fetchTestSourceFile(fileName, positionClass));
@@ -54,7 +61,7 @@ public class ClazzUtil {
         return list;
     }
 
-    
+<#if (gen.showComment==true)>
     /**
      * 注意：只能设置本类属性的值
      *
@@ -62,6 +69,7 @@ public class ClazzUtil {
      * @param propertyName
      * @param newVal
      */
+</#if>
     public static void setFieldValue(Object obj, String propertyName, Object newVal) {
         Class clazz = obj.getClass();
         for (Field field : clazz.getDeclaredFields()) {
@@ -80,6 +88,7 @@ public class ClazzUtil {
         }
     }
 
+<#if (gen.showComment==true)>
     /**
      * 注意：只能获取本类、父类、爷级类属性的值,不能获取更高别类的属性值
      *
@@ -87,6 +96,7 @@ public class ClazzUtil {
      * @param propertyName
      * @return
      */
+</#if>
     public static Object getFieldValue(final Object obj, final String propertyName) {
         Class clazz = obj.getClass();
         {

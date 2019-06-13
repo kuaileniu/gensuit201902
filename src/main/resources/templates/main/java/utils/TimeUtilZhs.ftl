@@ -43,13 +43,21 @@ public class TimeUtilZhs {
 </#if>
     public static Date today000000() {
         Calendar calendar = Calendar.getInstance();
+<#if (gen.showComment==true)>
         // 时
+</#if>
         calendar.set(Calendar.HOUR_OF_DAY, 0);
+<#if (gen.showComment==true)>
         // 分
+</#if>
         calendar.set(Calendar.MINUTE, 0);
+<#if (gen.showComment==true)>
         // 秒
+</#if>
         calendar.set(Calendar.SECOND, 0);
+<#if (gen.showComment==true)>
         // 毫秒
+</#if>
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
     }
@@ -63,13 +71,21 @@ public class TimeUtilZhs {
     public static Date day000000(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
+<#if (gen.showComment==true)>
         // 时
+</#if>
         calendar.set(Calendar.HOUR_OF_DAY, 0);
+<#if (gen.showComment==true)>
         // 分
+</#if>
         calendar.set(Calendar.MINUTE, 0);
+<#if (gen.showComment==true)>
         // 秒
+</#if>
         calendar.set(Calendar.SECOND, 0);
+<#if (gen.showComment==true)>
         // 毫秒
+</#if>
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
     }
@@ -83,13 +99,21 @@ public class TimeUtilZhs {
     public static Date day235959(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
+<#if (gen.showComment==true)>
         // 时
+</#if>
         calendar.set(Calendar.HOUR_OF_DAY, 23);
+<#if (gen.showComment==true)>
         // 分
+</#if>
         calendar.set(Calendar.MINUTE, 59);
+<#if (gen.showComment==true)>
         // 秒
+</#if>
         calendar.set(Calendar.SECOND, 59);
+<#if (gen.showComment==true)>
         // 毫秒
+</#if>
         calendar.set(Calendar.MILLISECOND, 999);
         return calendar.getTime();
     }
@@ -104,13 +128,21 @@ public class TimeUtilZhs {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.DAY_OF_MONTH,1);
+<#if (gen.showComment==true)>
         // 时
+</#if>
         calendar.set(Calendar.HOUR_OF_DAY, 0);
+<#if (gen.showComment==true)>
         // 分
+</#if>
         calendar.set(Calendar.MINUTE, 0);
+<#if (gen.showComment==true)>
         // 秒
+</#if>
         calendar.set(Calendar.SECOND, 0);
+<#if (gen.showComment==true)>
         // 毫秒
+</#if>
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
     }
@@ -126,13 +158,21 @@ public class TimeUtilZhs {
         calendar.setTime(date);
         calendar.add(Calendar.MONTH, 1);
         calendar.set(Calendar.DAY_OF_MONTH,0);
+<#if (gen.showComment==true)>
         // 时
+</#if>
         calendar.set(Calendar.HOUR_OF_DAY, 23);
+<#if (gen.showComment==true)>
         // 分
+</#if>
         calendar.set(Calendar.MINUTE, 59);
+<#if (gen.showComment==true)>
         // 秒
+</#if>
         calendar.set(Calendar.SECOND, 59);
+<#if (gen.showComment==true)>
         // 毫秒
+</#if>
         calendar.set(Calendar.MILLISECOND, 999);
         return calendar.getTime();
     }
@@ -255,13 +295,21 @@ public class TimeUtilZhs {
     public static Date thatDateHourTime(Date date, int hour24) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
+<#if (gen.showComment==true)>
         // 时
+</#if>
         calendar.set(Calendar.HOUR_OF_DAY, hour24);
+<#if (gen.showComment==true)>
         // 分
+</#if>
         calendar.set(Calendar.MINUTE, 0);
+<#if (gen.showComment==true)>
         // 秒
+</#if>
         calendar.set(Calendar.SECOND, 0);
+<#if (gen.showComment==true)>
         // 毫秒
+</#if>
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
     }
@@ -412,7 +460,9 @@ public class TimeUtilZhs {
         if (month >= 0) {
             return XingZuoArray[month];
         }
+<#if (gen.showComment==true)>
         // default to return 魔羯
+</#if>
         return XingZuoArray[11];
     }
 
@@ -422,11 +472,13 @@ public class TimeUtilZhs {
         return Integer.valueOf(month);
     }
 
+<#if (gen.showComment==true)>
     /**
      *
      * @param yyyyMMdd   必须是8位的日期数字
      * @return
      */
+</#if>
     public static Date int2Date(int yyyyMMdd) {
         try {
             String dateStr = yyyyMMdd + "";

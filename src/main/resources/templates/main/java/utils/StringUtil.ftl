@@ -11,9 +11,11 @@ import com.google.gson.*;
 import java.lang.reflect.Type;
 import org.apache.commons.lang3.time.FastDateFormat;
 
+<#if (gen.showComment==true)>
 /**
  *
  */
+</#if>
 public class StringUtil {
     private static Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
@@ -80,7 +82,9 @@ public class StringUtil {
     public static boolean notEqualsNotBlank(final String a, final String b) {
         return !equalsNotBlank(a, b);
     }
+<#if (gen.showComment==true)>
 //    1.用JAVA自带的函数
+</#if>
     public static boolean isNumeric(String str){
         for (int i = 0; i < str.length(); i++){
             if (!Character.isDigit(str.charAt(i))){
@@ -496,16 +500,26 @@ public class StringUtil {
 </#if>
     public static String today000000() {
         Calendar calendar = Calendar.getInstance();
+<#if (gen.showComment==true)>
         // 时
+</#if>
         calendar.set(Calendar.HOUR_OF_DAY, 0);
+<#if (gen.showComment==true)>
         // 分
+</#if>
         calendar.set(Calendar.MINUTE, 0);
+<#if (gen.showComment==true)>
         // 秒
+</#if>
         calendar.set(Calendar.SECOND, 0);
+<#if (gen.showComment==true)>
         // 毫秒
+</#if>
         calendar.set(Calendar.MILLISECOND, 0);
         Date time = calendar.getTime();
+<#if (gen.showComment==true)>
         //"yyyy-MM-dd HH:mm:ss.SSS"
+</#if>
         return fromDate(time,"yyyy-MM-dd HH:mm:ss");
     }
 
@@ -745,22 +759,32 @@ public class StringUtil {
 </#if>
     public static String number2CN(BigDecimal numberOfMoney) {
         StringBuffer sb = new StringBuffer();
+<#if (gen.showComment==true)>
         // -1, 0, or 1 as the value of this BigDecimal is negative, zero, or
         // positive.
+</#if>
         int signum = numberOfMoney.signum();
+<#if (gen.showComment==true)>
         // 零元整的情况
+</#if>
         if (signum == 0) {
             return CN_ZEOR_FULL;
         }
+<#if (gen.showComment==true)>
         //这里会进行金额的四舍五入
+</#if>
         long number = numberOfMoney.movePointRight(MONEY_PRECISION)
                 .setScale(0, 4).abs().longValue();
+<#if (gen.showComment==true)>
         // 得到小数点后两位值
+</#if>
         long scale = number % 100;
         int numUnit = 0;
         int numIndex = 0;
         boolean getZero = false;
+<#if (gen.showComment==true)>
         // 判断最后两位数，一共有四中情况：00 = 0, 01 = 1, 10, 11
+</#if>
         if (!(scale > 0)) {
             numIndex = 2;
             number = number / 100;
@@ -776,7 +800,9 @@ public class StringUtil {
             if (number <= 0) {
                 break;
             }
+<#if (gen.showComment==true)>
             // 每次获取到最后一个数
+</#if>
             numUnit = (int) (number % 10);
             if (numUnit > 0) {
                 if ((numIndex == 9) && (zeroSize >= 3)) {
@@ -803,11 +829,15 @@ public class StringUtil {
                 }
                 getZero = true;
             }
+<#if (gen.showComment==true)>
             // 让number每次都去掉最后一个数
+</#if>
             number = number / 10;
             ++numIndex;
         }
+<#if (gen.showComment==true)>
         // 如果signum == -1，则说明输入的数字为负数，就在最前面追加特殊字符：负
+</#if>
         if (signum == -1) {
             sb.insert(0, CN_NEGATIVE);
         }

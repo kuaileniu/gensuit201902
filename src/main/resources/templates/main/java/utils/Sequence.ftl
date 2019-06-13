@@ -35,40 +35,57 @@ import java.util.concurrent.ThreadLocalRandom;
 </#if>
 public final class Sequence {
 
+<#if (gen.showComment==true)>
     /**
      * 起始时间戳
      **/
+</#if>
     private final static long START_TIME = 1519740777809L;
 
+<#if (gen.showComment==true)>
     /**
      * dataCenterId占用的位数：2
      **/
+</#if>
     private final static long DATA_CENTER_ID_BITS = 2L;
+
+<#if (gen.showComment==true)>
     /**
      * workerId占用的位数：8
      **/
+</#if>
     private final static long WORKER_ID_BITS = 8L;
+
+<#if (gen.showComment==true)>
     /**
      * 序列号占用的位数：12（表示只允许workId的范围为：0-4095）
      **/
+</#if>
     private final static long SEQUENCE_BITS = 12L;
 
+<#if (gen.showComment==true)>
     /**
      * workerId可以使用范围：0-255
      **/
+</#if>
     private final static long MAX_WORKER_ID = ~(-1L << WORKER_ID_BITS);
+
+<#if (gen.showComment==true)>
     /**
      * dataCenterId可以使用范围：0-3
      **/
+</#if>
     private final static long MAX_DATA_CENTER_ID = ~(-1L << DATA_CENTER_ID_BITS);
 
     private final static long WORKER_ID_SHIFT = SEQUENCE_BITS;
     private final static long DATA_CENTER_ID_SHIFT = SEQUENCE_BITS + WORKER_ID_BITS;
     private final static long TIMESTAMP_LEFT_SHIFT = SEQUENCE_BITS + WORKER_ID_BITS + DATA_CENTER_ID_BITS;
 
+<#if (gen.showComment==true)>
     /**
      * 用mask防止溢出:位与运算保证计算的结果范围始终是 0-4095
      **/
+</#if>
     private final static long SEQUENCE_MASK = ~(-1L << SEQUENCE_BITS);
 
     private final long workerId;
@@ -131,60 +148,85 @@ public final class Sequence {
     public synchronized Long nextId() {
         long currentTimestamp = this.timeGen();
 
+<#if (gen.showComment==true)>
         // 闰秒：如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过，这个时候应当抛出异常
+</#if>
         if (currentTimestamp < lastTimestamp) {
+<#if (gen.showComment==true)>
             // 校验时间偏移回拨量
+</#if>
             long offset = lastTimestamp - currentTimestamp;
             if (offset > timeOffset) {
                 throw new RuntimeException("Clock moved backwards, refusing to generate id for [" + offset + "ms]");
             }
 
             try {
+<#if (gen.showComment==true)>
                 // 时间回退timeOffset毫秒内，则允许等待2倍的偏移量后重新获取，解决小范围的时间回拨问题
+</#if>
                 this.wait(offset << 1);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
+<#if (gen.showComment==true)>
             // 再次获取
+</#if>
             currentTimestamp = this.timeGen();
+<#if (gen.showComment==true)>
             // 再次校验
+</#if>
             if (currentTimestamp < lastTimestamp) {
                 throw new RuntimeException("Clock moved backwards, refusing to generate id for [" + offset + "ms]");
             }
         }
 
+<#if (gen.showComment==true)>
         // 同一毫秒内序列直接自增
+</#if>
         if (lastTimestamp == currentTimestamp) {
+<#if (gen.showComment==true)>
             // randomSequence为true表示随机生成允许范围内的序列起始值并取余数,否则毫秒内起始值为0L开始自增
+</#if>
             long tempSequence = sequence + 1;
             if (randomSequence && tempSequence > SEQUENCE_MASK) {
                 tempSequence = tempSequence % SEQUENCE_MASK;
             }
-
+<#if (gen.showComment==true)>
             // 通过位与运算保证计算的结果范围始终是 0-4095
+</#if>
             sequence = tempSequence & SEQUENCE_MASK;
             if (sequence == 0) {
                 currentTimestamp = this.tilNextMillis(lastTimestamp);
             }
         } else {
+<#if (gen.showComment==true)>
             // randomSequence为true表示随机生成允许范围内的序列起始值,否则毫秒内起始值为0L开始自增
+</#if>
             sequence = randomSequence ? tlr.nextLong(SEQUENCE_MASK + 1) : 0L;
         }
 
         lastTimestamp = currentTimestamp;
         long currentOffsetTime = currentTimestamp - START_TIME;
 
+<#if (gen.showComment==true)>
         /*
          * 1.左移运算是为了将数值移动到对应的段(41、5、5，12那段因为本来就在最右，因此不用左移)
          * 2.然后对每个左移后的值(la、lb、lc、sequence)做位或运算，是为了把各个短的数据合并起来，合并成一个二进制数
          * 3.最后转换成10进制，就是最终生成的id
          */
+</#if>
         return (currentOffsetTime << TIMESTAMP_LEFT_SHIFT) |
+<#if (gen.showComment==true)>
                 // 数据中心位
+</#if>
                 (dataCenterId << DATA_CENTER_ID_SHIFT) |
+<#if (gen.showComment==true)>
                 // 工作ID位
+</#if>
                 (workerId << WORKER_ID_SHIFT) |
+<#if (gen.showComment==true)>
                 // 毫秒序列化位
+</#if>
                 sequence;
     }
 
@@ -199,7 +241,9 @@ public final class Sequence {
     private long tilNextMillis(long lastTimestamp) {
         long timestamp = this.timeGen();
         while (timestamp <= lastTimestamp) {
+<#if (gen.showComment==true)>
             // 如果发现时间回拨，则自动重新获取（可能会处于无限循环中）
+</#if>
             timestamp = this.timeGen();
         }
 

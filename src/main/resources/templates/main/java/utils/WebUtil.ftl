@@ -64,14 +64,20 @@ public class WebUtil {
         OutputStream outputStream = null;
         try {
             response.reset();
+<#if (gen.showComment==true)>
             //会自动判断下载文件类型
+</#if>
             //response.setContentType("multipart/form-data");
+<#if (gen.showComment==true)>
             // 下载MIME类型
+</#if>
             response.setContentType("application/x-download");
             String userAgent = request.getHeader("USER-AGENT").toLowerCase();
             String fileDisplay = transCharacter(userAgent, fileName);
             response.addHeader("Content-Disposition", "attachment;filename=" + fileDisplay);
+<#if (gen.showComment==true)>
             // 输出文件流
+</#if>
             outputStream = new BufferedOutputStream(response.getOutputStream());
             outputStream.write(bytes);
             outputStream.flush();
@@ -99,14 +105,20 @@ public class WebUtil {
         try {
             response.reset();
             byte[] bytes = FileUtils.readFileToByteArray(new File(filePathName));
+<#if (gen.showComment==true)>
             //会自动判断下载文件类型
+</#if>
             //response.setContentType("multipart/form-data");
+<#if (gen.showComment==true)>
             // 下载MIME类型
+</#if>
             response.setContentType("application/x-download");
             String userAgent = request.getHeader("USER-AGENT").toLowerCase();
             String fileDisplay = transCharacter(userAgent, fileName);
             response.addHeader("Content-Disposition", "attachment;filename=" + fileDisplay);
+<#if (gen.showComment==true)>
             // 输出文件流
+</#if>
             outputStream = new BufferedOutputStream(response.getOutputStream());
             outputStream.write(bytes);
             outputStream.flush();
@@ -149,12 +161,14 @@ public class WebUtil {
             return URLEncoder.encode(fileName, "UTF-8");
         }
     }
-	
+
+<#if (gen.showComment==true)>
     /**
      * 获取本机内网ip
      *
      * @return
      */
+</#if>
     public static String getLocalIp() {
         InetAddress ia = null;
         try {
@@ -169,11 +183,12 @@ public class WebUtil {
         return null;
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * 获取所有的ip列表 ，ifconfig -a 中列举出来的本机的内网ip及外网ip
      * @return
      */
+</#if>
     public static List<String> getLocalIPList() {
         List<String> ipList = new ArrayList<String>();
         try {
@@ -199,19 +214,23 @@ public class WebUtil {
         return ipList;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 获取用户的ip地址
      *
      * @param request
      * @return
      */
+</#if>
     public static String getRequestIp(HttpServletRequest request) {
         if (null == request) {
             return null;
         }
         String ip = null;
         try {
+<#if (gen.showComment==true)>
             // 获取请求主机IP地址,如果通过代理进来，则透过防火墙获取真实IP地址
+</#if>
             ip = request.getHeader("X-Forwarded-For");
             if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
                 if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
@@ -241,8 +260,10 @@ public class WebUtil {
             }
         } catch (Exception e) {
         }
+<#if (gen.showComment==true)>
         // ipv6 “ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff” ,最长39
         //原来IPv4映射的IPv6地址可能出现这种格式“ffff:ffff:ffff:ffff:ffff:ffff:255:255:255:255”，也就是45字节，加上结束符就是46字节了
+</#if>
         if (StringUtil.isNotBlank(ip)) {
             if (ip.length() >= 46) {
                 ip = ip.substring(0, 46);
@@ -251,12 +272,14 @@ public class WebUtil {
         return ip;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 获取一级域名
      *
      * @param request
      * @return
      */
+</#if>
     public static String getRootDomain(HttpServletRequest request) {
         String domain = "";
         String domainHost = request.getServerName();
@@ -293,12 +316,14 @@ public class WebUtil {
         return domain;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 获取当前域名
      *
      * @param request
      * @return
      */
+</#if>
     public static String getDomain(HttpServletRequest request) {
         String domain = request.getServerName();
         if (domain.startsWith(WWW)) {
@@ -320,7 +345,9 @@ public class WebUtil {
             UserAgent userAgent = UserAgent.parseUserAgentString(machineIntroduction);
             OperatingSystem operatingSystem = userAgent.getOperatingSystem();
             Browser browser = userAgent.getBrowser();
+<#if (gen.showComment==true)>
             //获取浏览器版本号
+</#if>
             Version version = browser.getVersion(machineIntroduction);
             BrowserType browserType = browser.getBrowserType();
 
@@ -353,24 +380,38 @@ public class WebUtil {
     public static boolean imgWrite(HttpServletResponse resp, final String code, final int width, final int height, final int ganRaoXian) {
         ServletOutputStream sos = null;
         try {
+<#if (gen.showComment==true)>
             //字高度
+</#if>
             int fontHeight = height - 2;
+<#if (gen.showComment==true)>
             //每个字占的宽度
+</#if>
             int oneFontWidth = width / (code.length() + 1);
+<#if (gen.showComment==true)>
             //字体y坐标
+</#if>
             int fontY = height - 4;
 
             BufferedImage buffImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             Graphics2D g = buffImg.createGraphics();
+<#if (gen.showComment==true)>
             //将图像填充为白色
+</#if>
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, width, height);
+<#if (gen.showComment==true)>
             // 创建字体，字体的大小应该根据图片的高度来定。
+</#if>
             //Font font = new Font("Fixedsys", Font.PLAIN, fontHeight);
             Font font = new Font("宋体", Font.PLAIN, fontHeight);
+<#if (gen.showComment==true)>
             // 设置字体。
+</#if>
             g.setFont(font);
+<#if (gen.showComment==true)>
             // 画边框。
+</#if>
             g.setColor(Color.BLACK);
             g.drawRect(0, 0, width - 1, height - 1);
             for (int i = 0; i < ganRaoXian; i++) {
@@ -386,11 +427,15 @@ public class WebUtil {
                 red = RandomUtil.noGreaterThan(255);
                 green = RandomUtil.noGreaterThan(255);
                 blue = RandomUtil.noGreaterThan(255);
+<#if (gen.showComment==true)>
                 // 用随机产生的颜色将验证码绘制到图像中。
+</#if>
                 g.setColor(new Color(red, green, blue));
                 g.drawString(ch, (i + 1) * oneFontWidth, fontY);
             }
+<#if (gen.showComment==true)>
             // 禁止图像缓存。
+</#if>
             resp.setHeader("Pragma", "no-cache");
             resp.setHeader("Cache-Control", "no-cache");
             resp.setDateHeader("Expires", 0);
@@ -413,13 +458,14 @@ public class WebUtil {
         }
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * 获取请求Body
      *
      * @param request
      * @return
      */
+</#if>
     public static String getBodyString(ServletRequest request) {
         StringBuilder sb = new StringBuilder();
         InputStream inputStream = null;
@@ -453,6 +499,7 @@ public class WebUtil {
         return sb.toString();
     }
 
+<#if (gen.showComment==true)>
     /**
      * 重写response时的HttpBody
      *
@@ -460,6 +507,7 @@ public class WebUtil {
      * @param response
      * @throws IOException
      */
+</#if>
     public static void rewriteResponseBody(ResponseWrapper responseWrapper, ServletResponse response) throws IOException {
         ServletOutputStream out = response.getOutputStream();
         byte[] responseBody = null;
@@ -551,22 +599,31 @@ public class WebUtil {
      */
 </#if>
     public static void setProxy() {
+<#if (gen.showComment==true)>
         //Http代理，只能代理http
+</#if>
         System.setProperty("http.proxyHost", "127.0.0.1");
         System.setProperty("http.proxyPort", "9876");
+<#if (gen.showComment==true)>
         //https代理,只能代理https
+</#if>
         System.setProperty("https.proxyHost", "127.0.0.1");
         System.setProperty("https.proxyPort", "9876");
+<#if (gen.showComment==true)>
         //同时支持 http、https
+</#if>
         System.setProperty("proxyHost", "127.0.0.1");
         System.setProperty("proxyPort", "9876");
+<#if (gen.showComment==true)>
         //Socket代理 同时支持 http、https
         //注意，如果设置了Socket代理，就不要设置http/https代理
+</#if>
         System.setProperty("socksProxyHost", "127.0.0.1");
         System.setProperty("socksProxyPort", "9876");
-
+<#if (gen.showComment==true)>
         //另外一种可以通过jvm启动参数设置
         // -DproxyHost=127.0.0.1 -DproxyPort=9876
+</#if>
     }
 
 <#if (gen.showComment==true)>
@@ -867,7 +924,10 @@ public class WebUtil {
         Map<String, String> nameList = new HashMap<>();
         ZipInputStream zin = new ZipInputStream(in, Charset.forName("GBK"));//输入源zip路径
         BufferedInputStream bin = new BufferedInputStream(zin);
-        String parent = path; //输出路径（文件夹目录）
+<#if (gen.showComment==true)>
+//输出路径（文件夹目录）
+</#if>
+        String parent = path;
         File fout = null;
         ZipEntry entry;
         try {

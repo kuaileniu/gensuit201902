@@ -5,17 +5,20 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
+<#if (gen.showComment==true)>
 /**
  *
  */
+</#if>
 public class JdbcUtil {
-
+<#if (gen.showComment==true)>
     /**
      * 映射转换
      * @param source 源数据 <user_name,张三>
      * @param rule   转换规则<user_name,userName>
      * @return 转换之后的映射 <userName,张三>
      */
+</#if>
     public static Map convert(Map source, Map rule) {
         if (source.isEmpty()) {
             return source;

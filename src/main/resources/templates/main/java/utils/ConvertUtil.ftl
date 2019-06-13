@@ -1,9 +1,11 @@
 package ${gen.utilPackage?replace("/",".")};
 import java.util.*;
 
+<#if (gen.showComment==true)>
 /**
  * Created by Administrator on 2018/4/28.
  */
+</#if>
 public class ConvertUtil {
 
     <#--/**-->

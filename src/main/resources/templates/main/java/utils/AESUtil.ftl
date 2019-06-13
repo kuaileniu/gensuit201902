@@ -24,7 +24,9 @@ public class AESUtil {
     private static String sKey = "bjzhsitivenandy0";
     private static String ivParameter = "bjzhsitfengteng0";
 
+<#if (gen.showComment==true)>
     // 加密
+</#if>
     public static String aesEncode(String sSrc) {
         try {
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");

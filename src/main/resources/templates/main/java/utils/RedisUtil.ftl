@@ -49,8 +49,10 @@ public class RedisUtil {
         return this.redisTemplate;
     }
 
-
+<#if (gen.showComment==true)>
     /** -------------------key相关操作--------------------- */
+</#if>
+
 <#if (gen.showComment==true)>
     /**
      * 删除key
@@ -234,7 +236,9 @@ public class RedisUtil {
         return redisTemplate.type(key);
     }
 
+<#if (gen.showComment==true)>
     /** -------------------string相关操作--------------------- */
+</#if>
 
 <#if (gen.showComment==true)>
     /**
@@ -439,7 +443,9 @@ public class RedisUtil {
         return redisTemplate.opsForValue().append(key, value);
     }
 
+<#if (gen.showComment==true)>
     /** -------------------hash相关操作------------------------- */
+</#if>
 
 <#if (gen.showComment==true)>
     /**
@@ -604,7 +610,9 @@ public class RedisUtil {
         return redisTemplate.opsForHash().scan(key, options);
     }
 
+<#if (gen.showComment==true)>
     /** ------------------------list相关操作---------------------------- */
+</#if>
 
 <#if (gen.showComment==true)>
     /**
@@ -888,7 +896,9 @@ public class RedisUtil {
         return redisTemplate.opsForList().size(key);
     }
 
+<#if (gen.showComment==true)>
     /** --------------------set相关操作-------------------------- */
+</#if>
 
 <#if (gen.showComment==true)>
     /**
@@ -1190,7 +1200,9 @@ public class RedisUtil {
         return redisTemplate.opsForSet().scan(key, options);
     }
 
+<#if (gen.showComment==true)>
     /**------------------zSet相关操作--------------------------------*/
+</#if>
 
 <#if (gen.showComment==true)>
     /**
