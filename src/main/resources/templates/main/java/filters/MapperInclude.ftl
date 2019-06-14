@@ -1,6 +1,6 @@
 package ${gen.filterPackage?replace("/",".")};
 
-<#--import ${gen.interceptorPackage?replace("/",".")}.*;-->
+import ${gen.interceptorPackage?replace("/",".")}.*;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.HashMap;
