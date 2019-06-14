@@ -1,27 +1,27 @@
 package ${gen.controllerPackage?replace("/",".")};
 
-import java.util.*;
+<#--import java.util.*;-->
 import ${gen.utilPackage?replace("/",".")}.*;
 import ${gen.poPackage?replace("/",".")}.*;
 <#--import ${gen.helperPackage?replace("/",".")}.*;-->
 import ${gen.modelPackage?replace("/",".")}.*;
 import ${gen.annotationPackage?replace("/",".")}.*;
-import ${gen.handlerPackage?replace("/",".")}.*;
-import ${gen.constantsPackage?replace("/",".")}.*;
-import ${gen.queryPackage?replace("/",".")}.*;
-import ${gen.removePackage?replace("/",".")}.*;
-import ${gen.enumPackage?replace("/",".")}.*;
+<#--import ${gen.handlerPackage?replace("/",".")}.*;-->
+<#--import ${gen.constantsPackage?replace("/",".")}.*;-->
+<#--import ${gen.queryPackage?replace("/",".")}.*;-->
+<#--import ${gen.removePackage?replace("/",".")}.*;-->
+<#--import ${gen.enumPackage?replace("/",".")}.*;-->
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.multipart.*;
+<#--import org.springframework.util.MultiValueMap;-->
+<#--import org.springframework.web.multipart.*;-->
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import javax.servlet.http.*;
+<#--import javax.servlet.http.*;-->
 
-//@Controller
-//@RequestMapping("api/gen${entityName?lower_case}")
+@Controller
+@RequestMapping("api/gen${entityName?lower_case}")
 public class Gen${entityName}${gen.controllerPostfix} {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 

@@ -1,8 +1,10 @@
 package ${gen.enumPackage?replace("/",".")};
 
+<#if (gen.showComment==true)>
 /**
  * DFS组
  */
+</#if>
 public enum DFSGroupEnum {
     publicFile("publicfile"),
     privateFile("privatefile");

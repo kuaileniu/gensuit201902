@@ -1,8 +1,10 @@
 package ${gen.enumPackage?replace("/",".")};
 
+<#if (gen.showComment==true)>
 /**
  * 比较枚举
  */
+</#if>
 public enum Comparative {
     Equal(" = "),
     NotEqual(" <> "),

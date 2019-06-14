@@ -4,6 +4,7 @@ import ${gen.poPackage?replace("/",".")}.*;
 import java.util.HashSet;
 import java.util.Set;
 
+<#if (gen.showComment==true)>
 /**
  *  @Component
  *  public class GenViewPermission {
@@ -12,6 +13,7 @@ import java.util.Set;
  *     }
  *   }
  */
+</#if>
 public enum ViewPermission {
     Instance;
 

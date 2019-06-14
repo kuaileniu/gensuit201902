@@ -20,9 +20,11 @@ import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+<#if (gen.showComment==true)>
 /**
  * web时间格式转换的配置
  */
+</#if>
 @Configuration
 public class WebConfig {
     private Logger log = LoggerFactory.getLogger(this.getClass());

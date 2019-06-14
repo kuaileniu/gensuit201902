@@ -22,9 +22,11 @@ import javax.annotation.Resource;
 import java.time.Duration;
 import java.util.*;
 
+<#if (gen.showComment==true)>
 /**
  * redis缓存的配置
  */
+</#if>
 @Configuration
 <#--@ConfigurationProperties(prefix = "zhsit.cache")-->
 @ConfigurationProperties(prefix = "spring.redis")
@@ -34,7 +36,9 @@ public class RedisConfig {
     private int port;
     private String password;
     private int timeout;
+<#if (gen.showComment==true)>
     //秒,24小时
+</#if>
     private long timeToLive = 86400;
     <#--@Autowired-->
     <#--private RedisCacheWriter cacheWriter;-->
@@ -59,13 +63,14 @@ public class RedisConfig {
     }
 
     private class SessionRedisCacheWriter implements RedisCacheWriter {
+<#if (gen.showComment==true)>
         //#1800#1800
         //以#号分割，每个#号后面都需要有整型数字；第一个是失效时间(单位是秒),小于0时为永久不过期,等于0时采用系统默认最大存活时间;第二个是重新计时多长时间失效(取出后重新计时),若为0，不重新计时;
+</#if>
         private static final String separator = "#";
         RedisConnectionFactory factory = redisTemplate.getConnectionFactory();
         RedisConnection redisConnection = factory.getConnection();
 
-        @Override
         public void put(String name, byte[] key, byte[] value, @Nullable Duration ttl) {
             try {
                 long second = timeToLive;
@@ -87,7 +92,6 @@ public class RedisConfig {
             }
         }
 
-        @Override
         public byte[] get(String name, byte[] key) {
             try {
                 boolean resetExpire = false;
@@ -114,7 +118,6 @@ public class RedisConfig {
             }
         }
 
-        @Override
         public byte[] putIfAbsent(String name, byte[] key, byte[] value, @Nullable Duration ttl) {
             try {
                 long second = timeToLive;
@@ -138,7 +141,6 @@ public class RedisConfig {
             }
         }
 
-        @Override
         public void remove(String name, byte[] key) {
             try {
                 redisConnection.del(key);
@@ -149,7 +151,6 @@ public class RedisConfig {
             }
         }
 
-        @Override
         public void clean(String name, byte[] pattern) {
             try {
                 Set<byte[]> keys = redisConnection.keys(pattern);

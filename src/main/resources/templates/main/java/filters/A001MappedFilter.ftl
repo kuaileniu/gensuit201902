@@ -39,21 +39,24 @@ public class A001MappedFilter implements Filter {
                 text=aPermission.text();
             }
             for (String path : requestMappingInfo.getPatternsCondition().getPatterns()) {
+        <#if (gen.showComment==true)>
                 if (filterLog) {
                     System.out.println("MapperInclude.include.add(\"" + path + "\"); // "+ text);
                     int num =(int)counter.get(key);
                     counter.put(key,num+1);
                 }
+        </#if>
                 if (includePaths.contains(path)) {
                 } else {
                     unregisterMappingList.add(requestMappingInfo);
                 }
             }
         });
-
+<#if (gen.showComment==true)>
         if (filterLog) {
             System.out.println("allTotal:" + counter.get(key));
         }
+</#if>
         for (RequestMappingInfo requestMappingInfo : unregisterMappingList) {
             mapped.unregisterMapping(requestMappingInfo);
         }

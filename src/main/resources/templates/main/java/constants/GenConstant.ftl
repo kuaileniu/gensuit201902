@@ -3,24 +3,30 @@ package ${gen.constantsPackage?replace("/",".")};
 public class GenConstant {
 
     public static final String utf8 = "UTF-8";
-
+<#if (gen.showComment==true)>
     //web token
+</#if>
     public static final String zToken = "ztoken";
 
+<#if (gen.showComment==true)>
     //http header Content-Type
+</#if>
     public static final String contentType = "Content-Type";
 
+<#if (gen.showComment==true)>
     //http header Content-Type 值为 formdata
+</#if>
     public static final String formDataHeader = "multipart/form-data";
-
+<#if (gen.showComment==true)>
     //http header Content-Type 值为 x-www-form-urlencoded
+</#if>
     public static final String wwwFormUrlencodedHeader = "application/x-www-form-urlencoded";
     public static final String xmlApplicationHeader = "application/xml";
     public static final String jsonApplicationHeader = "application/json";
     public static final String xmlTextHeader = "text/xml";
     public static final String textPlainHeader = "text/plain";
     public static final String textHtmlHeader = "text/html";
-
+<#if (gen.showComment==true)>
 //    text/html ： HTML格式
 //    text/plain ：纯文本格式
 //    text/xml ： XML格式
@@ -40,40 +46,54 @@ public class GenConstant {
 //
 //    multipart/form-data ： 需要在表单中进行文件上传时，就需要使用该格式
     //点
+</#if>
     public static final String point = ".";
-
+<#if (gen.showComment==true)>
     //逗号
+</#if>
     public static final String comma = ",";
-
+<#if (gen.showComment==true)>
     // 所有的id
+</#if>
     public static final String allId="allids";
-
+<#if (gen.showComment==true)>
     //分布式session
+</#if>
     public static final String dsession = "dsession";
-
+<#if (gen.showComment==true)>
     //系统编码key值
+</#if>
     public static final String sysCode = "syscode";
-
+<#if (gen.showComment==true)>
     //验证码
+</#if>
     public static final String verifyCode = "verifyCode";
-
+<#if (gen.showComment==true)>
     //发送验证码cache的前缀
+</#if>
     public static final String verifyCodeMsg = "sendmsg";
+<#if (gen.showComment==true)>
     //用户名
+</#if>
 //    public static final String userName = "userName";
-
+<#if (gen.showComment==true)>
     //密码
+</#if>
 //    public static final String password = "password";
-
+<#if (gen.showComment==true)>
     //数据默认组大查询条数
+</#if>
     public static final int defaultMaxResults = 2000;
-
+<#if (gen.showComment==true)>
     //session有效时间
+</#if>
     public static final int sessionSecond = 30 * 60;
-
+<#if (gen.showComment==true)>
     //未登录
+</#if>
     public static final int noLogin = 401;
-
+<#if (gen.showComment==true)>
     //数据重复
+</#if>
     public static final String repeat = "数据重复";
 }
