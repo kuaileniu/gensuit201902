@@ -18,12 +18,10 @@ public class ResponseWrapper extends HttpServletResponseWrapper {
         out = new WrapperOutputStream(buffer);
     }
 
-    @Override
     public ServletOutputStream getOutputStream() throws IOException {
         return out;
     }
 
-    @Override
     public void flushBuffer() throws IOException {
         if (out != null) {
             out.flush();
@@ -42,17 +40,14 @@ public class ResponseWrapper extends HttpServletResponseWrapper {
             this.bos = bos;
         }
 
-        @Override
         public void write(int b) throws IOException {
             bos.write(b);
         }
 
-        @Override
         public boolean isReady() {
             return false;
         }
 
-        @Override
         public void setWriteListener(WriteListener arg0) {
         }
     }

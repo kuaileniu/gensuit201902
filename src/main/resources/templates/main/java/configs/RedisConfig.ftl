@@ -36,9 +36,10 @@ public class RedisConfig {
     private int timeout;
     //秒,24小时
     private long timeToLive = 86400;
-    @Autowired
-    private RedisCacheWriter cacheWriter;
-    @Resource
+    <#--@Autowired-->
+    <#--private RedisCacheWriter cacheWriter;-->
+    <#--@Resource-->
+    @Resource(name="stringRedisTemplate")
     private RedisTemplate redisTemplate;
 
     <#--@Bean-->

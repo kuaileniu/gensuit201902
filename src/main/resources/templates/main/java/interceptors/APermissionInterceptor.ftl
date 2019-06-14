@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+<#if (gen.showComment==true)>
 /**
  * 功能模块权限控制
  **/
+</#if>
 @Interceptor(order = 30)
 public class APermissionInterceptor extends HandlerInterceptorAdapter {
     private Logger log = LoggerFactory.getLogger(this.getClass());
@@ -40,8 +42,9 @@ public class APermissionInterceptor extends HandlerInterceptorAdapter {
             String code = permission.code();
 
             PermissionHandler permissionHandler = (PermissionHandler) MapperInclude.api.get(MapperInclude.PermissionHandler);
-
+<#if (gen.showComment==true)>
             // 判断是否具有权限
+</#if>
             boolean have = permissionHandler.havePermission(userId, code);
             if (!have) {
                 ContextHandler.Instance.setResponseBody(ResponseModel.ok().setCode(2).setMsg("You have no permission:"+code));

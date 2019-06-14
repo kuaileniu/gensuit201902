@@ -1,16 +1,22 @@
 package ${gen.enumPackage?replace("/",".")};
 
+<#if (gen.showComment==true)>
 /**
  * 资源类型
  */
+</#if>
 public enum SrcType {
+<#if (gen.showComment==true)>
     //passport页logo
+</#if>
     passport_logo("passport_logo"),
-
+<#if (gen.showComment==true)>
     //passport页描述
+</#if>
     passport_desc("desc"),
-
+<#if (gen.showComment==true)>
     //登录Title
+</#if>
     passport_title("passport_title"),
     ;
      

@@ -24,7 +24,6 @@ public class A001MappedFilter implements Filter {
 
     private boolean filterLog = false;
     
-    @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         final String key = "num";
         final Map<String,Integer>  counter = new HashMap<>();
@@ -61,7 +60,6 @@ public class A001MappedFilter implements Filter {
         MapperInclude.include.clear();
     }
         
-    @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         try {
             chain.doFilter(request, response);
@@ -70,7 +68,6 @@ public class A001MappedFilter implements Filter {
         }
     }
 
-    @Override
     public void destroy() {
 
     }

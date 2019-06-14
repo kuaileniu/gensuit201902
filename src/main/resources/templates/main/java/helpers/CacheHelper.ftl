@@ -24,14 +24,17 @@ import java.util.*;
 @ConfigurationProperties(prefix = "zhsit.cache")
 public class CacheHelper {
     private static Logger log = LoggerFactory.getLogger(CacheHelper.class);
+<#if (gen.showComment==true)>
     // redis 常用操作 https://www.cnblogs.com/start-fxw/p/6163939.html
 // 002-Redis五种数据类型-设置key的过期时间 https://blog.csdn.net/kiss199203/article/details/73549091
+</#if>
     @Autowired
     private RedisTemplate redisTemplate;
 
     private CacheAssistant cacheAssistant = null;
-
+<#if (gen.showComment==true)>
     //秒,24小时
+</#if>
     private long timeToLive = 86400;
 
     @PostConstruct
@@ -44,8 +47,9 @@ public class CacheHelper {
         log.info("新生成Session:" + sessionId);
         return new Session().setSessionId(sessionId);
     }
-
+<#if (gen.showComment==true)>
     //    @CacheEvict(value = "#30#30", allEntries = true)
+</#if>
     @CacheEvict(value = "#30#30", key = "#sessionId")
     public void cleanSession(String sessionId) {
     }
@@ -55,24 +59,29 @@ public class CacheHelper {
         return dSession;
     }
 
-
+<#if (gen.showComment==true)>
     /**
      * 将obj放入缓存中
      */
+</#if>
     public boolean put(String key, Object val, int expireSecond) {
         return cacheAssistant.put(key, val, expireSecond);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 数据放入缓存的有序集合中
      */
+</#if>
     public boolean sortSetReset(String key, Map<Object, Double> val, int expireSecond) {
         return cacheAssistant.zReload(key, val, expireSecond);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 有序集合的容量
      */
+</#if>
     public Long sortSetCount(String key) {
         return cacheAssistant.zCard(key);
     }
@@ -96,16 +105,20 @@ public class CacheHelper {
         return page;
     }
 
+<#if (gen.showComment==true)>
     /**
      * 移除缓存
      */
+</#if>
     public boolean remove(String key) {
         return cacheAssistant.remove(key);
     }
 
+<#if (gen.showComment==true)>
     /**
      * 获取缓存
      */
+</#if>
     public Object get(String key) {
         return cacheAssistant.get(key);
     }
@@ -123,6 +136,7 @@ public class CacheHelper {
             redisConnection = factory.getConnection();
         }
 
+<#if (gen.showComment==true)>
         /**
          * zset集合
          * https://blog.csdn.net/loophome/article/details/50373202
@@ -130,6 +144,7 @@ public class CacheHelper {
          * @param key
          * @return
          */
+</#if>
         public List<Object> zRange(String key, long startIndex, long endIndexInclude) {
             try {
                 byte[] byteKey = key.getBytes(charset);
@@ -146,6 +161,7 @@ public class CacheHelper {
             }
         }
 
+<#if (gen.showComment==true)>
         /**
          * zset集合 删除并重新设置数据
          *
@@ -154,6 +170,7 @@ public class CacheHelper {
          * @param data
          * @return
          */
+</#if>
         public boolean zReload(String key, Map<Object, Double> data, int expireSecond) {
             try {
                 byte[] byteKey = key.getBytes(charset);
@@ -177,16 +194,20 @@ public class CacheHelper {
             return true;
         }
 
+<#if (gen.showComment==true)>
         /**
          * zset集合 的总数,相当于sql中的 count(1)
          *
          * @param key
          * @return
          */
+</#if>
         public Long zCard(String key) {
             try {
                 byte[] byteKey = key.getBytes(charset);
+                <#if (gen.showComment==true)>
                 //key不存在时，仍然返回0，而不是null；
+                </#if>
                 return redisConnection.zCard(byteKey);
             } catch (Exception e) {
                 log.error("redis zset zCard操作异常", e);
@@ -194,12 +215,14 @@ public class CacheHelper {
             }
         }
 
+<#if (gen.showComment==true)>
         /**
          * 判断是否存在
          *
          * @param key
          * @return
          */
+</#if>
         public Boolean exits(String key) {
             try {
                 byte[] byteKey = key.getBytes(charset);
@@ -210,6 +233,7 @@ public class CacheHelper {
             }
         }
 
+<#if (gen.showComment==true)>
         /**
          * 判断data是否是key集合(Set)的元素
          *
@@ -217,6 +241,7 @@ public class CacheHelper {
          * @param data
          * @return
          */
+</#if>
         public Boolean sIsMember(String key, Object data) {
             try {
                 byte[] byteKey = key.getBytes(charset);
@@ -228,6 +253,7 @@ public class CacheHelper {
             }
         }
 
+<#if (gen.showComment==true)>
         /**
          * set集合
          *
@@ -236,6 +262,7 @@ public class CacheHelper {
          * @param data
          * @return
          */
+</#if>
         public boolean sadd(String key, int expireSecond, Object... data) {
             try {
                 byte[] byteKey = key.getBytes(charset);
@@ -254,6 +281,7 @@ public class CacheHelper {
             return true;
         }
 
+<#if (gen.showComment==true)>
         /**
          * list集合
          *
@@ -262,6 +290,7 @@ public class CacheHelper {
          * @param data
          * @return
          */
+</#if>
         public boolean lSet(String key, int expireSecond, Object... data) {
             try {
                 byte[] byteKey = key.getBytes(charset);
@@ -298,9 +327,11 @@ public class CacheHelper {
             return true;
         }
 
+<#if (gen.showComment==true)>
         /**
          * @param expireSecond 过期时长; 当小于0时，永久不过期；等于0时采用配置时间;
          */
+</#if>
         public boolean put(String key, Object val, int expireSecond) {
             byte[] byteKey = key.getBytes(charset);
             byte[] byteVal = JDKSerializer.INSTANCE.serialize(val);

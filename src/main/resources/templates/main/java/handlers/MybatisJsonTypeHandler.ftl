@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+<#if (gen.showComment==true)>
 /**
  * mysql 官方 JSON Functions 说明 https://dev.mysql.com/doc/refman/8.0/en/json-functions.html
  * https://dev.mysql.com/doc/refman/5.7/en/json-functions.html
@@ -30,6 +31,7 @@ import java.sql.SQLException;
  * mybatis 中 TypeHandler demohttps://www.e-learn.cn/content/mysql/865020
     https://github.com/jneat/mybatis-jackson
  */
+</#if>
 @MappedJdbcTypes(JdbcType.VARCHAR)
 public class MybatisJsonTypeHandler<T extends Object> extends BaseTypeHandler<T> {
 

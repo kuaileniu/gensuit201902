@@ -1,6 +1,6 @@
 package ${gen.filterPackage?replace("/",".")};
 
-import ${gen.interceptorPackage?replace("/",".")}.*;
+<#--import ${gen.interceptorPackage?replace("/",".")}.*;-->
 import java.util.HashSet;
 import java.util.Set;
 import java.util.HashMap;
@@ -25,8 +25,10 @@ public enum MapperInclude {
 
     public final static Set<String> include = new HashSet<>();
 
+<#if (gen.showComment==true)>
     //<"PermissionHandler",PermissionHandler>
     //<"XXXHandler",XXXObject>
+</#if>
     public final static Map<String,Object> api = new HashMap<>();
 
     static {

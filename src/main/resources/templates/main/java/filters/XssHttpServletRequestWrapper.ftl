@@ -23,7 +23,6 @@ public class XssHttpServletRequestWrapper  extends HttpServletRequestWrapper {
      * getParameterNames,getParameterValues和getParameterMap也可能需要覆盖
      */
 </#if>
-    @Override
     public String getParameter(String name) {
         if(("content".equals(name) || name.endsWith("WithHtml")) && !isIncludeRichText){
             return super.getParameter(name);
@@ -36,7 +35,6 @@ public class XssHttpServletRequestWrapper  extends HttpServletRequestWrapper {
         return value;
     }
 
-    @Override
     public String[] getParameterValues(String name) {
         String[] arr = super.getParameterValues(name);
         if(arr != null){
@@ -54,7 +52,6 @@ public class XssHttpServletRequestWrapper  extends HttpServletRequestWrapper {
      * getHeaderNames 也可能需要覆盖
      */
 </#if>
-    @Override
     public String getHeader(String name) {
         name = XssUtil.stripSqlInjection(name);
         String value = super.getHeader(name);

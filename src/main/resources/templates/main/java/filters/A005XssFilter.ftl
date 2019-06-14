@@ -25,8 +25,10 @@ import java.util.regex.Pattern;
 @WebFilter(urlPatterns = {"/api/*"}, asyncSupported = true, dispatcherTypes = {DispatcherType.REQUEST}, filterName = "XssFilter") // 优先级同 Class类名排序,按位名称小的优先级高
 public class A005XssFilter implements Filter {
     private Logger log = LoggerFactory.getLogger(this.getClass());
-
-    private static boolean IS_INCLUDE_RICH_TEXT = true;//是否过滤富文本内容
+<#if (gen.showComment==true)>
+//是否过滤富文本内容
+</#if>
+    private static boolean IS_INCLUDE_RICH_TEXT = true;
 
     public List<String> excludes = new ArrayList<>();
 
@@ -57,7 +59,6 @@ public class A005XssFilter implements Filter {
         return false;
     }
 
-    @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         String isIncludeRichText = filterConfig.getInitParameter("isIncludeRichText");
         if (StringUtils.isNotBlank(isIncludeRichText)) {
@@ -73,7 +74,6 @@ public class A005XssFilter implements Filter {
         }
     }
 
-    @Override
     public void destroy() {
     }
 

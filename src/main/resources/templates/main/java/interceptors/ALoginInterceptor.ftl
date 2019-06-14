@@ -16,35 +16,36 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+<#if (gen.showComment==true)>
 /**
  * 只有标注了 @Login(required = false) 的方法无须登录。
  **/
+</#if>
 @Interceptor(order = 20)
 public class ALoginInterceptor extends HandlerInterceptorAdapter {
     private Logger log = LoggerFactory.getLogger(this.getClass());
-    <#--@Autowired-->
-    <#--private BaseService bs;-->
-    <#--//token有效期天数-->
-    <#--public final static int tokenValidDay = 30;-->
-
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (handler instanceof HandlerMethod) {
             HandlerMethod method = (HandlerMethod) handler;
-//            log.info("访问路径:"+request.getRequestURL().toString());
+<#if (gen.showComment==true)>
+            //log.info("访问路径:"+request.getRequestURL().toString());
             //APermission permission = method.getMethodAnnotation(APermission.class);
             //if(permission!=null){
             //   System.out.println(permission.code());
             //}
             //System.out.println(method.getMethod().getName());
+</#if>
             ALogin login = method.getMethodAnnotation(ALogin.class);
             if (null != login && !login.required()) {
                 return true;
             }
         }
         String jiaMiZtoken = request.getHeader(GenConstant.zToken);
+<#if (gen.showComment==true)>
 //        log.info("ALoginInterceptor.jiaMiZtoken:" + jiaMiZtoken);
+</#if>
         if (jiaMiZtoken == null) {
             jiaMiZtoken = request.getParameter(GenConstant.zToken);
         }
@@ -70,7 +71,7 @@ public class ALoginInterceptor extends HandlerInterceptorAdapter {
             ContextHandler.Instance.setResponseBody(ResponseModel.error().setCode(1).setMsg("needlogin"));
             return false;
         }
-        //Object ztokenVal = bs.cacheHelper.get(ztoken);
+
         CacheHandler cacheHandler = (CacheHandler) MapperInclude.api.get(MapperInclude.CacheHandler);
         Object ztokenVal = cacheHandler.get(ztoken);
         if (ztokenVal == null) {
@@ -79,10 +80,16 @@ public class ALoginInterceptor extends HandlerInterceptorAdapter {
             return false;
         }
         String userId = null;
-        if (ztoken.startsWith(UserType.Customer.code())) { //判断是否是客户
+<#if (gen.showComment==true)>
+//判断是否是客户
+</#if>
+        if (ztoken.startsWith(UserType.Customer.code())) {
             userId = ztoken.substring(UserType.Customer.code().length() + 14);
             ContextHandler.Instance.setUserType(UserType.Customer);
-        } else if (ztoken.startsWith(UserType.Staff.code())) { //判断是否是职员
+<#if (gen.showComment==true)>
+//判断是否是职员
+</#if>
+        } else if (ztoken.startsWith(UserType.Staff.code())) {
             userId = ztoken.substring(UserType.Staff.code().length() + 14);
             ContextHandler.Instance.setUserType(UserType.Staff);
         } else {
