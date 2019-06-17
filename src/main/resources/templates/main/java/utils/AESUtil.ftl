@@ -21,8 +21,10 @@ public class AESUtil {
      * 此处使用AES-128-CBC加密模式，key需要为16位。
      */
 </#if>
-    private static String sKey = "bjzhsitivenandy0";
-    private static String ivParameter = "bjzhsitfengteng0";
+    <#--private static String sKey = "bjzhsitivenandy0";-->
+    <#--private static String ivParameter = "bjzhsitfengteng0";-->
+    private static String sKey = "123456789abcdefg";
+    private static String ivParameter = "abcdefg123456789";
 
 <#if (gen.showComment==true)>
     // 加密
