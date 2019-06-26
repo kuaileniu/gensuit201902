@@ -9,7 +9,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/api/*"}, asyncSupported = true, dispatcherTypes = {DispatcherType.REQUEST}, filterName = "ContextFilter") // 优先级同 Class类名排序,按位名称小的优先级高
+<#if (gen.showComment==true)>
+/**
+ *  
+ * 优先级同 Class类名排序,按位名称小的优先级高
+ */
+</#if>
+@WebFilter(urlPatterns = {"/api/*"}, asyncSupported = true, dispatcherTypes = {DispatcherType.REQUEST}, filterName = "ContextFilter")
 public class ContextFilter implements Filter {
     
     @Override

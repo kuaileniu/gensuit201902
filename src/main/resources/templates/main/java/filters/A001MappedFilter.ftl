@@ -16,8 +16,14 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 
 import java.util.*;
 
+<#if (gen.showComment==true)>
+/**
+ *
+ * 优先级同 Class类名排序,按位名称小的优先级高
+ */
+</#if>
 @ConfigurationProperties(prefix = "gen")
-@WebFilter(urlPatterns = {"/*"}, asyncSupported = true, dispatcherTypes = {DispatcherType.REQUEST}, filterName = "MappedFilter") // 优先级同 Class类名排序,按位名称小的优先级高
+@WebFilter(urlPatterns = {"/*"}, asyncSupported = true, dispatcherTypes = {DispatcherType.REQUEST}, filterName = "MappedFilter")
 public class A001MappedFilter implements Filter {
     @Autowired
     RequestMappingHandlerMapping mapped;
