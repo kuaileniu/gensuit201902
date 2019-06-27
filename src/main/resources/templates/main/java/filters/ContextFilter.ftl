@@ -11,7 +11,7 @@ import java.io.IOException;
 
 <#if (gen.showComment==true)>
 /**
- *  
+ *
  * 优先级同 Class类名排序,按位名称小的优先级高
  */
 </#if>
