@@ -21,7 +21,8 @@ public class Encrypt {
      */
 </#if>
     public static String pwd(String text) {
-        String md5Once = md5(text).substring(2) + "a@9$*.cn";
+        String md5Once = md5(text).substring(2) + "www.zhsit.cn";
+        <#--String md5Once = md5(text).substring(2) + "a@9$*.cn";-->
         return md5(md5Once).substring(2);
     }
 

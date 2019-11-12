@@ -1,5 +1,5 @@
 server:
-   port: 1201
+   port: 18099
 #  port: 8080
 #  servlet.context-path: /report
 
@@ -178,6 +178,7 @@ zhsit:
       t_guan_li_ren: GuanLiRen
       t_xu_hao: XuHao
       t_zheng_shen_code: ZhengShenCode
+      t_huo_dong_dai_ma: HuoDongDaiMa
 
 
 
