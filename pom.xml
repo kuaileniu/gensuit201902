@@ -322,15 +322,15 @@
                 <!--<env>jxpj20180723</env>-->
             <!--</properties>-->
         <!--</profile>-->
-        <profile>
-            <id>cypa-odm</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <env>cypa-odm</env>
-            </properties>
-        </profile>
+        <!--<profile>-->
+            <!--<id>cypa-odm</id>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--<properties>-->
+                <!--<env>cypa-odm</env>-->
+            <!--</properties>-->
+        <!--</profile>-->
         <!--<profile>-->
             <!--<id>caiji</id>-->
             <!--<activation>-->
@@ -349,6 +349,15 @@
                 <!--<env>jiangli</env>-->
             <!--</properties>-->
         <!--</profile>-->
+        <profile>
+            <id>jiangli_2019</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>jiangli_2019</env>
+            </properties>
+        </profile>
         <!--<profile>-->
             <!--<id>qipai</id>-->
             <!--<activation>-->
