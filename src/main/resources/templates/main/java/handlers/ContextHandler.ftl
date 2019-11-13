@@ -53,6 +53,8 @@ public enum ContextHandler {
 
         private String userName;
 
+        private String code;
+
     <#if (gen.showComment==true)>
         //Controller方法入参的requestBody，例：RequestModel
     </#if>
@@ -139,6 +141,17 @@ public enum ContextHandler {
         checkNull();
         context.get().userId = userId;
         return this;
+    }
+
+    public ContextHandler setCode(String code) {
+        checkNull();
+        context.get().code = code;
+        return this;
+    }
+
+    public String getCode() {
+        checkNull();
+        return context == null ? null : context.get().code;
     }
 
     public ContextHandler setControllerRequestBody(Object body) {

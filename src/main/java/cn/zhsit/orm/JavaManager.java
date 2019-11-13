@@ -220,6 +220,7 @@ public class JavaManager implements ApplicationContextAware {
 
 
         solidObjectsList.add(new SolidObject(GenConstants.ALoginInterceptor, GenConstants.ALoginInterceptor_FTL, gen.getInterceptorPackage(), FileType.MavenMainJava));
+        solidObjectsList.add(new SolidObject(GenConstants.HeaderInterceptor, GenConstants.HeaderInterceptor_FTL, gen.getInterceptorPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.PermissionHandler, GenConstants.PermissionHandler_FTL, gen.getInterceptorPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.CacheHandler, GenConstants.CacheHandler_FTL, gen.getInterceptorPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.APermissionInterceptor, GenConstants.APermissionInterceptor_FTL, gen.getInterceptorPackage(), FileType.MavenMainJava));

@@ -206,6 +206,7 @@ public class GenConstants {
     public static final String ActivitiConfig = "ActivitiConfig";
     public static final String InterceptorConfig = "InterceptorConfig";
     public static final String ALoginInterceptor = "ALoginInterceptor";
+    public static final String HeaderInterceptor = "HeaderInterceptor";
     public static final String PermissionHandler = "PermissionHandler";
     public static final String CacheHandler = "CacheHandler";
     public static final String APermissionInterceptor = "APermissionInterceptor";
@@ -368,6 +369,7 @@ public class GenConstants {
     public static final String ActivitiConfig_FTL = main_java_ftl + "configs/ActivitiConfig.ftl";
     public static final String InterceptorConfig_FTL = main_java_ftl + "configs/InterceptorConfig.ftl";
     public static final String ALoginInterceptor_FTL = main_java_ftl + "interceptors/ALoginInterceptor.ftl";
+    public static final String HeaderInterceptor_FTL = main_java_ftl + "interceptors/HeaderInterceptor.ftl";
     public static final String PermissionHandler_FTL = main_java_ftl + "interceptors/PermissionHandler.ftl";
     public static final String CacheHandler_FTL = main_java_ftl + "interceptors/CacheHandler.ftl";
     public static final String APermissionInterceptor_FTL = main_java_ftl + "interceptors/APermissionInterceptor.ftl";
