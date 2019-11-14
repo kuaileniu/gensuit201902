@@ -179,7 +179,7 @@ zhsit:
       t_guan_li_ren: GuanLiRen
       t_xu_hao: XuHao
       t_zheng_shen_code: ZhengShenCode
-      t_huo_dong_dai_ma: HuoDongDaiMa
+      t_huo_dong: HuoDong
       t_er_ji_org: ErJiOrg
       t_org_type: OrgType
       t_project_type: ProjectType
@@ -187,6 +187,9 @@ zhsit:
       t_jiang_deng_ji: JiangDengJi
       t_project_ren: ProjectRen
       t_project_wan_cheng_org: ProjectWanChengOrg
+      t_project: Project
+      t_role_huo_dong: RoleHuoDong
+
 
 
 

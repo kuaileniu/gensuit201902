@@ -46,6 +46,7 @@ public class GenConstants {
     public static final String enum_order = "OrderBy";
     public static final String enum_Province = "Province";
     public static final String enum_WhereRelate = "WhereRelate";
+    public static final String enum_ResponseCode = "ResponseCode";
     public static final String enum_Func = "Func";
     public static final String enum_WhereType = "WhereType";
     public static final String enum_Op = "Op";
@@ -258,6 +259,7 @@ public class GenConstants {
 
     public static final String ORDER_FTL = main_java_ftl + "enums/order.ftl";
     public static final String WhereRelate_FTL = main_java_ftl + "enums/WhereRelate.ftl";
+    public static final String ResponseCode_FTL = main_java_ftl + "enums/ResponseCode.ftl";
     public static final String Func_FTL = main_java_ftl + "enums/Func.ftl";
     public static final String WhereType_FTL = main_java_ftl + "enums/WhereType.ftl";
     public static final String Province_FTL = main_java_ftl + "enums/Province.ftl";

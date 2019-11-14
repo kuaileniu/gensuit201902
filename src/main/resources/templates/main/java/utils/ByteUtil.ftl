@@ -1,5 +1,6 @@
 package ${gen.utilPackage?replace("/",".")};
 
+import java.io.*;
 
 public class ByteUtil {
 <#if (gen.showComment==true)>
@@ -646,5 +647,43 @@ public class ByteUtil {
             }
         }
         return r;
+    }
+
+    /**
+     * 字节转输入流
+     * @param buf
+     * @return
+     */
+    public static InputStream byte2InputStream(byte[] buf) {
+        InputStream inputStream = new ByteArrayInputStream(buf);
+        return inputStream;
+    }
+
+    /**
+     * 输入流转字节
+     * @param inStream
+     * @return
+     * @throws IOException
+     */
+    public static final byte[] inputStream2byte(InputStream inStream) throws IOException {
+        ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
+        byte[] buff = new byte[1024];
+        int rc = 0;
+        while ((rc = inStream.read(buff, 0, 1024)) > 0) {
+            swapStream.write(buff, 0, rc);
+        }
+        byte[] in2b = swapStream.toByteArray();
+        return in2b;
+    }
+
+    /**
+     * 字节转输出流
+     * @param buf
+     * @return
+     */
+    public static OutputStream byte2OutStream(byte[] buf) {
+        ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
+        swapStream.writeBytes(buf);
+        return swapStream;
     }
 }

@@ -112,6 +112,7 @@ public class JavaManager implements ApplicationContextAware {
         solidObjectsList.add(new SolidObject(GenConstants.enum_order, GenConstants.ORDER_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
 //        solidObjectsList.add(new SolidObject(GenConstants.enum_comparative, GenConstants.COMPARATIVE_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.enum_WhereRelate, GenConstants.WhereRelate_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
+        solidObjectsList.add(new SolidObject(GenConstants.enum_ResponseCode, GenConstants.ResponseCode_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.enum_Func, GenConstants.Func_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.enum_WhereType, GenConstants.WhereType_FTL, gen.getEnumPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.enum_Province, GenConstants.Province_FTL, gen.getEnumPackage(), FileType.MavenMainJava));

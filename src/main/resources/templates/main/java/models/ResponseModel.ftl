@@ -1,5 +1,6 @@
 package ${gen.modelPackage?replace("/",".")};
 
+import ${gen.enumPackage?replace("/",".")}.*;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
@@ -117,11 +118,13 @@ public class ResponseModel {
     }
 
     public static ResponseModel ok() {
-        return new ResponseModel().setStatus(SUCCESS);
+       // return new ResponseModel().setStatus(SUCCESS);
+        return new ResponseModel().setStatus(SUCCESS).setCode(ResponseCode.dataSuccess.code());
     }
 
     public static ResponseModel ok(String msg) {
-        return new ResponseModel().setStatus(SUCCESS).setMsg(msg);
+        //return new ResponseModel().setStatus(SUCCESS).setMsg(msg);
+        return new ResponseModel().setStatus(SUCCESS).setCode(ResponseCode.dataSuccess.code());
     }
 
     public static ResponseModel error() {
