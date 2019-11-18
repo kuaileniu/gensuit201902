@@ -87,6 +87,7 @@ public class JavaManager implements ApplicationContextAware {
         solidObjectsList.add(new SolidObject(GenConstants.annotation_primary_column, GenConstants.PRIMARY_COLUMN_FTL, gen.getAnnotationPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.annotation_foreign_column, GenConstants.FOREIGN_COLUMN_FTL, gen.getAnnotationPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.annotation_ALogin, GenConstants.ALOGIN_FTL, gen.getAnnotationPackage(), FileType.MavenMainJava));
+        solidObjectsList.add(new SolidObject(GenConstants.annotation_AXss, GenConstants.AXss_FTL, gen.getAnnotationPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.annotation_authority, GenConstants.AUTHORITY_FTL, gen.getAnnotationPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.annotation_AMenu, GenConstants.AMENU_FTL, gen.getAnnotationPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.annotation_show, GenConstants.SHOW_FTL, gen.getAnnotationPackage(), FileType.MavenMainJava));

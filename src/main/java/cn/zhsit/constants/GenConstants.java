@@ -60,6 +60,7 @@ public class GenConstants {
     public static final String annotation_primary_column = "PrimaryColumn";
     public static final String annotation_foreign_column = "ForeignColumn";
     public static final String annotation_ALogin = "ALogin";
+    public static final String annotation_AXss = "AXss";
     public static final String annotation_authority = "Authority";
 //    public static final String annotation_menu = "Menu";
     public static final String annotation_AMenu = "AMenu";
@@ -237,6 +238,7 @@ public class GenConstants {
     public static final String PRIMARY_COLUMN_FTL = main_java_ftl + "annotations/primaryColumn.ftl";
     public static final String FOREIGN_COLUMN_FTL = main_java_ftl + "annotations/foreignColumn.ftl";
     public static final String ALOGIN_FTL = main_java_ftl + "annotations/ALogin.ftl";
+    public static final String AXss_FTL = main_java_ftl + "annotations/AXss.ftl";
     public static final String AUTHORITY_FTL = main_java_ftl + "annotations/Authority.ftl";
 //    public static final String MENU_FTL = main_java_ftl + "annotations/menu.ftl";
     public static final String AMENU_FTL = main_java_ftl + "annotations/AMenu.ftl";

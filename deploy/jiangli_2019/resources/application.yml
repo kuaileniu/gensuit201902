@@ -185,7 +185,7 @@ zhsit:
       t_project_type: ProjectType
       t_jiang_zhong: JiangZhong
       t_jiang_deng_ji: JiangDengJi
-      t_project_ren: ProjectRen
+      t_project_wan_cheng_ren: ProjectWanChengRen
       t_project_wan_cheng_org: ProjectWanChengOrg
       t_project: Project
       t_role_huo_dong: RoleHuoDong
