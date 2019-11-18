@@ -71,12 +71,39 @@ public class AXssInterceptor extends HandlerInterceptorAdapter {
      * @return true含xss脚本
      */
     private boolean oneValContainXss(String val) {
-        boolean contain = StringUtils.containsIgnoreCase(val, "script");
-        if (!contain) {
-            return false;
-        }
+        val = val.toLowerCase();
         String v = StringUtil.replaceBlank(val);
         if (StringUtils.contains(v, "<script") || StringUtil.contains(v, "</script")) {
+            return true;
+        }
+
+        if (StringUtils.contains(v, "alert(")) {
+            return true;
+        }
+
+        if (StringUtils.contains(v, "javascript:")) {
+            return true;
+        }
+
+        if (StringUtils.contains(v, "jav&#x0a;ascript")) {
+            return true;
+        }
+        if (StringUtils.contains(v, "jav&#x0d;ascript")) {
+            return true;
+        }
+        if (StringUtils.contains(v, "java\\0script")) {
+            return true;
+        }
+
+        if (StringUtils.contains(v, "<img")) {
+            return true;
+        }
+
+        if (StringUtils.contains(v, "src=")) {
+            return true;
+        }
+
+        if (StringUtils.contains(v, "type=”image”")) {
             return true;
         }
         return false;
