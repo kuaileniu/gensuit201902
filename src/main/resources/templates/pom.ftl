@@ -380,6 +380,11 @@ ${r"
             <artifactId>thumbnailator</artifactId>
             <version>0.4.8</version>
         </dependency>
+        <dependency>
+            <groupId>org.owasp.antisamy</groupId>
+            <artifactId>antisamy</artifactId>
+            <version>1.5.8</version>
+        </dependency>
     </dependencies>
 
     <build>
