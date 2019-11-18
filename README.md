@@ -1,10 +1,15 @@
 # gensuit201902
 代码生成器
+跨站脚本攻击过滤 (java版本) https://github.com/AI-OPT/opt-xss-filter
 
-
+        <dependency>
+            <groupId>org.owasp.antisamy</groupId>
+            <artifactId>antisamy</artifactId>
+            <version>1.5.8</version>
+        </dependency>
+        
 XSS总结 多种情况 https://xz.aliyun.com/t/4067
 https://www.cnblogs.com/linuxsec/articles/7821009.html
-跨站脚本攻击过滤 https://github.com/AI-OPT/opt-xss-filter
 
 <img src=1 onerror=alert("xss");>
 
