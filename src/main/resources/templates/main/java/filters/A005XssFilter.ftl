@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
  * 优先级同 Class类名排序,按位名称小的优先级高
  */
 </#if>
-@WebFilter(urlPatterns = {"/api/*"}, asyncSupported = true, dispatcherTypes = {DispatcherType.REQUEST}, filterName = "XssFilter")
+//@WebFilter(urlPatterns = {"/api/*"}, asyncSupported = true, dispatcherTypes = {DispatcherType.REQUEST}, filterName = "XssFilter")
 public class A005XssFilter implements Filter {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 <#if (gen.showComment==true)>

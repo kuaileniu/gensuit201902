@@ -13,5 +13,13 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD , ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AXss {
+<#if (gen.showComment==true)>
+    // 是否进行检测
+</#if>
     boolean check() default true;
+
+<#if (gen.showComment==true)>
+    //放行的参数
+</#if>
+    String[] ignoreParams() default {};
 }
