@@ -25,6 +25,8 @@ public class ResponseModel {
 <#if (gen.showComment==true)>
     //放在code里面的
 </#if>
+//    enums.ResponseCode
+    @Deprecated()
     public static final Integer PARAM_ERROR_CODE = 1;
 
     public static final String WrongParamMsg = "非法参数";
