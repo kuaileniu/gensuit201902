@@ -137,6 +137,14 @@ public class ${entityName}${gen.modifyPostfix} {
         return updateNativeColumns;
     }
 
+    public ${entityName}${gen.modifyPostfix} Equal(COLUMN column, final Object... vals) {
+        return WHERE(column, WhereRelate.Equal, vals);
+    }
+
+    public ${entityName}${gen.modifyPostfix} In(COLUMN column, final Object... vals) {
+        return WHERE(column, WhereRelate.In, vals);
+    }
+
     public ${entityName}${gen.modifyPostfix} WHERE(COLUMN column, WhereRelate whereRelate, final Object... vals){
         if (column == null || whereRelate == null) {
             throw new RuntimeException("column 和 whereRelate 不可为空。");

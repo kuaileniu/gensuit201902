@@ -44,7 +44,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
             }
             log.error("数据库操作异常",ex);
         }
-        return ResponseModel.ok().setCode(0);
+        return ResponseModel.ok();
     }
 
 <#if (gen.showComment==true)>
@@ -66,10 +66,10 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         } catch (Exception ex) {
             if (ex instanceof DuplicateKeyException) {
                 log.error("数据库DuplicateKeyException", ex);
-                return ResponseModel.error(GenConstant.repeat).setCode(1);
+                return ResponseModel.error(GenConstant.repeat).setCode(ResponseCode.dataFailure.code());
             }
         }
-        return ResponseModel.ok().setCode(0);
+        return ResponseModel.ok();
     }
 
 <#if (gen.showComment==true)>
@@ -91,10 +91,10 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         } catch (Exception ex) {
             if (ex instanceof DuplicateKeyException) {
                 log.error("数据库DuplicateKeyException", ex);
-                return ResponseModel.error(GenConstant.repeat).setCode(1);
+                return ResponseModel.error(GenConstant.repeat).setCode(ResponseCode.dataFailure.code());
             }
         }
-        return ResponseModel.ok().setCode(0);
+        return ResponseModel.ok();
     }
 
 <#if (gen.showComment==true)>
@@ -116,11 +116,11 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         } catch (Exception ex) {
             if (ex instanceof DuplicateKeyException) {
                 log.error("数据库DuplicateKeyException", ex);
-                return ResponseModel.error(GenConstant.repeat).setCode(1);
+                return ResponseModel.error(GenConstant.repeat).setCode(ResponseCode.dataFailure.code());
             }
             log.error("数据库操作异常",ex);
         }
-        return ResponseModel.ok().setCode(0);
+        return ResponseModel.ok();
     }
 
 <#if (gen.showComment==true)>
@@ -142,10 +142,10 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         } catch (Exception ex) {
             if (ex instanceof DuplicateKeyException) {
                 log.error("数据库DuplicateKeyException", ex);
-                return ResponseModel.error(GenConstant.repeat).setCode(1);
+                return ResponseModel.error(GenConstant.repeat).setCode(ResponseCode.dataFailure.code());
             }
         }
-        return ResponseModel.ok().setCode(0);
+        return ResponseModel.ok();
     }
 
 <#if (gen.showComment==true)>
@@ -171,7 +171,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel addIfAbsentByQuery(final ${entityName}${gen.poPostfix} o, final ${entityName}${gen.queryPostfix} query) {
         long num = count(query);
         if (num >= 1) {
-            return ResponseModel.ok("库中先前已经存在。").setCode(1);
+            return ResponseModel.ok("库中先前已经存在。").setCode(ResponseCode.dataFailure.code());
         }
         return add(o);
     }
@@ -241,7 +241,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         }
         where.WHERE(${entityName}${gen.removePostfix}.COLUMN.<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyName}</#list><#break></#list>, WhereRelate.In, idList);
         bs.gen${entityName}${gen.managerPostfix}.del(where);
-        return ResponseModel.ok().setCode(0);
+        return ResponseModel.ok();
     }
 </#if>
 
@@ -301,7 +301,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         ${entityName}${gen.removePostfix} where = new ${entityName}${gen.removePostfix}();
         where.WHERE(${entityName}${gen.removePostfix}.COLUMN.<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyName}</#list><#break></#list>, WhereRelate.In, os);
         bs.gen${entityName}${gen.managerPostfix}.del(where);
-        return ResponseModel.ok().setCode(0);
+        return ResponseModel.ok();
     }
             </#list>
         </#if>
@@ -320,7 +320,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         ${entityName}${gen.removePostfix} where = new ${entityName}${gen.removePostfix}();
         where.WHERE(${entityName}${gen.removePostfix}.COLUMN.<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyName}</#list><#break></#list>, WhereRelate.In, os);
         bs.gen${entityName}${gen.managerPostfix}.del(where);
-        return ResponseModel.ok().setCode(0);
+        return ResponseModel.ok();
     }
         </#list>
     </#if>
@@ -335,9 +335,9 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel del(final ${entityName}${gen.removePostfix} where) {
         boolean success = bs.gen${entityName}${gen.managerPostfix}.del(where);
         if (success) {
-            return ResponseModel.ok().setCode(0);
+            return ResponseModel.ok();
         }
-        return ResponseModel.ok().setCode(1);
+        return ResponseModel.ok().setCode(ResponseCode.dataFailure.code());
     }
 
 <#if (gen.showComment==true)>
@@ -348,9 +348,9 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel modifyWithOutNull(final ${entityName}${gen.poPostfix} o, final ${entityName}${gen.modifyPostfix} where) {
         int num = bs.gen${entityName}${gen.managerPostfix}.modifyWithOutNull(o, where);
         if (num > 0) {
-            return ResponseModel.ok().setCode(0);
+            return ResponseModel.ok();
         }
-        return ResponseModel.ok().setCode(1);
+        return ResponseModel.ok().setCode(ResponseCode.dataFailure.code());
     }
 
 <#if (gen.showComment==true)>
@@ -361,9 +361,9 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel modify(final ${entityName}${gen.poPostfix} o, final ${entityName}${gen.modifyPostfix} where) {
         int num = bs.gen${entityName}${gen.managerPostfix}.modify(o, where);
         if (num > 0) {
-            return ResponseModel.ok().setCode(0);
+            return ResponseModel.ok();
         }
-        return ResponseModel.ok().setCode(1);
+        return ResponseModel.ok().setCode(ResponseCode.dataFailure.code());
     }
 
 <#if (gen.showComment==true)>
@@ -374,9 +374,9 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel modifyProperty(final ${entityName}${gen.modifyPostfix} property) {
         int num = bs.gen${entityName}${gen.managerPostfix}.modifyColumn(property);
         if (num > 0) {
-            return ResponseModel.ok().setCode(0);
+            return ResponseModel.ok();
         }
-        return ResponseModel.ok().setCode(1);
+        return ResponseModel.ok().setCode(ResponseCode.dataFailure.code());
     }
 
 <#if (gen.showComment==true)>
@@ -387,9 +387,9 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel modifyPropertyWithOutNull(final ${entityName}${gen.modifyPostfix} property) {
         int num = bs.gen${entityName}${gen.managerPostfix}.modifyColumnWithOutNull(property);
         if (num > 0) {
-            return ResponseModel.ok().setCode(0);
+            return ResponseModel.ok();
         }
-        return ResponseModel.ok().setCode(1);
+        return ResponseModel.ok().setCode(ResponseCode.dataFailure.code());
     }
 
 <#if (gen.showComment==true)>
@@ -400,9 +400,9 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel modifyPropertyWithOutBlank(final ${entityName}${gen.modifyPostfix} property) {
         int num = bs.gen${entityName}${gen.managerPostfix}.modifyColumnWithOutBlank(property);
         if (num > 0) {
-            return ResponseModel.ok().setCode(0);
+            return ResponseModel.ok();
         }
-        return ResponseModel.ok().setCode(1);
+        return ResponseModel.ok().setCode(ResponseCode.dataFailure.code());
     }
 
 <#if (gen.showComment==true)>
@@ -413,9 +413,9 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel modifyWithOutNullByKey(final ${entityName}${gen.poPostfix} o) {
         boolean success = bs.gen${entityName}${gen.managerPostfix}.modifyWithOutNullByKey(o);
         if(success){
-           return ResponseModel.ok().setCode(0);
+           return ResponseModel.ok();
         }
-        return ResponseModel.error().setCode(1);
+        return ResponseModel.error().setCode(ResponseCode.dataFailure.code());
     }
 
 <#if (gen.showComment==true)>
@@ -426,9 +426,9 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel modifyWithOutBlankByKey(final ${entityName}${gen.poPostfix} o) {
         boolean success = bs.gen${entityName}${gen.managerPostfix}.modifyWithOutBlankByKey(o);
         if(success){
-           return ResponseModel.ok().setCode(0);
+           return ResponseModel.ok();
         }
-        return ResponseModel.error().setCode(1);
+        return ResponseModel.error().setCode(ResponseCode.dataFailure.code());
     }
 
 <#if (gen.showComment==true)>
@@ -438,7 +438,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
 </#if>
     public ResponseModel modifyByKey(${entityName}${gen.poPostfix} o) {
         bs.gen${entityName}${gen.managerPostfix}.modifyByKey(o);
-        return ResponseModel.ok().setCode(0);
+        return ResponseModel.ok();
     }
 
 <#if (gen.showComment==true)>
@@ -504,7 +504,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
     public ResponseModel findExcludeHiddenByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>final ${propertyNameType[propertyName]} ${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>) {
         ${entityName}${gen.poPostfix} o = bs.gen${entityName}${gen.managerPostfix}.findByKey(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyName}</#list><#if propertyNameType_has_next>, </#if></#list>);
         <@setHiddenNull obj="o"/>
-        return ResponseModel.ok().setCode(0).setData(o);
+        return ResponseModel.ok().setData(o);
     }
 </#if>
 
@@ -617,7 +617,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
      */
 </#if>
     public ResponseModel findList(final RequestModel requestModel) {
-        return ResponseModel.ok().setCode(0).setData(findLs(requestModel));
+        return ResponseModel.ok().setData(findLs(requestModel));
     }
 <#if javaCollection.getAnnotationByName("Mine")??>
     <#list javaCollection.getAnnotationByName("Mine") as POproperty>
@@ -703,7 +703,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
             }
         }            
         long count = bs.gen${entityName}${gen.managerPostfix}.count(query);
-        return ResponseModel.ok().setCode(0).setData(count);
+        return ResponseModel.ok().setData(count);
     }
 
 <#if (gen.showComment==true)>
@@ -715,7 +715,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
         ResponseModel[] rms = new ResponseModel[requestModels.length];
         for (int i = 0; i < requestModels.length; i++) {
             RequestModel requestModel = requestModels[i];
-            ResponseModel response = ResponseModel.ok().setCode(0);
+            ResponseModel response = ResponseModel.ok();
             rms[i] = response;
             ${entityName}${gen.queryPostfix} query = new ${entityName}${gen.queryPostfix}();
             for (RequestModel.WhereItem whereItem : requestModel.getWhereItems()) {
@@ -785,7 +785,7 @@ public class Gen${entityName}${gen.serviceImplPostfix} implements Gen${entityNam
 </#if>
     public ResponseModel findPageModel(final RequestModel requestModel) {
         DataPage page = findPage(requestModel);
-        ResponseModel responseModel = ResponseModel.ok().setCode(0);
+        ResponseModel responseModel = ResponseModel.ok();
         responseModel.setTotal(page.getTotal());
         responseModel.setData(page.getData());
         return responseModel;
