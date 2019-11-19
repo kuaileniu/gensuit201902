@@ -32,7 +32,7 @@ public class ResponseModel {
     public static final String WrongParamMsg = "非法参数";
 
 <#if (gen.showComment==true)>
-    //返回代码
+    //返回代码   enums.ResponseCode
 </#if>
     private Integer code;
 
