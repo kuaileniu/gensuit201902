@@ -27,6 +27,15 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
 
 <#if (gen.showComment==true)>
     /**
+     * 根据原生sql查询
+     */
+</#if>
+    public List<Map> selectList(String sql, Map<String, Object> params) {
+        return bm.sqlMapper.selectList(sql, params);
+    }
+
+<#if (gen.showComment==true)>
+    /**
      * 增加
      */
 </#if>

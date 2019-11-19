@@ -26,4 +26,8 @@ public class Zset<E> extends HashSet<E> {
         return false;
     }
 
+    public Zset put(E e) {
+        add(e);
+        return this;
+    }
 }

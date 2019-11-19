@@ -37,6 +37,9 @@ public interface SqlMapper {
     /**
      * @param sql example： "select *   from t_order where id > ${r"#"}{p.id}  order by ${r"#"}{p.ob} ";
      * @param params where中的参数, params.put("id",7);  params.put("ob","id");
+//        String sql = "select " + ProjectQuery.COLUMN.erJiOrgId.column() + " ,count(1) as num from " + ProjectQuery.TABLE_NAME
+//                + " where " + ProjectQuery.COLUMN.erJiOrgId.column() + " in ('4bj2657cqaslkv3ndpz4tu7j7','5i6f0lo6c81yxdy839qomr14') group by " + ProjectQuery.COLUMN.erJiOrgId.column();
+     * 防注入时，需要为in中的每个单独设置,例如 in(#{},#{})
      * 可以多表查询
      */
 </#if>

@@ -15,6 +15,13 @@ public interface Gen${entityName}${gen.managerPostfix} {
 
 <#if (gen.showComment==true)>
     /**
+     * 根据原生sql查询
+     */
+</#if>
+    public List<Map> selectList(String sql, Map<String, Object> params);
+
+<#if (gen.showComment==true)>
+    /**
      * 增加
      */
 </#if>
