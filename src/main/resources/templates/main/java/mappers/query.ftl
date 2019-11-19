@@ -253,6 +253,14 @@ public class ${className} {
         return WHERE(column, WhereRelate.Equal, val);
     }
 
+    public ${entityName}${gen.queryPostfix} Equal(COLUMN column, final Object val) {
+        return WHERE(column, WhereRelate.Equal, val);
+    }
+
+    public ${entityName}${gen.queryPostfix} In(COLUMN column, final Object... vals) {
+        return WHERE(column,WhereRelate.In,vals);
+    }
+
     public ${entityName}${gen.queryPostfix} WHERE_NATIVE(COLUMN column, WhereRelate whereRelate, final String val) {
         if (column == null || whereRelate == null || val == null || val.trim().length() == 0) {
             throw new RuntimeException("column、whereRelate、val 不可为空。");
