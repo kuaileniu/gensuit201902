@@ -117,6 +117,14 @@ public class ${entityName}${gen.removePostfix} {
         return where;
     }
 
+    public ${entityName}${gen.removePostfix} Equal(COLUMN column, final Object... vals){
+        return WHERE(column, WhereRelate.Equal, vals);
+    }
+
+    public ${entityName}${gen.removePostfix} In(COLUMN column, final Object... vals){
+        return WHERE(column, WhereRelate.In, vals);
+    }
+
     public ${entityName}${gen.removePostfix} WHERE(COLUMN column, WhereRelate whereRelate, final Object... vals){
         if (column == null || whereRelate == null) {
             throw new RuntimeException("column 和 whereRelate 不可为空。");
