@@ -67,7 +67,7 @@ public class AnnotationHelper extends BaseHelper {
         if (propertyList == null) return;
         try {
             for (POProperty poProperty : propertyList) {
-//                PO po = poProperty.getPo();
+//                PO pos = poProperty.getPo();
                 String vals = poProperty.getValue();
                 if (vals == null || vals.trim() == "") {
                     continue;

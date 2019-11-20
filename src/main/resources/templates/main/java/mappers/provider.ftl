@@ -332,7 +332,7 @@ public class ${className} {
     public String selectOne(final ${entityName}${gen.queryPostfix} query, @Param("p") Map<String, Object> params) {
         SQL sql = new SQL() {{
             if (null == query.getSelectColumns()) {
-                <#--SELECT("<#list info.po.javaPropDbColumn?keys as javaProperty>${info.po.javaPropDbColumn[javaProperty]}<#if javaProperty_has_next>,</#if></#list>");-->
+                <#--SELECT("<#list info.pos.javaPropDbColumn?keys as javaProperty>${info.pos.javaPropDbColumn[javaProperty]}<#if javaProperty_has_next>,</#if></#list>");-->
                 if (query.isDistinct()) {
                     SELECT_DISTINCT("<#list info.po.javaPropDbColumn?values as dbColumn>${dbColumn}<#if dbColumn_has_next>,</#if></#list>");
                 } else {
@@ -418,7 +418,7 @@ public class ${className} {
     public String selectList(final ${entityName}${gen.queryPostfix} query, @Param("p") Map<String, Object> params) {
         String sql = new SQL() {{
             if (null == query.getSelectColumns()) {
-                <#--SELECT("<#list info.po.javaPropDbColumn?keys as javaProperty>${info.po.javaPropDbColumn[javaProperty]}<#if javaProperty_has_next>,</#if></#list>");-->
+                <#--SELECT("<#list info.pos.javaPropDbColumn?keys as javaProperty>${info.pos.javaPropDbColumn[javaProperty]}<#if javaProperty_has_next>,</#if></#list>");-->
                 if (query.isDistinct()) {
                     SELECT_DISTINCT("<#list info.po.javaPropDbColumn?values as dbColumn>${dbColumn}<#if dbColumn_has_next>,</#if></#list>");
                 } else {

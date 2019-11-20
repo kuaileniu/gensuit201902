@@ -128,6 +128,8 @@ public class JavaManager implements ApplicationContextAware {
 //        solidObjectsList.add(new SolidObject(GenConstants.common_controller, GenConstants.COMMON_CONTROLLER_FTL, gen.getControllerPackage(), FileType.MavenMainJava));
         solidObjectsList.add(new SolidObject(GenConstants.ViewPermission, GenConstants.ViewPermission_FTL, gen.getControllerPackage(), FileType.MavenMainJava));
 
+        //dtos
+        solidObjectsList.add(new SolidObject(GenConstants.StaffRoleChange, GenConstants.StaffRoleChange_FTL, gen.getDtoPackage(), FileType.MavenMainJava));
 
         solidObjectsList.add(new SolidObject(GenConstants.data_page, GenConstants.DATA_PAGE_FTL, gen.getModelPackage(), FileType.MavenMainJava));
 //        solidObjectsList.add(new SolidObject(GenConstants.response_bo, GenConstants.RESPONSE_BO_FTL, gen.getModelPackage(), FileType.MavenMainJava));

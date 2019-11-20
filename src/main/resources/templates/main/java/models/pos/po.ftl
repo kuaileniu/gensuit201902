@@ -1,4 +1,4 @@
-package ${packageStr};
+package ${gen.poPackage?replace("/",".")};
 
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonInclude;

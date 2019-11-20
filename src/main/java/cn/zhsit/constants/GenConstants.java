@@ -62,7 +62,7 @@ public class GenConstants {
     public static final String annotation_ALogin = "ALogin";
     public static final String annotation_AXss = "AXss";
     public static final String annotation_authority = "Authority";
-//    public static final String annotation_menu = "Menu";
+    //    public static final String annotation_menu = "Menu";
     public static final String annotation_AMenu = "AMenu";
     public static final String annotation_show = "Show";
     public static final String annotation_Mine = "Mine";
@@ -181,7 +181,7 @@ public class GenConstants {
     public static final String XssUtil = "XssUtil";
     public static final String SqlMapperUtil = "SqlMapperUtil";
     public static final String JDKSerializer = "JDKSerializer";
-//    public static final String ZWordUtil = "ZWordUtil";
+    //    public static final String ZWordUtil = "ZWordUtil";
     public static final String ZOfficeUtil = "ZOfficeUtil";
     public static final String KryoSerializer = "KryoSerializer";
     public static final String ProtoBufSerializer = "ProtoBufSerializer";
@@ -224,6 +224,7 @@ public class GenConstants {
     public static final String ServerApplication = "ServerApplication";
     public static final String FastDFSTest = "FastDFSTest";
     public static final String FastDFSComponent = "FastDFSComponent";
+    public static final String StaffRoleChange = "StaffRoleChange";
 
     public static final String GenConstant = "GenConstant";
 
@@ -235,13 +236,14 @@ public class GenConstants {
 
 
     // 模板名称
-    public static final String PO_FTL = main_java_ftl + "pos/po.ftl";
+//    public static final String PO_FTL = main_java_ftl + "pos/pos.ftl";
+    public static final String PO_FTL = main_java_ftl + "models/pos/po.ftl";
     public static final String PRIMARY_COLUMN_FTL = main_java_ftl + "annotations/primaryColumn.ftl";
     public static final String FOREIGN_COLUMN_FTL = main_java_ftl + "annotations/foreignColumn.ftl";
     public static final String ALOGIN_FTL = main_java_ftl + "annotations/ALogin.ftl";
     public static final String AXss_FTL = main_java_ftl + "annotations/AXss.ftl";
     public static final String AUTHORITY_FTL = main_java_ftl + "annotations/Authority.ftl";
-//    public static final String MENU_FTL = main_java_ftl + "annotations/menu.ftl";
+    //    public static final String MENU_FTL = main_java_ftl + "annotations/menu.ftl";
     public static final String AMENU_FTL = main_java_ftl + "annotations/AMenu.ftl";
     public static final String SHOW_FTL = main_java_ftl + "annotations/show.ftl";
     public static final String MINE_FTL = main_java_ftl + "annotations/Mine.ftl";
@@ -297,7 +299,7 @@ public class GenConstants {
     public static final String FILES_SERVICE_FTL = main_java_ftl + "services/common/FilesService.ftl";
     public static final String FILES_SERVICE_IMPL_FTL = main_java_ftl + "services/impl/common/FilesServiceImpl.ftl";
     public static final String DATA_PAGE_FTL = main_java_ftl + "models/dataPage.ftl";
-//    public static final String RESPONSE_BO_FTL = main_java_ftl + "models/responseBo.ftl";
+    //    public static final String RESPONSE_BO_FTL = main_java_ftl + "models/responseBo.ftl";
     public static final String Response_FTL = main_java_ftl + "models/Response.ftl";
     public static final String SESSION_FTL = main_java_ftl + "models/Session.ftl";
     public static final String JwtToken_FTL = main_java_ftl + "models/JwtToken.ftl";
@@ -316,7 +318,7 @@ public class GenConstants {
     public static final String AlainRequestModel_FTL = main_java_ftl + "models/alain/AlainRequestModel.ftl";
     public static final String MethodWrapper_FTL = main_java_ftl + "models/MethodWrapper.ftl";
     public static final String FieldWrapper_FTL = main_java_ftl + "models/FieldWrapper.ftl";
-
+    public static final String StaffRoleChange_FTL = main_java_ftl + "models/dtos/StaffRoleChange.ftl";
 
     public static final String vcode_Captcha_FTL = main_java_ftl + "utils/vcode/Captcha.ftl";
     public static final String vcode_GifEncoder_FTL = main_java_ftl + "utils/vcode/GifEncoder.ftl";
@@ -347,7 +349,7 @@ public class GenConstants {
     public static final String SqlMapperUtil_FTL = main_java_ftl + "utils/SqlMapperUtil.ftl";
     public static final String JavaClass2ProtoBuf_FTL = main_java_ftl + "utils/io/JavaClass2ProtoBuf.ftl";
     public static final String JDKSerializer_FTL = main_java_ftl + "utils/io/JDKSerializer.ftl";
-//    public static final String ZWordUtil_FTL = main_java_ftl + "utils/office/ZWordUtil.ftl";
+    //    public static final String ZWordUtil_FTL = main_java_ftl + "utils/office/ZWordUtil.ftl";
     public static final String ZOfficeUtil_FTL = main_java_ftl + "utils/office/ZOfficeUtil.ftl";
     public static final String KryoSerializer_FTL = main_java_ftl + "utils/io/KryoSerializer.ftl";
     public static final String ProtoBufSerializer_FTL = main_java_ftl + "utils/io/ProtoBufSerializer.ftl";
@@ -390,7 +392,7 @@ public class GenConstants {
     public static final String GenApplication_FTL = main_java_ftl + "GenApplication.ftl";
     public static final String ServerApplication_FTL = main_java_ftl + "ServerApplication.ftl";
     public static final String FastDFSComponent_FTL = main_java_ftl + "dfs/FastDFSComponent.ftl";
-    public static final String  GenConstant_FTL = main_java_ftl + "constants/GenConstant.ftl";
+    public static final String GenConstant_FTL = main_java_ftl + "constants/GenConstant.ftl";
 
     //test目录
     public static final String FastDFSTest_FTL = test_java_ftl + "dfs/FastDFSTest.ftl";
@@ -416,7 +418,7 @@ public class GenConstants {
     public static final String gen = "gen";
     public static final String rdb = "rdb";
     public static final String cache = "cache";
-//    public static final String comparative = "comparative";
+    //    public static final String comparative = "comparative";
     public static final String WhereRelate = "WhereRelate";
     public static final String order = "order";
 
@@ -425,7 +427,7 @@ public class GenConstants {
     public static final String importList = "importList";
     public static final String className = "className";
     public static final String classRemark = "classRemark";
-//    public static final String methodStr = "methodStr";
+    //    public static final String methodStr = "methodStr";
     public static final String allAnnotationPO = "allAnnotationPO";
     public static final String AAnnotationMap = "AAnnotationMap";
     public static final String objectPropertyJavaTypeMap = "objectPropertyJavaTypeMap";

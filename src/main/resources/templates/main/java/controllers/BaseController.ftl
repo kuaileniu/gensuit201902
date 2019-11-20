@@ -38,7 +38,7 @@ public class BaseController {
     @Autowired public CacheHelper cacheHelper;
 </#if>
 <#--<#list allController as o>-->
-    <#--@Autowired public Gen${o.po.entityName}${gen.controllerPostfix} gen${o.po.entityName}${gen.controllerPostfix};-->
+    <#--@Autowired public Gen${o.pos.entityName}${gen.controllerPostfix} gen${o.pos.entityName}${gen.controllerPostfix};-->
 <#--</#list>-->
 <#list allService as o>
     @Autowired public Gen${o.po.entityName}${gen.servicePostfix} gen${o.po.entityName}${gen.servicePostfix};

@@ -96,4 +96,13 @@ public class GenConstant {
     //数据重复
 </#if>
     public static final String repeat = "数据重复";
+
+    //微信小程序accesstoken redis缓存key
+    public static final String weChatAccessToken = "wechat_access_token";
+
+    public static final String noneId = "_";
+    public static final String blank = "";
+
+    public static final String staffRoleMenuPermissionChange = "staffRoleMenuPermissionChange";
+
 }

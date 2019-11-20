@@ -103,6 +103,7 @@ public class Gen {
     private String modelAlainPackage;
     @NotBlank
     public String poPackage;
+    public String dtoPackage;
     // <表名,实体名>
     @NotEmpty
     public Map<String, String> tableEntity = new HashMap<>();
@@ -219,6 +220,15 @@ public class Gen {
 
     public void setPoPackage(String poPackage) {
         this.poPackage = poPackage;
+    }
+
+    public String getDtoPackage() {
+        return dtoPackage;
+    }
+
+    public Gen setDtoPackage(String dtoPackage) {
+        this.dtoPackage = dtoPackage;
+        return this;
     }
 
     public Map<String, String> getTableEntity() {

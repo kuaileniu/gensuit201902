@@ -97,6 +97,8 @@ zhsit:
     modelAlainPackage: cn/zhsit/jiangli/gen/models/alain
   #  po的路径
     poPackage: cn/zhsit/jiangli/gen/models/pos
+  #  dto的路径
+    dtoPackage: cn/zhsit/jiangli/gen/models/dtos
   #  query对象的路径
     queryPackage: cn/zhsit/jiangli/gen/mappers/querys
   #  remove对象的路径

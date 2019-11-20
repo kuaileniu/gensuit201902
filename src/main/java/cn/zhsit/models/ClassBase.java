@@ -20,7 +20,7 @@ public abstract class ClassBase {
     private Set<String> imports = new LinkedHashSet<>();
 
     /**
-     * po
+     * pos
      */
     private PO po;
 
