@@ -225,6 +225,7 @@ public class GenConstants {
     public static final String FastDFSTest = "FastDFSTest";
     public static final String FastDFSComponent = "FastDFSComponent";
     public static final String StaffRoleChange = "StaffRoleChange";
+    public static final String RoleMenuChange = "RoleMenuChange";
 
     public static final String GenConstant = "GenConstant";
 
@@ -319,6 +320,7 @@ public class GenConstants {
     public static final String MethodWrapper_FTL = main_java_ftl + "models/MethodWrapper.ftl";
     public static final String FieldWrapper_FTL = main_java_ftl + "models/FieldWrapper.ftl";
     public static final String StaffRoleChange_FTL = main_java_ftl + "models/dtos/StaffRoleChange.ftl";
+    public static final String RoleMenuChange_FTL = main_java_ftl + "models/dtos/RoleMenuChange.ftl";
 
     public static final String vcode_Captcha_FTL = main_java_ftl + "utils/vcode/Captcha.ftl";
     public static final String vcode_GifEncoder_FTL = main_java_ftl + "utils/vcode/GifEncoder.ftl";
