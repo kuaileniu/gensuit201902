@@ -429,7 +429,7 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
 
 <#if (gen.showComment==true)>
     /**
-     * 分页查询数据
+     * 分页查询数据(只查给定的几个字段)
      * @param column
      * @param val
      * @return
@@ -442,7 +442,7 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
 
 <#if (gen.showComment==true)>
     /**
-     * 分页查询数据
+     * 分页查询数据(只查给定的几个字段)
      * @param column
      * @param val
      * @return
