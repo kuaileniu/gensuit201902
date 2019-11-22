@@ -193,6 +193,7 @@ zhsit:
       t_role_huo_dong: RoleHuoDong
       t_huo_jiang_zhu_hui_ren: HuoJiangZhuHuiRen
       t_guan_li_zhu_hui_ren: GuanLiZhuHuiRen
+      t_can_hui_ren: CanHuiRen
 
 
 
