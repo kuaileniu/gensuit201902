@@ -671,6 +671,7 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return list;
     }
 
+<#if ( info.po.keyList?size> 0 ) >	
 <#if (gen.showComment==true)>
     /**
      * @param query
@@ -685,7 +686,7 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         }
         return null;
     }
-
+</#if>
 }
 <#--  更新冗余字段  -->
 <#macro modifyRong isWithOutNull>
