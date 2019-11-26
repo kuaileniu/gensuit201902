@@ -674,10 +674,15 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
 <#if (gen.showComment==true)>
     /**
      * @param query
-     * @return map<key,PO>
+     * @return map<key , PO>
      */
 </#if>
     public Map<<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyNameType[propertyName]}</#list><#if propertyNameType_has_next>, </#if></#list>,${entityName}${gen.poPostfix}> findKeyPOMap(final ${entityName}${gen.queryPostfix} query){
+        Map<<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyNameType[propertyName]}</#list><#if propertyNameType_has_next>, </#if></#list>,${entityName}${gen.poPostfix}> map = new HashMap<>();
+        List<${entityName}${gen.poPostfix}> poList = findList(query);
+        for (${entityName}${gen.poPostfix} o : poList) {
+            map.put(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>o.get${propertyName?cap_first}()</#list><#if propertyNameType_has_next>, </#if></#list>, o);
+        }
         return null;
     }
 
