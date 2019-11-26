@@ -671,6 +671,16 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         return list;
     }
 
+<#if (gen.showComment==true)>
+    /**
+     * @param query
+     * @return map<key,PO>
+     */
+</#if>
+    public Map<<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyNameType[propertyName]}</#list><#if propertyNameType_has_next>, </#if></#list>,${entityName}${gen.poPostfix}> findKeyPOMap(final ${entityName}${gen.queryPostfix} query){
+        return null;
+    }
+
 }
 <#--  更新冗余字段  -->
 <#macro modifyRong isWithOutNull>

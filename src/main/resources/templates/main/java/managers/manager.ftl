@@ -370,4 +370,11 @@ public interface Gen${entityName}${gen.managerPostfix} {
 </#if>
     public List<${entityName}${gen.poPostfix}> findListByProperty(final List<${entityName}${gen.poPostfix}> os, ${entityName}${gen.queryPostfix}.COLUMN column, String val);
 
+<#if (gen.showComment==true)>
+    /**
+     * @param query
+     * @return map<key,PO>
+     */
+</#if>
+    public Map<<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>${propertyNameType[propertyName]}</#list><#if propertyNameType_has_next>, </#if></#list>,${entityName}${gen.poPostfix}> findKeyPOMap(final ${entityName}${gen.queryPostfix} query);
 }
