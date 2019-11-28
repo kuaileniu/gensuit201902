@@ -684,7 +684,7 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
         for (${entityName}${gen.poPostfix} o : poList) {
             map.put(<#list info.po.keyList as propertyNameType><#list propertyNameType?keys as propertyName>o.get${propertyName?cap_first}()</#list><#if propertyNameType_has_next>, </#if></#list>, o);
         }
-        return null;
+        return map;
     }
 </#if>
 }
