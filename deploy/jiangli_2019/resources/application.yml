@@ -158,6 +158,8 @@ zhsit:
     interceptorPackage: cn/zhsit/jiangli/gen/interceptors
   # 异常路径
     exceptionPackage: cn/zhsit/jiangli/gen/exceptions
+  # 并发路径
+    parallelPackage: cn/zhsit/jiangli/gen/parallels
 
   # 要生成的表和实体的名称对应,加不加引号都可以
     tableEntity:

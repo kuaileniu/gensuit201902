@@ -134,6 +134,7 @@ public class GenConstants {
     public static final String Request = "Request";
     public static final String ResponseModel = "ResponseModel";
     public static final String ControllerClassContext = "ControllerClassContext";
+    public static final String ZCallable = "ZCallable";
     public static final String AuthorityModel = "AuthorityModel";
     public static final String ClassWrapper = "ClassWrapper";
     public static final String MenuModel = "MenuModel";
@@ -311,6 +312,7 @@ public class GenConstants {
     public static final String Request_FTL = main_java_ftl + "models/Request.ftl";
     public static final String ResponseModel_FTL = main_java_ftl + "models/ResponseModel.ftl";
     public static final String ControllerClassContext_FTL = main_java_ftl + "models/ControllerClassContext.ftl";
+    public static final String ZCallable_FTL = main_java_ftl + "parallels/ZCallable.ftl";
     public static final String AuthorityModel_FTL = main_java_ftl + "models/AuthorityModel.ftl";
     public static final String ClassWrapper_FTL = main_java_ftl + "models/ClassWrapper.ftl";
     public static final String MenuModel_FTL = main_java_ftl + "models/MenuModel.ftl";

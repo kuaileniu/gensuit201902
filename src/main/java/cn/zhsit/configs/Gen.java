@@ -101,6 +101,7 @@ public class Gen {
     private String modelLayuiPackage;
     @NotNull
     private String modelAlainPackage;
+    private String parallelPackage;
     @NotBlank
     public String poPackage;
     public String dtoPackage;
@@ -791,6 +792,15 @@ public class Gen {
 
     public Gen setUseLua(boolean useLua) {
         this.useLua = useLua;
+        return this;
+    }
+
+    public String getParallelPackage() {
+        return parallelPackage;
+    }
+
+    public Gen setParallelPackage(String parallelPackage) {
+        this.parallelPackage = parallelPackage;
         return this;
     }
 }
