@@ -257,6 +257,10 @@ public class ${className} {
         return WHERE(column, WhereRelate.Equal, val);
     }
 
+    public ${entityName}${gen.queryPostfix} NotEqual(COLUMN column, final Object val) {
+        return WHERE(column, WhereRelate.NotEqual, val);
+    }
+
     public ${entityName}${gen.queryPostfix} In(COLUMN column, final Object... vals) {
         return WHERE(column,WhereRelate.In,vals);
     }
