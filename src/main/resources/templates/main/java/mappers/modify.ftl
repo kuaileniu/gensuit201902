@@ -141,6 +141,10 @@ public class ${entityName}${gen.modifyPostfix} {
         return WHERE(column, WhereRelate.Equal, vals);
     }
 
+    public ${entityName}${gen.modifyPostfix} NotEqual(COLUMN column, final Object... vals) {
+        return WHERE(column, WhereRelate.NotEqual, vals);
+    }
+
     public ${entityName}${gen.modifyPostfix} In(COLUMN column, final Object... vals) {
         return WHERE(column, WhereRelate.In, vals);
     }

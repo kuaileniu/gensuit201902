@@ -150,6 +150,11 @@ public class ResponseModel {
         return code;
     }
 
+    public ResponseModel setCode(ResponseCode responseCode) {
+        this.code = responseCode.code();
+        return this;
+    }
+
     public ResponseModel setCode(Integer code) {
         this.code = code;
         return this;
