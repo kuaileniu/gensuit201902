@@ -21,6 +21,34 @@ import java.util.Map;
 public class ZOfficeUtil {
     private static Logger log = LoggerFactory.getLogger(ZOfficeUtil.class);
 
+    /**
+     *
+     * @param templatePathName
+     * @param outFilePath
+     * @param outFileName
+     * @param params
+     * @return
+     */
+    public static boolean exportWord07(String templatePathName, String outFilePath, String outFileName, Map<String, Object> params) {
+        if (outFileName == null) {
+            outFileName = System.currentTimeMillis() + ".docx";
+        }
+        try {
+            XWPFDocument doc = WordExportUtil.exportWord07(templatePathName, params);
+            File file=new File(outFilePath);
+            if (!file.exists()){
+                file.mkdirs();
+            }
+            FileOutputStream fos = new FileOutputStream(outFilePath + "/" + outFileName);
+            doc.write(fos);
+            fos.close();
+            return true;
+        } catch (Exception e) {
+            log.error("通过模板导出word文档时异常", e);
+            return false;
+        }
+    }
+
 <#if (gen.showComment==true)>
     /**
      * 导出word
