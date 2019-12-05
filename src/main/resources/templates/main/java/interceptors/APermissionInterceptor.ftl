@@ -6,7 +6,6 @@ import ${gen.handlerPackage?replace("/",".")}.*;
 import ${gen.filterPackage?replace("/",".")}.MapperInclude;
 import ${gen.modelPackage?replace("/",".")}.*;
 import org.springframework.web.method.HandlerMethod;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
