@@ -1,7 +1,7 @@
 package ${gen.interceptorPackage?replace("/",".")};
 
-import ${gen.serviceImplPackage?replace("/",".")}.BaseService;
 import ${gen.annotationPackage?replace("/",".")}.*;
+import ${gen.enumPackage?replace("/",".")}.*;
 import ${gen.handlerPackage?replace("/",".")}.*;
 import ${gen.filterPackage?replace("/",".")}.MapperInclude;
 import ${gen.modelPackage?replace("/",".")}.*;
@@ -21,8 +21,6 @@ import org.slf4j.LoggerFactory;
 @Interceptor(order = 30)
 public class APermissionInterceptor extends HandlerInterceptorAdapter {
     private Logger log = LoggerFactory.getLogger(this.getClass());
-    @Autowired
-    private BaseService bs;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -48,7 +46,8 @@ public class APermissionInterceptor extends HandlerInterceptorAdapter {
             boolean have = permissionHandler.havePermission(userId, code);
             if (!have) {
                 <#--ContextHandler.Instance.setResponseBody(ResponseModel.ok().setCode(2).setMsg("You have no permission:"+code));-->
-                ContextHandler.Instance.setResponseBody(ResponseModel.error().setCode(1).setMsg("no permission["+code+"]"));
+                <#--ContextHandler.Instance.setResponseBody(ResponseModel.error().setCode(1).setMsg("no permission["+code+"]"));-->
+                ContextHandler.Instance.setResponseBody(ResponseModel.ok().setCode(ResponseCode.dataFailure.code()).setMsg("no permission["+code+"]"));
                 log.info("用户:" + ContextHandler.Instance.getUserId() + ",无 " + code + " 操作权限");
             }
             return have;
