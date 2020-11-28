@@ -645,6 +645,9 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
     @Override
     public ${entityName}${gen.poPostfix} findByProperty(final List<${entityName}${gen.poPostfix}> os, ${entityName}${gen.queryPostfix}.COLUMN column, String val) {
         for (${entityName}${gen.poPostfix} o : os) {
+            if (null == o) {
+                continue;
+            }
             String prop = column.name();
             Object propVal = ClazzUtil.getFieldValue(o, prop);
             if (propVal instanceof String) {
@@ -660,6 +663,10 @@ public class Gen${entityName}${gen.managerImplPostfix} implements Gen${entityNam
     public List<${entityName}${gen.poPostfix}> findListByProperty(final List<${entityName}${gen.poPostfix}> os, ${entityName}${gen.queryPostfix}.COLUMN column, String val) {
         List<${entityName}${gen.poPostfix}> list = new ArrayList<>();
         for (${entityName}${gen.poPostfix} o : os) {
+<#--奖励办项目中此处可能为空值-->
+            if (null == o) {
+                continue;
+            }
             String prop = column.name();
             Object propVal = ClazzUtil.getFieldValue(o, prop);
             if (propVal instanceof String) {
