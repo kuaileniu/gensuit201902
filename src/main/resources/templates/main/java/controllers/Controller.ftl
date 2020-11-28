@@ -20,8 +20,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 <#--import javax.servlet.http.*;-->
 
-@Controller
-@RequestMapping("api/gen${entityName?lower_case}")
+//@Controller
+//@RequestMapping("api/gen${entityName?lower_case}")
 public class Gen${entityName}${gen.controllerPostfix} {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
