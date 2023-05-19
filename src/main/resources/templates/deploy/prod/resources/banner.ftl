@@ -1,5 +1,5 @@
 
 
-:: 北京智慧山信息技术有限公司 ::    联系电话 15652963646   http://www.zhsit.cn
+   http://www.zhsit.cn
 
 
